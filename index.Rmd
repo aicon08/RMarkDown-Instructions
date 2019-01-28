@@ -17,20 +17,17 @@ output: html_document
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **My Lab Journal**
+# **Lab Journal -- Aira Contreras**
 
-This is a template example for lab journaling. Students in Matt Crump's Human Cognition and Performance Lab will use this template to learn R, and other things. Students can replace this text with more fun things. People not in my lab can use this too.
+This is an attempt to try and figure out how to publish information on Github and to help me understand lab journaling. I, Aira Contreras, per the instructions of Professor Matt Crump for the Human Cognition and Performance Lab will use this template to learn R, and other things. 
 
-## How to use
+While I am trying to understand exactly how to do this, I will likely make so many mistakes my poor (yet not fragile) ego will likely be extremely frustrated by the occurences of such errors. 
 
-1. fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
+I will, however, try my best to solve all the problems before me and am currently really digging working with this RStudio Cloud that will allow me to work on the homework from all the different states I will be traveling to this semester
 
-2. Blog/journal what you are doing in R, by editing the Journal.Rmd. See the [Journal page](https://crumplab.github.io/LabJournalWebsite/Journal.html) for an example of what to do to get started learning R.
+## Currently Blogging
 
-3. See the [links page](https://crumplab.github.io/LabJournalWebsite/Links.html) for lots of helpful links on learning R.
-
-4. Change everything to make it your own.
-
+1. Assignment 1 (Maybe)
 
 </div>
 <div class="col-sm-6">
