@@ -17,18 +17,18 @@ output: html_document
 <div class="row" style="padding-top: 30px;">
 <div class="col-sm-6">
 
-# **Lab Journal -- Aira Contreras**
+# **Lab Journal -- PSYCH 7709 Aira Contreras**
 
-This is an attempt to try and figure out how to publish information on Github and to help me understand lab journaling. I, Aira Contreras, per the instructions of Professor Matt Crump for the Human Cognition and Performance Lab will use this template to learn R, and other things. 
+This is an attempt to try and figure out how to publish information on Github and to help me understand lab journaling. I, Aira Contreras, per the instructions of Professor Matt Crump will use this template to learn R, and other things. 
 
 While I am trying to understand exactly how to do this, I will likely make so many mistakes my poor (yet not fragile) ego will likely be extremely frustrated by the occurences of such errors. 
 
-I will, however, try my best to solve all the problems before me and am currently really digging working with this RStudio Cloud that will allow me to work on the homework from all the different states I will be traveling to this semester
+I will, however, try my best to solve all the problems before me and am currently really digging working with this RStudio Cloud that will allow me to work on the homework from all the different states I will be traveling to this semester. 
 
 ## Currently Blogging
 
-1. Website Personilization
-2. Assignment 1 (Maybe)
+1. Website Personilization (SUCCESS!!!)*
+2. Assignment 1 (In Progress)
 
 </div>
 <div class="col-sm-6">
@@ -39,3 +39,12 @@ I will, however, try my best to solve all the problems before me and am currentl
 ![](images/logo.png)
 </a>
 </div>
+
+###### *-Thus far I have learned that increasing the number of hashtags in the script decreases the text size. At least I think I have learned this. I will now test this hypothesis. [Success]
+
+###### 1. I have also learned that adding the small division code changes the location of the text.
+
+###### 2. I have also learned not to change the names of ANY of the files. They are pre-coded to run with the names that they have (had I thought about this, I would have come to this conclusion much sooner).
+
+</div>
+<div class="col-sm-6">
