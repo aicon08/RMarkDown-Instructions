@@ -45,6 +45,3 @@ I will, however, try my best to solve all the problems before me and am currentl
 ###### 1. I have also learned that adding the small division code changes the location of the text.
 
 ###### 2. I have also learned not to change the names of ANY of the files. They are pre-coded to run with the names that they have (had I thought about this, I would have come to this conclusion much sooner).
-
-</div>
-<div class="col-sm-6">
