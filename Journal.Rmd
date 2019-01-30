@@ -20,6 +20,7 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ##### Prompt: Find the sum of all integers from 1 to 100
 
 ##### Answer:
+sum function Sol:
 ```{r}
 a<-c()
 for(i in 1:100) {
@@ -29,7 +30,14 @@ print(a)
 b<-sum(a)
 print(b)
 ```
-
+Loop Sol:
+```{r}
+c<-0
+for(i in 1:100) {
+  c<-c+i
+}
+print(c)
+```
 
 
 # Problem 3: Prompt and Answer

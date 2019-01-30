@@ -410,6 +410,7 @@ div.tocify {
 </div>
 <div id="answer" class="section level5">
 <h5>Answer:</h5>
+<p>sum function Sol:</p>
 <pre class="r"><code>a&lt;-c()
 for(i in 1:100) {
   a&lt;-c(a,i)
@@ -423,6 +424,13 @@ print(a)</code></pre>
 ##  [86]  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100</code></pre>
 <pre class="r"><code>b&lt;-sum(a)
 print(b)</code></pre>
+<pre><code>## [1] 5050</code></pre>
+<p>Loop Sol:</p>
+<pre class="r"><code>c&lt;-0
+for(i in 1:100) {
+  c&lt;-c+i
+}
+print(c)</code></pre>
 <pre><code>## [1] 5050</code></pre>
 </div>
 </div>
