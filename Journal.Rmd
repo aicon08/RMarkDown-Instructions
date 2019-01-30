@@ -13,6 +13,25 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
+# Problem 4: Prompt and Answer
+
+2019 | Jan | 30 Last compiled: `r Sys.Date()`
+
+##### Prompt: Find the sum of all integers from 1 to 100
+
+##### Answer:
+```{r}
+a<-c()
+for(i in 1:100) {
+  a<-c(a,i)
+}
+print(a)
+b<-sum(a)
+print(b)
+```
+
+
+
 # Problem 3: Prompt and Answer
 
 2019 | Jan | 29 Last compiled: `r Sys.Date()`
