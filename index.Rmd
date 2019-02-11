@@ -28,7 +28,10 @@ I will, however, try my best to solve all the problems before me and am currentl
 ## Currently Blogging
 
 1. Website Personilization (SUCCESS!!!)*
-2. Assignment 1 (In Progress)
+2a. Assignment 1a- Website Build (Complete)
+2b. Assignment 1b- Complete Problems (In Progress)
+3. Assignment 2- Dictionary Build (In Progress)
+4. Assignment 3- Packages (Not Started)
 
 </div>
 <div class="col-sm-6">
