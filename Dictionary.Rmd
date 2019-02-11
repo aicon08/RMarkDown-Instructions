@@ -47,6 +47,7 @@ ls()
 dir_run<- function(x){dir(x)}
 #topic must be entered in parenthesis to run function e.g. dir_run("x")
 dir_run("Journal_files/figure-html")
+dir_run(dir())
 ```
 
 
