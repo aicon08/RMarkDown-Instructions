@@ -1,6 +1,10 @@
 ---
 title: "MyLabJournal"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    
 ---
 
 <style type="text/css">
@@ -25,9 +29,10 @@ While I am trying to understand exactly how to do this, I will likely make so ma
 
 I will, however, try my best to solve all the problems before me and am currently really digging working with this RStudio Cloud that will allow me to work on the homework from all the different states I will be traveling to this semester. 
 
-## Currently Blogging
+## Completed
+1. Website Personalization
 
-1. Website Personilization (SUCCESS!!!)*
+## Currently Working On
 
 2a. Assignment 1a- Website Build (Complete)
 
