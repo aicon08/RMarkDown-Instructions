@@ -409,6 +409,29 @@ div.tocify {
 <h2>List of Functions</h2>
 <div id="general-bits" class="section level3">
 <h3>General bits</h3>
+<ol style="list-style-type: decimal">
+<li>help(topic)– pulls up the R documentation of the intended topic,should it exist</li>
+</ol>
+<pre class="r"><code>#help_run&lt;- function(x){
+
+  #return(help(&quot;x&quot;))
+#}
+
+help(&quot;mean&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>?topic– similar to the help function, it pulls up the relavant R documentation of the intended topic, should it exist</li>
+</ol>
+<pre class="r"><code>?mean</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>ls()– returns a vector of the names of objects in the specified environment</li>
+</ol>
+<pre class="r"><code>a&lt;-ls()
+print(a)</code></pre>
+<pre><code>## character(0)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>dir()</li>
+<li>list.files</li>
+</ol>
 </div>
 <div id="input-and-output" class="section level3">
 <h3>Input and Output</h3>
