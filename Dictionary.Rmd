@@ -26,7 +26,7 @@ help_run("mean")
 help_run("ls")
 ```
 
-2. ?topic-- similar to the help function,  it pulls up the relavant R documentation of the intended topic, should it exist
+2. ?topic-- similar to the help function, it pulls up the relavant R documentation of the intended topic, should it exist
 
 ```{r}
 q_run<- function(x){?(x)}
@@ -41,7 +41,15 @@ q_run("ls")
 ls()
 ```
 
-4. dir()
+4. dir()-- returns the vector of the names of files or directories in a given directory
+
+```{r}
+dir_run<- function(x){dir(x)}
+#topic must be entered in parenthesis to run function e.g. dir_run("x")
+dir_run("Journal_files/figure-html")
+```
+
+
 5. list.files
 
 
