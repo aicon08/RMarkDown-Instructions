@@ -6,17 +6,26 @@ output:
     toc_float: true
     collapsed: false
     number_sections: false
-    toc_depth: 2
+    toc_depth: 3
     #code_folding: hide
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 
-## R Markdown
+## List of Functions
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-# List of Functions
-
-##
+### General bits
+### Input and Output
+### Data Creation
+### Slicing and Extracting Data
+### Variable Conversion
+### Variable Information
+### Data Selection and Manipulation
+### Math
+### Matrices
+### Advanced Data Processing
+### Strings
+### Plotting
+### Distributions
+### Programming
