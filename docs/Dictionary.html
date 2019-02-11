@@ -11,7 +11,7 @@
 
 
 
-<title>MyLabJournal</title>
+<title>Dictionary</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -264,6 +267,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -299,54 +397,35 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">MyLabJournal</h1>
+<h1 class="title toc-ignore">Dictionary</h1>
 
 </div>
 
 
-<style type="text/css">
-.title {
-  display: none;
-}
-
-#getting-started img {
-  margin-right: 10px;
-}
-
-</style>
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-<h1 id="lab-journal-psych-7709-aira-contreras"><strong>Lab Journal – PSYCH 7709 Aira Contreras</strong></h1>
-<p>This is an attempt to try and figure out how to publish information on Github and to help me understand lab journaling. I, Aira Contreras, per the instructions of Professor Matt Crump will use this template to learn R, and other things.</p>
-<p>While I am trying to understand exactly how to do this, I will likely make so many mistakes my poor (yet not fragile) ego will likely be extremely frustrated by the occurences of such errors.</p>
-<p>I will, however, try my best to solve all the problems before me and am currently really digging working with this RStudio Cloud that will allow me to work on the homework from all the different states I will be traveling to this semester.</p>
-<h2 id="currently-blogging">Currently Blogging</h2>
-<ol style="list-style-type: decimal">
-<li>Website Personilization (SUCCESS!!!)*</li>
-</ol>
-<p>2a. Assignment 1a- Website Build (Complete)</p>
-<p>2b. Assignment 1b- Complete Problems (In Progress)</p>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Assignment 2- Dictionary Build (In Progress)</p></li>
-<li><p>Assignment 3- Packages (Not Started)</p></li>
-</ol>
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<pre class="r"><code>summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
 </div>
-<div class="col-sm-6">
-<h3 id="crump-lab-human-cognition-and-performance"><a href="https://crumplab.github.io">Crump Lab: Human Cognition and Performance</a></h3>
-<p><a href = "https://crumplab.github.io"> <img src="images/logo.png" /> </a></p>
-</div>
-<div id="thus-far-i-have-learned-that-increasing-the-number-of-hashtags-in-the-script-decreases-the-text-size.-at-least-i-think-i-have-learned-this.-i-will-now-test-this-hypothesis.-success" class="section level6">
-<h6>*-Thus far I have learned that increasing the number of hashtags in the script decreases the text size. At least I think I have learned this. I will now test this hypothesis. [Success]</h6>
-</div>
-<div id="i-have-also-learned-that-adding-the-small-division-code-changes-the-location-of-the-text." class="section level6">
-<h6>1. I have also learned that adding the small division code changes the location of the text.</h6>
-</div>
-<div id="i-have-also-learned-not-to-change-the-names-of-any-of-the-files.-they-are-pre-coded-to-run-with-the-names-that-they-have-had-i-thought-about-this-i-would-have-come-to-this-conclusion-much-sooner." class="section level6">
-<h6>2. I have also learned not to change the names of ANY of the files. They are pre-coded to run with the names that they have (had I thought about this, I would have come to this conclusion much sooner).</h6>
+<div id="including-plots" class="section level2">
+<h2>Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<p><img src="Dictionary_files/figure-html/pressure-1.png" width="672" /></p>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
