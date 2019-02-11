@@ -20,26 +20,25 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 1. help(topic)-- pulls up the R documentation of the intended topic,should it exist
 
 ```{r}
-#help_run<- function(x){
-
-  #return(help("x"))
-#}
-
-help("mean")
+help_run<- function(x){help(x)}
+#topic must be entered in parenthesis to run function e.g. help_run("x")
+help_run("mean")
+help_run("ls")
 ```
 
 2. ?topic-- similar to the help function,  it pulls up the relavant R documentation of the intended topic, should it exist
 
 ```{r}
-
-?mean
+q_run<- function(x){?(x)}
+#topic must be entered in parenthesis to run function e.g. q_run("x")
+q_run("mean")
+q_run("ls")
 ```
 
 3. ls()-- returns a vector of the names of objects in the specified environment
 
 ```{r}
-a<-ls()
-print(a)
+ls()
 ```
 
 4. dir()

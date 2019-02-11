@@ -412,22 +412,22 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li>help(topic)– pulls up the R documentation of the intended topic,should it exist</li>
 </ol>
-<pre class="r"><code>#help_run&lt;- function(x){
-
-  #return(help(&quot;x&quot;))
-#}
-
-help(&quot;mean&quot;)</code></pre>
+<pre class="r"><code>help_run&lt;- function(x){help(x)}
+#topic must be entered in parenthesis to run function e.g. help_run(&quot;x&quot;)
+help_run(&quot;mean&quot;)
+help_run(&quot;ls&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>?topic– similar to the help function, it pulls up the relavant R documentation of the intended topic, should it exist</li>
 </ol>
-<pre class="r"><code>?mean</code></pre>
+<pre class="r"><code>q_run&lt;- function(x){?(x)}
+#topic must be entered in parenthesis to run function e.g. q_run(&quot;x&quot;)
+q_run(&quot;mean&quot;)
+q_run(&quot;ls&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>ls()– returns a vector of the names of objects in the specified environment</li>
 </ol>
-<pre class="r"><code>a&lt;-ls()
-print(a)</code></pre>
-<pre><code>## character(0)</code></pre>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;help_run&quot; &quot;q_run&quot;</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>dir()</li>
 <li>list.files</li>
