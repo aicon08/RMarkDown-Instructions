@@ -1,5 +1,5 @@
 ---
-title: "Aira Contreras' Journal Adventure"
+title: "**Aira Contreras' Journal Adventure**"
 output:
   html_document:
     toc: true
