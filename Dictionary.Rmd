@@ -134,86 +134,85 @@ list.files("Journal_files")
 
 ### Variable Conversion
 
-as.data.frame(x)
-as.numeric(x)
-as.logical(x)
-as.character(x)
+1. as.data.frame(x)
+2. as.numeric(x)
+3. as.logical(x)
+4. as.character(x)
 
 ### Variable Information
 
-is.na(x)
-is.null(x)
-is.data.frame(x)
-is.numeric(x)
-is.character(x)
-length(x)
-dim(x)
-dimnames(x)
-nrow(x)
-ncol(x)
-class()
-attributes()
+1. is.na(x)
+2. is.null(x)
+3. is.data.frame(x)
+4. is.numeric(x)
+5. is.character(x)
+6. length(x)
+7. dim(x)
+8. dimnames(x)
+9. nrow(x)
+10. ncol(x)
+11. class()
+12. attributes()
 
 ### Data Selection and Manipulation
 
-which.max()
-which.min()
-which()
-sort()
-unique()
-table()
-sample()
-### Math
+1. which.max()
+2. which.min()
+3. which()
+4. sort()
+5. unique()
+6. table()
+6. sample()
 
 ### Math
 
-max()
-min()
-range()
-sum()
-mean()
-median()
-var()
-sd()
-cor()
-round()
-abs()
+1. max()
+2. min()
+3. range()
+4. sum()
+5. mean()
+6. median()
+7. var()
+8. sd()
+9. cor()
+10. round()
+11. abs()
 
 ### Matrices
 
-t()
-diag()
-rowSums()
-colSums()
-rowMeans()
-colMeans()
+1. t()
+2. diag()
+3. rowSums()
+4. colSums()
+5. rowMeans()
+6. colMeans()
 
 ### Advanced Data Processing
 
-apply()
-aggregate()
+1. apply()
+2. aggregate()
 
 ### Strings
 
-paste()
-strsplit()
-tolower()
-toupper
+1. paste()
+2. strsplit()
+3. tolower()
+4. toupper
 
 ### Plotting
 
-hist()
-plot()
+1. hist()
+2. plot()
 
 ### Distributions
 
-rnorm()
-runif()
+1. rnorm()
+2. runif()
 
 ### Programming
-show that you can define a function
-show that you can write a for loop
-show that you can write a while loop
-show that you can write an if else statement
-Explain what return() does inside a function, show you can use it
-Explain what break() does, show you can use it
+1. show that you can define a function
+2. show that you can write a for loop
+3. show that you can write a while loop
+4. show that you can write an if else statement
+5. Explain what return() does inside a function, show you can use it
+6. Explain what break() does, show you can use it
