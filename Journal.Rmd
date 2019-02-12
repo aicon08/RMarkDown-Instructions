@@ -122,10 +122,6 @@ Division
 37/5
 ```
 
-# The big idea
-
-Use this lab journal to record what you do in R. This way I will be able to see what you are doing and help you along the way. You will also be creating a repository of all the things you do. You can make posts about everything. Learning specific things in R (project unrelated), and doing things for the project that we will discuss at the beginning of the Fall semester. You can get started now by fiddling around with googling things, and trying stuff out in R. I've placed some helpful starting links in the links page on this website
-
 # What can you do right now by yourself?
 
 It's hard to learn programming when you don't have specific problems that you are trying to solve. Everything just seems abstract.
