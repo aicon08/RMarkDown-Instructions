@@ -5,7 +5,7 @@ output:
     toc: true
     toc_float: true
     collapsed: false
-    number_sections: false
+    number_sections: True
     toc_depth: 3
     #code_folding: hide
 ---
@@ -13,9 +13,10 @@ output:
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 
-## List of Functions
 
-### General bits
+# List of Functions
+
+## General bits
 
 1. help(topic)-- pulls up the R documentation of the intended topic,should it exist
 
@@ -71,9 +72,21 @@ l_run(list.files())
 list.files("Journal_files")
 ```
 
-### Input and Output
+## Input and Output
 
-1. save()
+1. save()-- saves a represenation of the ojects in the environment to an external file
+```{r}
+#objects must be created or available within the global environment in order to be saved, otherwise an error of not found will appear.
+
+#Data input should be **save**(name of file, type of file you want, where it will be saved)
+
+testob<-c(1,2,3,4,5)
+save(testob, file= ".RData", envir= .GlobalEnv)
+
+eg<-list("all","none","why","why not")
+save(eg, file= ".RData", envir= .GlobalEnv)
+```
+
 2. load()
 3. data()
 4. library()
