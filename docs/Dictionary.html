@@ -413,14 +413,14 @@ div.tocify {
 <li>help(topic)– pulls up the R documentation of the intended topic,should it exist</li>
 </ol>
 <pre class="r"><code>help_run&lt;- function(x){help(x)}
-#topic must be entered in parenthesis to run function e.g. help_run(&quot;x&quot;)
+#topic must be entered in quotations to run function e.g. help_run(&quot;x&quot;)
 help_run(&quot;mean&quot;)
 help_run(&quot;ls&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>?topic– similar to the help function, it pulls up the relavant R documentation of the intended topic, should it exist</li>
 </ol>
 <pre class="r"><code>q_run&lt;- function(x){?(x)}
-#topic must be entered in parenthesis to run function e.g. q_run(&quot;x&quot;)
+#topic must be entered in quotations to run function e.g. q_run(&quot;x&quot;)
 q_run(&quot;mean&quot;)
 q_run(&quot;ls&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
@@ -432,7 +432,7 @@ q_run(&quot;ls&quot;)</code></pre>
 <li>dir()– returns the vector of the names of files or directories in a given directory</li>
 </ol>
 <pre class="r"><code>dir_run&lt;- function(x){dir(x)}
-#topic must be entered in parenthesis to run function e.g. dir_run(&quot;x&quot;)
+#directory must be entered in quotations to run function e.g. dir_run(&quot;x&quot;)
 dir_run(&quot;Journal_files/figure-html&quot;)</code></pre>
 <pre><code>## [1] &quot;unnamed-chunk-1-1.png&quot;  &quot;unnamed-chunk-10-1.png&quot;
 ## [3] &quot;unnamed-chunk-2-1.png&quot;  &quot;unnamed-chunk-5-1.png&quot;</code></pre>
@@ -447,17 +447,96 @@ dir_run(&quot;Journal_files/figure-html&quot;)</code></pre>
 ## [15] &quot;RMarkdownOutputFormats.png&quot; &quot;site_libs&quot;                 
 ## [17] &quot;TextbookCover.png&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>list.files</li>
+<li>list.files– returns the vector of the names of files or directories in the named directory</li>
 </ol>
+<pre class="r"><code>l_run&lt;-function(x){list.files(x)}
+#names of files or directories must be in quotations to run function e.g. l_run(&quot;x&quot;)
+
+l_run(&quot;Journal_files&quot;)</code></pre>
+<pre><code>## [1] &quot;figure-html&quot;</code></pre>
+<pre class="r"><code>l_run(list.files())</code></pre>
+<pre><code>##  [1] &quot;Dictionary_files&quot;           &quot;Dictionary.html&quot;           
+##  [3] &quot;figure-html&quot;                &quot;figure-html&quot;               
+##  [5] &quot;html&quot;                       &quot;html&quot;                      
+##  [7] &quot;images&quot;                     &quot;index.html&quot;                
+##  [9] &quot;Journal_files&quot;              &quot;Journal.html&quot;              
+## [11] &quot;LabmanualCover.png&quot;         &quot;Links.html&quot;                
+## [13] &quot;logo.png&quot;                   &quot;README.html&quot;               
+## [15] &quot;RMarkdownOutputFormats.png&quot; &quot;site_libs&quot;                 
+## [17] &quot;TextbookCover.png&quot;</code></pre>
 </div>
 <div id="input-and-output" class="section level3">
 <h3>Input and Output</h3>
+<ol style="list-style-type: decimal">
+<li>save()</li>
+<li>load()</li>
+<li>data()</li>
+<li>library()</li>
+<li>read.table()</li>
+<li>read.csv()</li>
+<li>scan()</li>
+<li>print()</li>
+<li>cat()</li>
+<li>write.table()</li>
+</ol>
 </div>
 <div id="data-creation" class="section level3">
 <h3>Data Creation</h3>
+<ol style="list-style-type: decimal">
+<li>c()</li>
+<li>from:to(data_input)</li>
+<li>seq()</li>
+<li>rep()</li>
+<li>data.frame()</li>
+<li>list()</li>
+<li>matrix()</li>
+<li>factor()</li>
+<li>rbind()</li>
+<li>cbind()</li>
+</ol>
 </div>
 <div id="slicing-and-extracting-data" class="section level3">
 <h3>Slicing and Extracting Data</h3>
+<div id="indexing-vectors" class="section level4">
+<h4>Indexing vectors</h4>
+<ol style="list-style-type: decimal">
+<li>x[n] nth element</li>
+<li>x[-n] all but nth element</li>
+<li>x[1:n] first n elements</li>
+<li>x[-(1:n)]elements from n+1 to the end</li>
+<li>x[c(1,4,2)] specific elements</li>
+<li>x[“name”]</li>
+<li>x[x&gt;3] all elements greater 3</li>
+<li>x[x&gt;3 &amp; x&lt;5] all elements between 3 and 5</li>
+<li>x[x %in% c(“a”,“and”,“the”)] all elements in given set</li>
+</ol>
+</div>
+<div id="indexing-lists" class="section level4">
+<h4>Indexing lists</h4>
+<ol style="list-style-type: decimal">
+<li>x[n] list with elements n</li>
+<li>x[[n]] nth element of the list</li>
+<li>x[[“name”]] elements of the list named “name”</li>
+<li>x$name id</li>
+</ol>
+</div>
+<div id="indexing-matrices" class="section level4">
+<h4>Indexing matrices</h4>
+<ol style="list-style-type: decimal">
+<li>x[i,j] element at row i, column j</li>
+<li>x[i,] row i</li>
+<li>x[,j] column j</li>
+<li>x[,c(1,3)] columns 1 and 3</li>
+<li>x[“name”,] row named “name”</li>
+</ol>
+</div>
+<div id="indexing-data-frames-matrix-indexing-plus-the-following" class="section level4">
+<h4>Indexing data frames (matrix indexing plus the following)</h4>
+<ol style="list-style-type: decimal">
+<li>x[[“name”]] column named “name”</li>
+<li>x$nameid</li>
+</ol>
+</div>
 </div>
 <div id="variable-conversion" class="section level3">
 <h3>Variable Conversion</h3>
