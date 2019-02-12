@@ -415,14 +415,18 @@ div.tocify {
 <pre class="r"><code>help_run&lt;- function(x){help(x)}
 #topic must be entered in quotations to run function e.g. help_run(&quot;x&quot;)
 help_run(&quot;mean&quot;)
-help_run(&quot;ls&quot;)</code></pre>
+help_run(&quot;ls&quot;)
+
+help(&quot;mean&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>?topic– similar to the help function, it pulls up the relavant R documentation of the intended topic, should it exist</li>
 </ol>
 <pre class="r"><code>q_run&lt;- function(x){?(x)}
 #topic must be entered in quotations to run function e.g. q_run(&quot;x&quot;)
 q_run(&quot;mean&quot;)
-q_run(&quot;ls&quot;)</code></pre>
+q_run(&quot;ls&quot;)
+
+?mean</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>ls()– returns a vector of the names of objects in the specified environment</li>
 </ol>
@@ -436,7 +440,8 @@ q_run(&quot;ls&quot;)</code></pre>
 dir_run(&quot;Journal_files/figure-html&quot;)</code></pre>
 <pre><code>## [1] &quot;unnamed-chunk-1-1.png&quot;  &quot;unnamed-chunk-10-1.png&quot;
 ## [3] &quot;unnamed-chunk-2-1.png&quot;  &quot;unnamed-chunk-5-1.png&quot;</code></pre>
-<pre class="r"><code>dir_run(dir())</code></pre>
+<pre class="r"><code>#directory must be entered in quotations to run function e.g. dir_run(&quot;x&quot;)
+dir_run(dir())</code></pre>
 <pre><code>##  [1] &quot;Dictionary_files&quot;           &quot;Dictionary.html&quot;           
 ##  [3] &quot;figure-html&quot;                &quot;figure-html&quot;               
 ##  [5] &quot;html&quot;                       &quot;html&quot;                      
@@ -446,15 +451,18 @@ dir_run(&quot;Journal_files/figure-html&quot;)</code></pre>
 ## [13] &quot;logo.png&quot;                   &quot;README.html&quot;               
 ## [15] &quot;RMarkdownOutputFormats.png&quot; &quot;site_libs&quot;                 
 ## [17] &quot;TextbookCover.png&quot;</code></pre>
+<pre class="r"><code>dir(&quot;Journal_files/figure-html&quot;)</code></pre>
+<pre><code>## [1] &quot;unnamed-chunk-1-1.png&quot;  &quot;unnamed-chunk-10-1.png&quot;
+## [3] &quot;unnamed-chunk-2-1.png&quot;  &quot;unnamed-chunk-5-1.png&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>list.files– returns the vector of the names of files or directories in the named directory</li>
 </ol>
 <pre class="r"><code>l_run&lt;-function(x){list.files(x)}
 #names of files or directories must be in quotations to run function e.g. l_run(&quot;x&quot;)
-
 l_run(&quot;Journal_files&quot;)</code></pre>
 <pre><code>## [1] &quot;figure-html&quot;</code></pre>
-<pre class="r"><code>l_run(list.files())</code></pre>
+<pre class="r"><code>#names of files or directories must be in quotations to run function e.g. l_run(&quot;x&quot;)
+l_run(list.files())</code></pre>
 <pre><code>##  [1] &quot;Dictionary_files&quot;           &quot;Dictionary.html&quot;           
 ##  [3] &quot;figure-html&quot;                &quot;figure-html&quot;               
 ##  [5] &quot;html&quot;                       &quot;html&quot;                      
@@ -464,6 +472,8 @@ l_run(&quot;Journal_files&quot;)</code></pre>
 ## [13] &quot;logo.png&quot;                   &quot;README.html&quot;               
 ## [15] &quot;RMarkdownOutputFormats.png&quot; &quot;site_libs&quot;                 
 ## [17] &quot;TextbookCover.png&quot;</code></pre>
+<pre class="r"><code>list.files(&quot;Journal_files&quot;)</code></pre>
+<pre><code>## [1] &quot;figure-html&quot;</code></pre>
 </div>
 <div id="input-and-output" class="section level3">
 <h3>Input and Output</h3>
