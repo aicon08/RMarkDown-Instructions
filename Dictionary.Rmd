@@ -134,20 +134,86 @@ list.files("Journal_files")
 
 ### Variable Conversion
 
+as.data.frame(x)
+as.numeric(x)
+as.logical(x)
+as.character(x)
+
 ### Variable Information
+
+is.na(x)
+is.null(x)
+is.data.frame(x)
+is.numeric(x)
+is.character(x)
+length(x)
+dim(x)
+dimnames(x)
+nrow(x)
+ncol(x)
+class()
+attributes()
 
 ### Data Selection and Manipulation
 
+which.max()
+which.min()
+which()
+sort()
+unique()
+table()
+sample()
 ### Math
+
+### Math
+
+max()
+min()
+range()
+sum()
+mean()
+median()
+var()
+sd()
+cor()
+round()
+abs()
 
 ### Matrices
 
+t()
+diag()
+rowSums()
+colSums()
+rowMeans()
+colMeans()
+
 ### Advanced Data Processing
+
+apply()
+aggregate()
 
 ### Strings
 
+paste()
+strsplit()
+tolower()
+toupper
+
 ### Plotting
+
+hist()
+plot()
 
 ### Distributions
 
+rnorm()
+runif()
+
 ### Programming
+show that you can define a function
+show that you can write a for loop
+show that you can write a while loop
+show that you can write an if else statement
+Explain what return() does inside a function, show you can use it
+Explain what break() does, show you can use it
