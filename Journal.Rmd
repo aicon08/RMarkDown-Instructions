@@ -13,7 +13,22 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
-# Easy Problems
+# Harder Problems (1-11)
+# Easy Problems (1-21)
+## Problem 5: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Write a function to find the sum of all integers between any two values
+
+##### Answer:
+Sum of All Integers(Random) Sol:
+```{r}
+rsum<-function(x,y){return(sum(seq(x,y,1)))}
+
+rsum(1,2)
+rsum(1,10)
+```
 
 ## Problem 4: Prompt and Answer
 
