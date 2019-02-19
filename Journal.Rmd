@@ -6,14 +6,16 @@ output:
     toc_float: true
     collapsed: false
     number_sections: false
-    toc_depth: 1
+    toc_depth: 2
     #code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
-# Problem 4: Prompt and Answer
+# Easy Problems
+
+## Problem 4: Prompt and Answer
 
 2019 | Jan | 30 Last compiled: `r Sys.Date()`
 
@@ -40,7 +42,7 @@ print(c)
 ```
 
 
-# Problem 3: Prompt and Answer
+## Problem 3: Prompt and Answer
 
 2019 | Jan | 29 Last compiled: `r Sys.Date()`
 
@@ -67,7 +69,7 @@ print(Sol2)
 ```
 
 
-# Problem 2: Prompt and Answer
+## Problem 2: Prompt and Answer
 
 2019 | Jan | 29 Last compiled: `r Sys.Date()`
 
@@ -98,7 +100,7 @@ Division:
 C/A
 ```
 
-# Problem 1: Prompt and Answer
+## Problem 1: Prompt and Answer
 
 2019 | Jan | 29  Last compiled: `r Sys.Date()`
 
