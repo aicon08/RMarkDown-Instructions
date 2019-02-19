@@ -16,6 +16,45 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 # Harder Problems (1-11)
 # Easy Problems (1-21)
 
+## Problem 15: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Do a logical test to see if one word is found within the text of another string variable.
+
+##### Answer:
+
+```{r}
+a<-"I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was."
+c<-unlist(strsplit(a,split = " "))
+b<-"nickname"
+b%in%c
+b%in%a #not sure why this doesn't work yet...
+
+test_word <- "hello"
+test_sentence <-"is the word hello in this sentence"
+test_word%in%test_sentence #Shouldershrugs
+```
+
+## Problem 14: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Count the number of times a specific character occurs in a string variable
+
+##### Answer:
+```{r}
+a<-"The sky is clear; the stars are twinkling.
+She always speaks to him in a loud voice.
+The book is in front of the table.
+I would have gotten the promotion, but my attendance wasn’t good enough.
+If you like tuna and tomato sauce- try combining the two. It’s really not as bad as it sounds."
+b<-unlist(strsplit(a,split = "e"))
+print(b)
+length(b)-1
+```
+
+
 ## Problem 13: Prompt and Answer
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
