@@ -410,6 +410,69 @@ div.tocify {
 </div>
 <div id="easy-problems-1-21" class="section level1">
 <h1>Easy Problems (1-21)</h1>
+<div id="problem-13-prompt-and-answer" class="section level2">
+<h2>Problem 13: Prompt and Answer</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
+<div id="prompt-count-the-number-of-sentences-in-a-string-variable" class="section level5">
+<h5>Prompt: Count the number of sentences in a string variable</h5>
+</div>
+<div id="answer" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>a&lt;-&quot;Christmas is coming.
+I want to buy a onesie… but know it won’t suit me.
+She borrowed the book from him many years ago and hasn&#39;t yet returned it.
+If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?
+Check back tomorrow; I will see if the book has arrived.
+Cats are good pets, for they are clean and are not noisy.
+This is the last random sentence I will be writing and I am going to stop mid-sent
+We have never been to Asia, nor have we visited Africa.
+The river stole the gods.
+She always speaks to him in a loud voice.&quot;
+b&lt;-unlist(strsplit(a,split = &quot;[.?]&quot;))
+print(b)</code></pre>
+<pre><code>## [1] &quot;Christmas is coming&quot;                                                                                                                         
+## [2] &quot;\nI want to buy a onesie… but know it won’t suit me&quot;                                                                                         
+## [3] &quot;\nShe borrowed the book from him many years ago and hasn&#39;t yet returned it&quot;                                                                  
+## [4] &quot;\nIf the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you&quot;                                 
+## [5] &quot;\nCheck back tomorrow; I will see if the book has arrived&quot;                                                                                   
+## [6] &quot;\nCats are good pets, for they are clean and are not noisy&quot;                                                                                  
+## [7] &quot;\nThis is the last random sentence I will be writing and I am going to stop mid-sent\nWe have never been to Asia, nor have we visited Africa&quot;
+## [8] &quot;\nThe river stole the gods&quot;                                                                                                                  
+## [9] &quot;\nShe always speaks to him in a loud voice&quot;</code></pre>
+<pre class="r"><code>length(b)</code></pre>
+<pre><code>## [1] 9</code></pre>
+</div>
+</div>
+<div id="problem-12-prompt-and-answer" class="section level2">
+<h2>Problem 12: Prompt and Answer</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
+<div id="prompt-count-the-number-of-words-in-a-string-variable" class="section level5">
+<h5>Prompt: Count the number of words in a string variable</h5>
+</div>
+<div id="answer-1" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>a&lt;-&quot;Writing a list of random sentences is harder than I initially thought it would be.&quot;
+b&lt;-unlist(strsplit(a,split = &quot; &quot;))
+length(b)</code></pre>
+<pre><code>## [1] 15</code></pre>
+</div>
+</div>
+<div id="problem-11-prompt-and-answer" class="section level2">
+<h2>Problem 11: Prompt and Answer</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
+<div id="prompt-count-the-number-of-characters-in-a-string-variable" class="section level5">
+<h5>Prompt: Count the number of characters in a string variable</h5>
+</div>
+<div id="answer-2" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>a&lt;-&quot;adskfjhkadsjfh&quot;
+b&lt;-unlist(strsplit(a,split = &quot;&quot;))
+print(b)</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;d&quot; &quot;s&quot; &quot;k&quot; &quot;f&quot; &quot;j&quot; &quot;h&quot; &quot;k&quot; &quot;a&quot; &quot;d&quot; &quot;s&quot; &quot;j&quot; &quot;f&quot; &quot;h&quot;</code></pre>
+<pre class="r"><code>length(b)</code></pre>
+<pre><code>## [1] 14</code></pre>
+</div>
+</div>
 <div id="problem-10-prompt-and-answer" class="section level2">
 <h2>Problem 10: Prompt and Answer</h2>
 <p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
@@ -506,32 +569,32 @@ my_sd(c(-5,1,8,7,2))</code></pre>
 <div id="prompt-generate-100-random-numbers-within-a-specific-range" class="section level5">
 <h5>Prompt: Generate 100 random numbers within a specific range</h5>
 </div>
-<div id="answer" class="section level5">
+<div id="answer-3" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>#prints all numbers
 runif(100, min = 1,max = 100)</code></pre>
-<pre><code>##   [1] 93.620049 63.137648 71.094563 87.161874 76.796690 50.696170 13.059316
-##   [8] 94.977698  1.771318 74.663630 59.221847 10.253535 71.880339 86.892833
-##  [15] 92.423198 33.257797  4.164863 87.023519 99.382958  4.012962 66.754260
-##  [22] 95.566433 14.932227 62.092263  1.092141 84.108887 15.431879 86.216721
-##  [29] 50.815800 19.210660 19.448011 82.122854 53.697423 54.990385 19.079218
-##  [36] 18.923643 31.397149 29.447703 10.139301 83.169660 82.152723 69.889345
-##  [43] 34.397435 81.050000 31.449295 59.140573 15.895625 65.736819 56.905417
-##  [50] 76.590414  8.399999 20.539026 72.867208 87.223107 10.403166 89.036888
-##  [57] 90.412993 96.103616 64.281733 72.511295 80.019213 10.881548 29.253479
-##  [64] 15.962655 48.942991 37.287837 35.581571 50.969354 40.879822 93.342891
-##  [71] 36.106670 74.775680 67.668427 51.088674 77.835867 66.322990 78.784971
-##  [78] 52.318089 14.716293 89.433510 36.155628 96.589305 21.924792 76.247833
-##  [85] 28.241770 16.410760 87.429648 54.244878 70.491377  8.436848 59.531651
-##  [92] 81.035972 89.600786 78.902102 70.751506 54.300771 67.094763 66.948389
-##  [99] 73.011681 53.022118</code></pre>
+<pre><code>##   [1] 85.633109  5.708502 26.472095 92.205729 25.923708 24.741674 13.383901
+##   [8]  5.688942 23.591450 26.651613 46.765176 31.647100 98.120723 94.885294
+##  [15] 48.163350 18.867383 46.228404 31.791378 24.804657 83.452382 68.270382
+##  [22] 73.726439 31.187761 95.653261 25.826906 35.963034 65.510366 88.859874
+##  [29] 83.911568 46.439286 38.654821 64.904475  6.325498 19.013693 26.484703
+##  [36]  8.191496 99.380665 84.615672 49.918376 15.136073 75.430040 59.447827
+##  [43] 24.497047 30.569127  5.966629 22.389507 91.410082 86.316054 47.487841
+##  [50] 89.341115 90.947489 96.367270 18.353676 96.810386 92.017702 80.264645
+##  [57] 39.491664 52.555950  5.867900 64.706670 61.079055 73.441532 32.466570
+##  [64] 14.411686 42.654138 97.667415 32.039007 40.802683 82.181490 30.736098
+##  [71] 85.112638 74.542533 18.737579 69.787205 19.667563  4.602954 10.336061
+##  [78] 91.239735 71.946396  4.850369 30.426344 58.992832 95.176687 86.025913
+##  [85] 92.929712 96.587441 40.535800 46.397063 18.483314  1.065869 80.994849
+##  [92] 18.044783 23.128003 93.655503 69.520308 22.242585 61.311857 14.035554
+##  [99] 41.523745  6.386601</code></pre>
 <pre class="r"><code>#prints integers
 floor(runif(100, min = 1,max = 100))</code></pre>
-<pre><code>##   [1]  2 81 35 15 91  4 67 41 14 12  6 98 57 30 38  6 14 85 42 10 79 49 25
-##  [24] 12 30  1 25  9 88  5 85 24 64 65 57 66 11  1 79 23 80 17 90 26 56 74
-##  [47] 25 56 27 33 79 76 23 76 24 89 26 29 37 94 20 85 67 63 67 48 31 37 64
-##  [70]  7  1 59 90 48 99 34 33 78 42 15 49 73  1 95 50 61 47 95 28 15 78 53
-##  [93] 26 63 57 16 60 91 51 62</code></pre>
+<pre><code>##   [1] 46 15 66 14  2  5 88 39 15 55 71  9 43 35 82 79 83 68 80  1 29 30 92
+##  [24] 83 61 69 43 15 99 82 32 43  4 95 25 18 16 51 46 30 94 99 91 92 24 68
+##  [47] 16 19 72  8 50 35 12  3 46  3 19 82 21 18 30 68 54 35 20 71 31 83  9
+##  [70] 70 12 71 64 12 99 55 43 12 49 75 69 90 70 49 35 56 14 64 80 79 24 96
+##  [93] 11 24 39 93 15 16 67 57</code></pre>
 </div>
 </div>
 <div id="problem-8-prompt-and-answer" class="section level2">
@@ -540,27 +603,27 @@ floor(runif(100, min = 1,max = 100))</code></pre>
 <div id="prompt-generate-100-random-numbers" class="section level5">
 <h5>Prompt: Generate 100 random numbers</h5>
 </div>
-<div id="answer-1" class="section level5">
+<div id="answer-4" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>#prints all numbers
 runif(100)</code></pre>
-<pre><code>##   [1] 0.92221131 0.92559856 0.54320572 0.53985571 0.98915278 0.90199059
-##   [7] 0.20153934 0.72956201 0.08827677 0.31633539 0.97410591 0.04789793
-##  [13] 0.06414069 0.66275290 0.47631932 0.71435795 0.06280000 0.30754161
-##  [19] 0.19230128 0.96151521 0.16312105 0.83735058 0.25476511 0.39379202
-##  [25] 0.46763411 0.35934324 0.85627122 0.82901532 0.30399015 0.66996029
-##  [31] 0.56645017 0.91714792 0.86373600 0.19102764 0.44523542 0.45289397
-##  [37] 0.73359220 0.16735814 0.85709634 0.21126481 0.83210391 0.66444259
-##  [43] 0.59014271 0.09640306 0.76369026 0.89505296 0.96460760 0.56274985
-##  [49] 0.91315559 0.81259729 0.62799273 0.66329892 0.73611480 0.93314721
-##  [55] 0.77306302 0.62375331 0.39662541 0.78865917 0.93666827 0.67417693
-##  [61] 0.96458148 0.31013864 0.49118208 0.23430230 0.25571869 0.55869918
-##  [67] 0.04234614 0.66881932 0.12009267 0.20578430 0.90785227 0.93681030
-##  [73] 0.18985717 0.31339189 0.76598533 0.74921144 0.87932050 0.44724537
-##  [79] 0.33312054 0.12946413 0.71119635 0.96411590 0.91220347 0.70044200
-##  [85] 0.21244811 0.04760645 0.08397352 0.53545229 0.20343716 0.41152465
-##  [91] 0.31531982 0.61689391 0.05606445 0.81049411 0.41024119 0.65178650
-##  [97] 0.86048649 0.09382320 0.09689544 0.62401954</code></pre>
+<pre><code>##   [1] 0.34457947 0.34623038 0.28346818 0.49846688 0.63775799 0.51471157
+##   [7] 0.68458825 0.58570762 0.13816269 0.19977472 0.57272106 0.27378134
+##  [13] 0.82036127 0.14438579 0.69293658 0.32241500 0.88661742 0.67395684
+##  [19] 0.07752947 0.26821085 0.36844817 0.03273607 0.96888479 0.14551659
+##  [25] 0.86393876 0.46307686 0.53935409 0.23486606 0.12690408 0.44445272
+##  [31] 0.86170706 0.73502068 0.48887001 0.03219473 0.98469039 0.24441072
+##  [37] 0.43229569 0.43769711 0.79188098 0.55999764 0.62121563 0.13499819
+##  [43] 0.45662202 0.62860743 0.80265401 0.46268396 0.57297442 0.84608348
+##  [49] 0.71055171 0.63892285 0.07897119 0.71166629 0.23425346 0.14871162
+##  [55] 0.92462844 0.16121716 0.71618266 0.74969777 0.22398690 0.61830333
+##  [61] 0.71349053 0.87643414 0.19802893 0.48244318 0.41831843 0.39814311
+##  [67] 0.84276777 0.27281817 0.34189881 0.48397895 0.65092947 0.35601072
+##  [73] 0.57971034 0.85913429 0.21913134 0.96856940 0.14072333 0.90410412
+##  [79] 0.47846624 0.84597530 0.36690887 0.94617773 0.69764619 0.05136412
+##  [85] 0.19955043 0.60240999 0.62793537 0.60777797 0.78089844 0.68388396
+##  [91] 0.81571347 0.16068137 0.31048572 0.77646355 0.17646433 0.54603223
+##  [97] 0.17233524 0.58074628 0.70054425 0.15688603</code></pre>
 </div>
 </div>
 <div id="problem-7-prompt-and-answer" class="section level2">
@@ -569,7 +632,7 @@ runif(100)</code></pre>
 <div id="prompt-list-all-of-the-prime-numbers-from-1-to-1000" class="section level5">
 <h5>Prompt: List all of the prime numbers from 1 to 1000</h5>
 </div>
-<div id="answer-2" class="section level5">
+<div id="answer-5" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>prime&lt;-function(x,y)
 {
@@ -775,7 +838,7 @@ prime(1,1000)</code></pre>
 <div id="prompt-list-all-of-the-odd-numbers-from-1-to-100" class="section level5">
 <h5>Prompt: List all of the odd numbers from 1 to 100</h5>
 </div>
-<div id="answer-3" class="section level5">
+<div id="answer-6" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>seq(1,100,1)</code></pre>
 <pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
@@ -800,7 +863,7 @@ prime(1,1000)</code></pre>
 <div id="prompt-write-a-function-to-find-the-sum-of-all-integers-between-any-two-values" class="section level5">
 <h5>Prompt: Write a function to find the sum of all integers between any two values</h5>
 </div>
-<div id="answer-4" class="section level5">
+<div id="answer-7" class="section level5">
 <h5>Answer:</h5>
 <p>Sum of All Integers(Random) Sol:</p>
 <pre class="r"><code>rsum&lt;-function(x,y){return(sum(seq(x,y,1)))}
@@ -817,7 +880,7 @@ rsum(1,2)</code></pre>
 <div id="prompt-find-the-sum-of-all-integers-from-1-to-100" class="section level5">
 <h5>Prompt: Find the sum of all integers from 1 to 100</h5>
 </div>
-<div id="answer-5" class="section level5">
+<div id="answer-8" class="section level5">
 <h5>Answer:</h5>
 <p>sum function Sol:</p>
 <pre class="r"><code>a&lt;-c()
