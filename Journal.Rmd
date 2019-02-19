@@ -16,6 +16,91 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 # Harder Problems (1-11)
 # Easy Problems (1-21)
 
+## Problem 10: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Write your own functions to give descriptive statistics for a vector variable storing multiple numbers. Write functions for the following without using R intrinsics: mean, mode, median, range, standard deviation
+
+##### Mean Answer:
+```{r}
+my_mean<-function(x)
+{
+  return(sum(x)/length(x))
+  
+}
+t<-c(1:20)
+my_mean(t)
+```
+##### Mode Answer:
+```{r}
+my_mode<-function(x)
+{
+ a<-sort(x)
+  b<-unique(a)
+  maxn<-0
+  countn<-0
+  for (i in b)
+  {
+  c<-a[a==i]
+  if(length(c)>countn)
+    {
+    maxn=i
+    countn=length(c)
+    }
+  }
+ return(maxn)
+}
+
+my_mode(c(1,1,1,10,9,8,8,5,5,5,5))
+```
+##### Median Answer:
+```{r}
+
+my_median<-function(x)
+{
+  a<-sort(x)
+  b<-length(x)
+  c<-floor(b/2)
+  if(b%%2==0)
+  {
+    return(mean(c(a[c],a[c+1])))
+    
+  }
+  else
+  {
+   return(a[c+1])   
+  }
+}
+
+my_median(c(1,2,3,4,5))
+my_median(1:10)
+```
+##### Range Answer:
+```{r}
+my_range<-function(x)
+{
+  sort(x)
+  print(c(min(x),max(x)))
+}
+
+my_range(c(1,1,1,10,9,8,8,5,5,5,5))
+```
+##### Standard Deviation Answer:
+```{r}
+
+my_sd<-function(x)
+{
+  avgx<-mean(x)
+  sd<-0
+  for (i in x)
+  {
+    sd<-(i-avgx)^2 + sd
+  }
+  return(sqrt(sd/(length(x)-1)))
+}
+my_sd(c(-5,1,8,7,2))
+```
 ## Problem 9: Prompt and Answer
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
