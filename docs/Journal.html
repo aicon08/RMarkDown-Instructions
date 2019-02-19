@@ -410,13 +410,76 @@ div.tocify {
 </div>
 <div id="easy-problems-1-21" class="section level1">
 <h1>Easy Problems (1-21)</h1>
+<div id="problem-9-prompt-and-answer" class="section level2">
+<h2>Problem 9: Prompt and Answer</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
+<div id="prompt-generate-100-random-numbers-within-a-specific-range" class="section level5">
+<h5>Prompt: Generate 100 random numbers within a specific range</h5>
+</div>
+<div id="answer" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>#prints all numbers
+runif(100, min = 1,max = 100)</code></pre>
+<pre><code>##   [1] 32.086524 82.070236 18.631116 85.792741 93.640313 37.830094 56.376602
+##   [8]  4.232105 80.564640 78.547251 49.918212  5.047951 86.329070 56.314736
+##  [15] 65.286689 47.027348 19.206707  7.972310 98.069750  6.275184 30.642735
+##  [22] 79.404358 59.030991 79.415093 20.223211 48.038396 68.998173 17.045722
+##  [29] 93.404288 79.657521 17.350221 75.701136 86.323634 49.315856 49.658068
+##  [36] 24.518134 26.005183 27.934876 57.663831 71.481230 91.132889 69.041048
+##  [43] 66.834244 59.804460 43.373943 65.884963 88.221934 63.353112 76.709895
+##  [50] 82.766285 69.734248 40.666571 85.908688 78.723148 85.534411 56.190074
+##  [57] 64.025674 67.660503 68.964798 91.706473 82.610771 28.277091 21.570883
+##  [64]  5.024786  2.521761 50.782936 78.987859 42.117717 18.243591 51.813120
+##  [71] 94.526486 31.509287 28.053234 84.415159 33.736601 20.262486 27.483829
+##  [78] 61.745073 94.848904  3.979660 83.109802 18.680550 14.062884 53.573925
+##  [85] 26.913593 66.413564 29.111184 75.429646 93.237592 41.069628 65.019575
+##  [92]  1.667552 17.224112 25.671729 99.720502 37.674540 88.533809 14.365628
+##  [99] 40.402402 39.845817</code></pre>
+<pre class="r"><code>#prints integers
+floor(runif(100, min = 1,max = 100))</code></pre>
+<pre><code>##   [1] 33 18 63 57 25 47 99  6 44 77 51  1 13 91 19 78 96 96 71  2  1 49 79
+##  [24] 56 85 73 30 76 23 81 33  5 47 18 55 17 45 90 70 82  4 55  6 56 28 19
+##  [47] 59 99 11 32 77 67 27 78 80 74 90 34 21 11 57 89  2 78 93 36 17 74 27
+##  [70] 99 45 55 85 11  1  4 32 91 24 10 11 87 40 93 68 55 87 10 21 31  8 18
+##  [93] 46 89 19  3 44 35 72 41</code></pre>
+</div>
+</div>
+<div id="problem-8-prompt-and-answer" class="section level2">
+<h2>Problem 8: Prompt and Answer</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
+<div id="prompt-generate-100-random-numbers" class="section level5">
+<h5>Prompt: Generate 100 random numbers</h5>
+</div>
+<div id="answer-1" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>#prints all numbers
+runif(100)</code></pre>
+<pre><code>##   [1] 0.36158566 0.54525230 0.61908500 0.12836654 0.62927501 0.54257151
+##   [7] 0.31606925 0.97667045 0.79640022 0.19483483 0.14377555 0.54556805
+##  [13] 0.05944798 0.85676469 0.36261036 0.18526860 0.62982184 0.60974797
+##  [19] 0.36288586 0.37754363 0.23483738 0.66483496 0.40325087 0.54342819
+##  [25] 0.83387437 0.26342386 0.71733136 0.18668755 0.02476965 0.60490911
+##  [31] 0.12409866 0.46467276 0.96820054 0.24475767 0.98056790 0.72806095
+##  [37] 0.29367239 0.41271476 0.39454004 0.11371254 0.12720924 0.53987760
+##  [43] 0.17627838 0.16118993 0.63591901 0.65102204 0.38537743 0.37757147
+##  [49] 0.55780201 0.27368463 0.42842559 0.79498617 0.27833904 0.16143307
+##  [55] 0.77191396 0.07455611 0.86807814 0.32495203 0.83651625 0.44857515
+##  [61] 0.12314226 0.11604278 0.51357501 0.82609867 0.67742989 0.30651772
+##  [67] 0.45033223 0.40657499 0.88549979 0.66423608 0.50351310 0.37740721
+##  [73] 0.76826284 0.15334278 0.83495986 0.49514161 0.21579853 0.67519479
+##  [79] 0.44860775 0.03186871 0.16918859 0.80766104 0.16392295 0.66739526
+##  [85] 0.04434840 0.62378296 0.66669702 0.91643960 0.64757068 0.79302996
+##  [91] 0.15554204 0.98213633 0.17081808 0.36315763 0.32725066 0.44144243
+##  [97] 0.83650730 0.75632209 0.95358096 0.89403626</code></pre>
+</div>
+</div>
 <div id="problem-7-prompt-and-answer" class="section level2">
 <h2>Problem 7: Prompt and Answer</h2>
 <p>2019 | Feb | 19 Last compiled: 2019-02-19</p>
 <div id="prompt-list-all-of-the-prime-numbers-from-1-to-1000" class="section level5">
 <h5>Prompt: List all of the prime numbers from 1 to 1000</h5>
 </div>
-<div id="answer" class="section level5">
+<div id="answer-2" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>prime&lt;-function(x,y)
 {
@@ -622,7 +685,7 @@ prime(1,1000)</code></pre>
 <div id="prompt-list-all-of-the-odd-numbers-from-1-to-100" class="section level5">
 <h5>Prompt: List all of the odd numbers from 1 to 100</h5>
 </div>
-<div id="answer-1" class="section level5">
+<div id="answer-3" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>seq(1,100,1)</code></pre>
 <pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
@@ -647,7 +710,7 @@ prime(1,1000)</code></pre>
 <div id="prompt-write-a-function-to-find-the-sum-of-all-integers-between-any-two-values" class="section level5">
 <h5>Prompt: Write a function to find the sum of all integers between any two values</h5>
 </div>
-<div id="answer-2" class="section level5">
+<div id="answer-4" class="section level5">
 <h5>Answer:</h5>
 <p>Sum of All Integers(Random) Sol:</p>
 <pre class="r"><code>rsum&lt;-function(x,y){return(sum(seq(x,y,1)))}
@@ -664,7 +727,7 @@ rsum(1,2)</code></pre>
 <div id="prompt-find-the-sum-of-all-integers-from-1-to-100" class="section level5">
 <h5>Prompt: Find the sum of all integers from 1 to 100</h5>
 </div>
-<div id="answer-3" class="section level5">
+<div id="answer-5" class="section level5">
 <h5>Answer:</h5>
 <p>sum function Sol:</p>
 <pre class="r"><code>a&lt;-c()

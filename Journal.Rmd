@@ -16,6 +16,36 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 # Harder Problems (1-11)
 # Easy Problems (1-21)
 
+## Problem 9: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Generate 100 random numbers within a specific range
+
+##### Answer:
+
+```{r}
+#prints all numbers
+runif(100, min = 1,max = 100)
+
+#prints integers
+floor(runif(100, min = 1,max = 100))
+
+```
+## Problem 8: Prompt and Answer
+
+2019 | Feb | 19 Last compiled: `r Sys.Date()`
+
+##### Prompt: Generate 100 random numbers
+
+##### Answer:
+```{r}
+#prints all numbers
+runif(100)
+
+```
+
+
 ## Problem 7: Prompt and Answer
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
