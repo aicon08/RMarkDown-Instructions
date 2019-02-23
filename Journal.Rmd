@@ -16,6 +16,107 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 # Harder Problems (1-11)
 # Easy Problems (1-21)
 
+## Problem 21: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Output any matrix to a txt file using commas or tabs to separate column values, and new lines to separate row values
+
+##### Answer:
+
+```{r}
+here<-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
+tmpfil<-tempfile("data")
+write.table(here,tmpfil)
+read.table(tmpfil)
+
+here2<-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
+tmpfil2<-tempfile("data")
+write.csv(here2,tmpfil2,row.names = FALSE,col.names = F)
+read.csv(tmpfil2)
+```
+
+
+## Problem 20: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Create a variable that stores a 20x20 matrix of random numbers
+
+##### Answer:
+
+```{r}
+here<-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
+print(here)
+```
+
+
+## Problem 19: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Output the contents of a variable to a .txt file
+
+##### Answer:
+
+```{r}
+x<-matrix(1:10, ncol = 5)
+fil<-tempfile("data")
+write(x,fil)
+read.csv(fil)
+```
+
+## Problem 18: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Read a .txt file or .csv file into a variable
+
+##### Answer:
+```{r}
+tfile<-read.delim("http://www.sthda.com/upload/boxplot_format.txt")
+
+t2file<-read.delim("https://www.w3schools.com/tags/tag_input.asp")
+
+head(tfile)
+head(t2file)
+```
+
+## Problem 17: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Measure how long a piece of code takes to run by measuring the time before the code is run, and after the code is run, and taking the difference to find the total time
+
+##### Answer:
+
+```{r}
+t1<-Sys.time()
+a<-"The sky is clear; the stars are twinkling.
+She always speaks to him in a loud voice.
+The book is in front of the table.
+I would have gotten the promotion, but my attendance wasn’t good enough.
+If you like tuna and tomato sauce- try combining the two. It’s really not as bad as it sounds."
+b<-unlist(strsplit(a,split = "e"))
+length(b)-1
+t2<-Sys.time()
+runtime<-t2-t1
+print(runtime)
+
+```
+
+## Problem 16: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Put the current computer time in milliseconds into a variable
+
+##### Answer:
+```{r}
+curr.time<-(as.numeric(Sys.time()))*1000
+print(curr.time,digits=15)
+```
+
 ## Problem 15: Prompt and Answer
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
