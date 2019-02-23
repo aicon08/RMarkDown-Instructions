@@ -488,7 +488,8 @@ prime<-function(x,y)
 prime(1,1000)
 ```
 
-## Problem 6: Prompt and Answer
+## Problem 6: Odd Numbers Say What?
+
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -497,13 +498,20 @@ prime(1,1000)
 ##### Answer:
 
 ```{r}
-seq(1,100,1)
+seq(1,100,2)
 
-list(1:100)
+a<-1:100
+for (i in a)
+{
+  if (i%%2!=0)
+  {
+    print(i)
+  }
+}
 ```
 
 
-## Problem 5: Prompt and Answer
+## Problem 5: Sum w. Functions
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -518,7 +526,7 @@ rsum(1,2)
 rsum(1,10)
 ```
 
-## Problem 4: Prompt and Answer
+## Problem 4: Find the Sum!
 
 2019 | Jan | 30 Last compiled: `r Sys.Date()`
 
@@ -545,7 +553,7 @@ print(c)
 ```
 
 
-## Problem 3: Prompt and Answer
+## Problem 3: 1:100, Loop, Sequence
 
 2019 | Jan | 29 Last compiled: `r Sys.Date()`
 
@@ -572,7 +580,7 @@ print(Sol2)
 ```
 
 
-## Problem 2: Prompt and Answer
+## Problem 2: Simple Math w. Variables
 
 2019 | Jan | 29 Last compiled: `r Sys.Date()`
 
@@ -603,7 +611,7 @@ Division:
 C/A
 ```
 
-## Problem 1: Prompt and Answer
+## Problem 1: Simple Math
 
 2019 | Jan | 29  Last compiled: `r Sys.Date()`
 
