@@ -15,7 +15,40 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 # Harder Problems (1-11)
 
-## Problem 1: Prompt and Answer
+## Problem 2: Frequency Counts
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Take text as input, and be able to produce a table that shows the counts for each character in the text. This problem is related to the earlier easy problem asking you to count the number of times that a single letter appears in a text. The slightly harder problem is the more general version: count the frequencies of all unique characters in a text.
+
+##### Answer:
+
+```{r}
+a<-"all you need to do is completely make an ass of yourself and laugh it off to realise that life is not so bad after all."
+b<-unlist(strsplit(a,split = ""))
+#print(b)
+c<-unique(b)
+#print(c)
+d<-unlist(list(rep(0,length(c))))
+#print(length(d))
+for(i in b)
+{
+e<-match(i,c)
+
+d[e]=d[e]+1
+
+}
+#print(d)
+#print(c)
+
+for (i in 1:length(c))
+{
+  print(c(c[i],d[i]))
+}
+
+```
+
+## Problem 1: FizzBuzz Problem
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
