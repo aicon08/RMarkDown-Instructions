@@ -140,7 +140,7 @@ for (i in a)
 
 # Easy Problems (1-21)
 
-## Problem 21: Prompt and Answer
+## Problem 21: Table it!
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -161,7 +161,7 @@ read.csv(tmpfil2)
 ```
 
 
-## Problem 20: Prompt and Answer
+## Problem 20: Table it?
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -175,7 +175,7 @@ print(here)
 ```
 
 
-## Problem 19: Prompt and Answer
+## Problem 19: Write it out
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -190,7 +190,7 @@ write(x,fil)
 read.csv(fil)
 ```
 
-## Problem 18: Prompt and Answer
+## Problem 18: Read Me!
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -206,7 +206,7 @@ head(tfile)
 head(t2file)
 ```
 
-## Problem 17: Prompt and Answer
+## Problem 17: Time it!
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -229,7 +229,7 @@ print(runtime)
 
 ```
 
-## Problem 16: Prompt and Answer
+## Problem 16: Do you have the time?
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
 
@@ -241,7 +241,7 @@ curr.time<-(as.numeric(Sys.time()))*1000
 print(curr.time,digits=15)
 ```
 
-## Problem 15: Prompt and Answer
+## Problem 15: Are you here, "here"?
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -261,7 +261,7 @@ test_sentence <-"is the word hello in this sentence"
 test_word%in%test_sentence #Shouldershrugs
 ```
 
-## Problem 14: Prompt and Answer
+## Problem 14: Why so many e's?
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -280,7 +280,7 @@ length(b)-1
 ```
 
 
-## Problem 13: Prompt and Answer
+## Problem 13: Enough Sentences?
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -304,7 +304,7 @@ length(b)
 ```
 
 
-## Problem 12: Prompt and Answer
+## Problem 12: WORD COUNT!
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -319,7 +319,7 @@ length(b)
 ```
 
 
-## Problem 11: Prompt and Answer
+## Problem 11: You used how many letters?
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -335,7 +335,7 @@ length(b)
 ```
 
 
-## Problem 10: Prompt and Answer
+## Problem 10: Functions:Mean,Median,Mode,Range,St.dev
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -420,7 +420,7 @@ my_sd<-function(x)
 }
 my_sd(c(-5,1,8,7,2))
 ```
-## Problem 9: Prompt and Answer
+## Problem 9: 1:100 only if...
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -436,7 +436,7 @@ runif(100, min = 1,max = 100)
 floor(runif(100, min = 1,max = 100))
 
 ```
-## Problem 8: Prompt and Answer
+## Problem 8: Random One Hundred
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
@@ -450,7 +450,7 @@ runif(100)
 ```
 
 
-## Problem 7: Prompt and Answer
+## Problem 7: Where my Primes At?
 
 2019 | Feb | 19 Last compiled: `r Sys.Date()`
 
