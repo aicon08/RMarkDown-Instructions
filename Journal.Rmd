@@ -14,6 +14,45 @@ output:
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 # Harder Problems (1-11)
+
+## Problem 1: Prompt and Answer
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: List the numbers from 1 to 100 with the following constraints. If the number can be divided by three evenly, then print Fizz instead of the number. If the number can be divided by five evenly, then print Buzz instead of the number. Finally, if the number can be divided by three and five evenly, then print FizzBuzz instead of the number. 
+
+##### Answer:
+
+```{r}
+a<-seq(1,100,1)
+
+for (i in a) 
+{
+  
+  if(i%%3==0 & i%%5==0)
+  {
+    i<-"FizzBuzz"
+    print(i)
+  }
+  else if(i%%5==0)
+  {
+   i<-"Buzz"
+   print(i)
+  }
+  else if(i%%3==0)
+  {
+    i<-"Fizz"
+    print(i)
+  }
+  else if(i)
+  {
+    print(i)
+  }
+}
+
+```
+
+
 # Easy Problems (1-21)
 
 ## Problem 21: Prompt and Answer
