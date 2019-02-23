@@ -15,6 +15,40 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 # Harder Problems (1-11)
 
+## Problem 3: Test the Random Number Generator
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt: Test the random number generator for a flat distribution. Generate a few million random numbers between 0 and 100. Count the number of 0s, 1s, 2s, 3s, etc. all the way up to 100. Look at the counts for each of the numbers and determine if they are relatively equal.
+
+##### Answer:
+
+```{r}
+a<-floor(runif(100,min=0,max=100))
+hist(a)
+b<-sort(unique(a))
+#print(b)
+c<-unlist(list(rep(0,length(b))))
+#print(c)
+
+for(i in a)
+{
+d<-match(i,b)
+c[d]=c[d]+1
+}
+#print(c)
+for(i in 1:length(b))
+{
+  print.table(c(b[i],c[i]))
+}
+
+g<-runif(10^6,min=0,max=100)
+hist(g)
+
+
+```
+
+
 ## Problem 2: Frequency Counts
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
