@@ -15,6 +15,24 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 # Harder Problems (1-11)
 
+## Problem 4: Multiplication Table
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt:Generate a matrix for a multiplication table.
+
+##### Answer:
+
+```{r}
+r<-1:10
+names(r)<-r
+a<-r%o%r
+print(a)
+
+matrix(a,ncol = 10,nrow = 10)
+```
+
+
 ## Problem 3: Test the Random Number Generator
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
