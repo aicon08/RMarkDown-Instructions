@@ -24,10 +24,6 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ##### Answer:
 ```{r}
 
-
-SnakesLadders<-function()
-
-{
 die<-sample(c(1,2,3,4,5,6),1)
 #print(die)
 
@@ -60,9 +56,6 @@ ladder<-0
     loc<-slides$end[slides$start %in% loc]
     slide<-slide+1
   }
-
-return(nroll)
-}
 
 ```
 
