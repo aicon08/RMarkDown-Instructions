@@ -407,13 +407,66 @@ div.tocify {
 
 <div id="harder-problems-1-11" class="section level1">
 <h1>Harder Problems (1-11)</h1>
+<div id="problem-5-encrypt-and-decrypt-the-alphabet" class="section level2">
+<h2>Problem 5: Encrypt and Decrypt the Alphabet</h2>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
+<div id="promptturn-any-normal-english-text-into-an-encrypted-version-of-the-text-and-be-able-to-turn-any-decrypted-text-back-into-normal-english-text.-a-simple-encryption-would-be-to-scramble-the-alphabet-such-that-each-letter-corresponds-to-a-new-randomly-chosen-but-unique-letter." class="section level5">
+<h5>Prompt:Turn any normal english text into an encrypted version of the text, and be able to turn any decrypted text back into normal english text. A simple encryption would be to scramble the alphabet such that each letter corresponds to a new randomly chosen (but unique) letter.</h5>
+</div>
+<div id="answer" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>alp&lt;-&quot;abcdefghijklmnopqrstuvwxyz&quot;
+alph&lt;-strsplit(alp,&quot;&quot;)[[1]]
+#print(alph)
+scralph&lt;-sample(alph)
+#print(scralph)
+encrypkey&lt;-data.frame(alph,scralph)
+#print(encrypkey[,3])
+
+encryption&lt;-function(input,key)
+{
+  enc_alph&lt;-c()
+for(i in 1:length(input))
+  {
+  o_alph&lt;-input[i]
+  #print(o_alph)
+  n_alph &lt;- as.character(key[key$alph==o_alph,]$scralph)
+  #print(c(o_alph, n_alph))
+  enc_alph[i]&lt;-n_alph
+  #print(enc_alph)
+  }
+    return(enc_alph)
+}
+
+
+deencryption&lt;-function(input,key)
+{
+  denc_alph&lt;-c()
+  for(i in 1:length(input))
+  {
+    c_alph&lt;-input[i]
+    d_alph&lt;-as.character(key[key$scralph==c_alph,]$alph)
+    denc_alph[i]&lt;-d_alph
+  }
+  return(denc_alph)
+}
+
+code&lt;-encryption(alph,encrypkey)
+print(code)</code></pre>
+<pre><code>##  [1] &quot;z&quot; &quot;a&quot; &quot;n&quot; &quot;r&quot; &quot;x&quot; &quot;e&quot; &quot;i&quot; &quot;o&quot; &quot;k&quot; &quot;f&quot; &quot;g&quot; &quot;y&quot; &quot;q&quot; &quot;v&quot; &quot;s&quot; &quot;h&quot; &quot;m&quot;
+## [18] &quot;j&quot; &quot;t&quot; &quot;d&quot; &quot;p&quot; &quot;l&quot; &quot;w&quot; &quot;c&quot; &quot;u&quot; &quot;b&quot;</code></pre>
+<pre class="r"><code>deencryption(code,encrypkey)</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot;
+## [18] &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+</div>
+</div>
 <div id="problem-4-multiplication-table" class="section level2">
 <h2>Problem 4: Multiplication Table</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="promptgenerate-a-matrix-for-a-multiplication-table." class="section level5">
 <h5>Prompt:Generate a matrix for a multiplication table.</h5>
 </div>
-<div id="answer" class="section level5">
+<div id="answer-1" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>r&lt;-1:10
 names(r)&lt;-r
@@ -446,15 +499,15 @@ print(a)</code></pre>
 </div>
 <div id="problem-3-test-the-random-number-generator" class="section level2">
 <h2>Problem 3: Test the Random Number Generator</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-test-the-random-number-generator-for-a-flat-distribution.-generate-a-few-million-random-numbers-between-0-and-100.-count-the-number-of-0s-1s-2s-3s-etc.-all-the-way-up-to-100.-look-at-the-counts-for-each-of-the-numbers-and-determine-if-they-are-relatively-equal." class="section level5">
 <h5>Prompt: Test the random number generator for a flat distribution. Generate a few million random numbers between 0 and 100. Count the number of 0s, 1s, 2s, 3s, etc. all the way up to 100. Look at the counts for each of the numbers and determine if they are relatively equal.</h5>
 </div>
-<div id="answer-1" class="section level5">
+<div id="answer-2" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-floor(runif(100,min=0,max=100))
 hist(a)</code></pre>
-<p><img src="Journal_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="Journal_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>b&lt;-sort(unique(a))
 #print(b)
 c&lt;-unlist(list(rep(0,length(b))))
@@ -470,87 +523,80 @@ for(i in 1:length(b))
 {
   print.table(c(b[i],c[i]))
 }</code></pre>
-<pre><code>## [1] 0 4
-## [1] 2 1
+<pre><code>## [1] 0 2
+## [1] 1 1
 ## [1] 3 1
 ## [1] 4 1
-## [1] 5 2
-## [1] 7 1
+## [1] 6 2
 ## [1] 8 1
 ## [1] 9 1
-## [1] 10  1
-## [1] 11  1
-## [1] 13  3
-## [1] 14  2
-## [1] 15  2
-## [1] 16  2
-## [1] 18  3
-## [1] 19  1
+## [1] 11  3
+## [1] 12  3
+## [1] 13  1
+## [1] 14  1
+## [1] 17  3
 ## [1] 20  1
 ## [1] 21  1
-## [1] 22  1
-## [1] 23  1
 ## [1] 24  1
-## [1] 25  1
 ## [1] 26  1
-## [1] 27  1
-## [1] 28  3
+## [1] 28  1
 ## [1] 29  1
 ## [1] 30  1
+## [1] 32  2
+## [1] 33  2
 ## [1] 34  1
-## [1] 35  2
-## [1] 37  1
+## [1] 35  1
 ## [1] 38  1
 ## [1] 39  1
+## [1] 40  2
 ## [1] 41  1
-## [1] 42  1
-## [1] 43  2
+## [1] 45  1
 ## [1] 47  1
-## [1] 48  2
-## [1] 49  1
 ## [1] 51  1
-## [1] 53  1
-## [1] 54  1
-## [1] 55  1
-## [1] 56  1
-## [1] 57  1
+## [1] 52  1
+## [1] 57  2
+## [1] 58  2
+## [1] 59  1
 ## [1] 60  1
-## [1] 61  2
-## [1] 62  2
+## [1] 61  4
+## [1] 62  1
 ## [1] 64  2
-## [1] 65  2
-## [1] 66  2
-## [1] 67  1
-## [1] 68  3
+## [1] 65  3
+## [1] 66  1
+## [1] 67  2
 ## [1] 69  1
-## [1] 72  1
-## [1] 74  1
-## [1] 75  1
+## [1] 70  2
+## [1] 72  3
+## [1] 74  2
+## [1] 75  3
 ## [1] 77  1
-## [1] 79  3
-## [1] 80  3
-## [1] 82  1
-## [1] 85  1
-## [1] 87  1
+## [1] 78  3
+## [1] 79  1
+## [1] 80  1
+## [1] 81  2
+## [1] 82  3
+## [1] 83  1
+## [1] 86  2
+## [1] 87  3
 ## [1] 88  1
-## [1] 89  2
-## [1] 92  2
+## [1] 89  3
+## [1] 90  2
 ## [1] 93  1
-## [1] 94  2
-## [1] 95  2
+## [1] 95  1
+## [1] 96  2
 ## [1] 98  1</code></pre>
 <pre class="r"><code>g&lt;-runif(10^6,min=0,max=100)
 hist(g)</code></pre>
-<p><img src="Journal_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p><img src="Journal_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>
 </div>
 <div id="problem-2-frequency-counts" class="section level2">
 <h2>Problem 2: Frequency Counts</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-take-text-as-input-and-be-able-to-produce-a-table-that-shows-the-counts-for-each-character-in-the-text.-this-problem-is-related-to-the-earlier-easy-problem-asking-you-to-count-the-number-of-times-that-a-single-letter-appears-in-a-text.-the-slightly-harder-problem-is-the-more-general-version-count-the-frequencies-of-all-unique-characters-in-a-text." class="section level5">
 <h5>Prompt: Take text as input, and be able to produce a table that shows the counts for each character in the text. This problem is related to the earlier easy problem asking you to count the number of times that a single letter appears in a text. The slightly harder problem is the more general version: count the frequencies of all unique characters in a text.</h5>
 </div>
-<div id="answer-2" class="section level5">
+<div id="answer-3" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;all you need to do is completely make an ass of yourself and laugh it off to realise that life is not so bad after all.&quot;
 b&lt;-unlist(strsplit(a,split = &quot;&quot;))
@@ -599,11 +645,11 @@ for (i in 1:length(c))
 </div>
 <div id="problem-1-fizzbuzz-problem" class="section level2">
 <h2>Problem 1: FizzBuzz Problem</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-list-the-numbers-from-1-to-100-with-the-following-constraints.-if-the-number-can-be-divided-by-three-evenly-then-print-fizz-instead-of-the-number.-if-the-number-can-be-divided-by-five-evenly-then-print-buzz-instead-of-the-number.-finally-if-the-number-can-be-divided-by-three-and-five-evenly-then-print-fizzbuzz-instead-of-the-number." class="section level5">
 <h5>Prompt: List the numbers from 1 to 100 with the following constraints. If the number can be divided by three evenly, then print Fizz instead of the number. If the number can be divided by five evenly, then print Buzz instead of the number. Finally, if the number can be divided by three and five evenly, then print FizzBuzz instead of the number.</h5>
 </div>
-<div id="answer-3" class="section level5">
+<div id="answer-4" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-seq(1,100,1)
 
@@ -737,125 +783,125 @@ for (i in a)
 <h1>Easy Problems (1-21)</h1>
 <div id="problem-21-table-it" class="section level2">
 <h2>Problem 21: Table it!</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-output-any-matrix-to-a-txt-file-using-commas-or-tabs-to-separate-column-values-and-new-lines-to-separate-row-values" class="section level5">
 <h5>Prompt: Output any matrix to a txt file using commas or tabs to separate column values, and new lines to separate row values</h5>
 </div>
-<div id="answer-4" class="section level5">
+<div id="answer-5" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>here&lt;-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
 tmpfil&lt;-tempfile(&quot;data&quot;)
 write.table(here,tmpfil)
 read.table(tmpfil)</code></pre>
 <pre><code>##    V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
-## 1  82 69 47 55 65 82 69 47 55  65  82  69  47  55  65  82  69  47  55  65
-## 2  20 61 38 50 75 20 61 38 50  75  20  61  38  50  75  20  61  38  50  75
-## 3  15 86 68 52 48 15 86 68 52  48  15  86  68  52  48  15  86  68  52  48
-## 4  18 19 43 74 40 18 19 43 74  40  18  19  43  74  40  18  19  43  74  40
-## 5  54 49 63 93 56 54 49 63 93  56  54  49  63  93  56  54  49  63  93  56
-## 6  53 88 96 84  9 53 88 96 84   9  53  88  96  84   9  53  88  96  84   9
-## 7  64 33 59 72 46 64 33 59 72  46  64  33  59  72  46  64  33  59  72  46
-## 8  25 87 70  3 62 25 87 70  3  62  25  87  70   3  62  25  87  70   3  62
-## 9  36 73 93 11 58 36 73 93 11  58  36  73  93  11  58  36  73  93  11  58
-## 10 44 55 29 74 46 44 55 29 74  46  44  55  29  74  46  44  55  29  74  46
-## 11 93 92 55 67 60 93 92 55 67  60  93  92  55  67  60  93  92  55  67  60
-## 12 12 83  4 75 97 12 83  4 75  97  12  83   4  75  97  12  83   4  75  97
-## 13 41 15 39 98 39 41 15 39 98  39  41  15  39  98  39  41  15  39  98  39
-## 14  8 85 44 33 23  8 85 44 33  23   8  85  44  33  23   8  85  44  33  23
-## 15 59 69 53 91 53 59 69 53 91  53  59  69  53  91  53  59  69  53  91  53
-## 16 46 40 29 47 17 46 40 29 47  17  46  40  29  47  17  46  40  29  47  17
-## 17 59 72 78 99 36 59 72 78 99  36  59  72  78  99  36  59  72  78  99  36
-## 18 35 50 57 77 67 35 50 57 77  67  35  50  57  77  67  35  50  57  77  67
-## 19 92  2 78 28 76 92  2 78 28  76  92   2  78  28  76  92   2  78  28  76
-## 20 20  2 30 92 81 20  2 30 92  81  20   2  30  92  81  20   2  30  92  81</code></pre>
+## 1  25 11 93 96 89 25 11 93 96  89  25  11  93  96  89  25  11  93  96  89
+## 2   6  3 56 81 56  6  3 56 81  56   6   3  56  81  56   6   3  56  81  56
+## 3  93 52 29 77  2 93 52 29 77   2  93  52  29  77   2  93  52  29  77   2
+## 4  56 57 33 82 30 56 57 33 82  30  56  57  33  82  30  56  57  33  82  30
+## 5  94 51 63 34 12 94 51 63 34  12  94  51  63  34  12  94  51  63  34  12
+## 6  22 87 88 95 67 22 87 88 95  67  22  87  88  95  67  22  87  88  95  67
+## 7  28 71 24 65 85 28 71 24 65  85  28  71  24  65  85  28  71  24  65  85
+## 8  41 23 72 44 41 41 23 72 44  41  41  23  72  44  41  41  23  72  44  41
+## 9  82 85 88 60 76 82 85 88 60  76  82  85  88  60  76  82  85  88  60  76
+## 10 39 62 98 16 51 39 62 98 16  51  39  62  98  16  51  39  62  98  16  51
+## 11 21 76 72 75 53 21 76 72 75  53  21  76  72  75  53  21  76  72  75  53
+## 12 58 83 57 49 14 58 83 57 49  14  58  83  57  49  14  58  83  57  49  14
+## 13  5 18  9 87 16  5 18  9 87  16   5  18   9  87  16   5  18   9  87  16
+## 14  9 98 70 60  3  9 98 70 60   3   9  98  70  60   3   9  98  70  60   3
+## 15 11 59 10 96 28 11 59 10 96  28  11  59  10  96  28  11  59  10  96  28
+## 16 36 89 37 94 22 36 89 37 94  22  36  89  37  94  22  36  89  37  94  22
+## 17 53 30 48  7 46 53 30 48  7  46  53  30  48   7  46  53  30  48   7  46
+## 18  9 56 92 94 11  9 56 92 94  11   9  56  92  94  11   9  56  92  94  11
+## 19 63 19 98 98 65 63 19 98 98  65  63  19  98  98  65  63  19  98  98  65
+## 20 94  3 29 44 14 94  3 29 44  14  94   3  29  44  14  94   3  29  44  14</code></pre>
 <pre class="r"><code>here2&lt;-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
 tmpfil2&lt;-tempfile(&quot;data&quot;)
 write.csv(here2,tmpfil2,row.names = FALSE,col.names = F)
 read.csv(tmpfil2)</code></pre>
 <pre><code>##    V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
-## 1  51 64  2 26 54 51 64  2 26  54  51  64   2  26  54  51  64   2  26  54
-## 2  21 16 14 54 45 21 16 14 54  45  21  16  14  54  45  21  16  14  54  45
-## 3   3 28 36 75 59  3 28 36 75  59   3  28  36  75  59   3  28  36  75  59
-## 4  83 10 98 69  3 83 10 98 69   3  83  10  98  69   3  83  10  98  69   3
-## 5  35 61 14  3 73 35 61 14  3  73  35  61  14   3  73  35  61  14   3  73
-## 6  95  4 52 75 47 95  4 52 75  47  95   4  52  75  47  95   4  52  75  47
-## 7  21  7 19 38 88 21  7 19 38  88  21   7  19  38  88  21   7  19  38  88
-## 8  78 52  4 44 53 78 52  4 44  53  78  52   4  44  53  78  52   4  44  53
-## 9  43 66 42  4 42 43 66 42  4  42  43  66  42   4  42  43  66  42   4  42
-## 10 55 53 32 75 61 55 53 32 75  61  55  53  32  75  61  55  53  32  75  61
-## 11 60  3 19 70  2 60  3 19 70   2  60   3  19  70   2  60   3  19  70   2
-## 12 13 41 28 21 50 13 41 28 21  50  13  41  28  21  50  13  41  28  21  50
-## 13 52 83  3 15 17 52 83  3 15  17  52  83   3  15  17  52  83   3  15  17
-## 14 28 34 62 72 25 28 34 62 72  25  28  34  62  72  25  28  34  62  72  25
-## 15 60 70 41 13 90 60 70 41 13  90  60  70  41  13  90  60  70  41  13  90
-## 16 72 17  4 19 84 72 17  4 19  84  72  17   4  19  84  72  17   4  19  84
-## 17 20 25 92  4 22 20 25 92  4  22  20  25  92   4  22  20  25  92   4  22
-## 18  9 62  6 89 31  9 62  6 89  31   9  62   6  89  31   9  62   6  89  31
-## 19 66 45 11 93 15 66 45 11 93  15  66  45  11  93  15  66  45  11  93  15
-## 20 67 16 61 27 34 67 16 61 27  34  67  16  61  27  34  67  16  61  27  34</code></pre>
+## 1  60 33 67 64 86 60 33 67 64  86  60  33  67  64  86  60  33  67  64  86
+## 2  66 50 40 63 61 66 50 40 63  61  66  50  40  63  61  66  50  40  63  61
+## 3  73 64 72 81 50 73 64 72 81  50  73  64  72  81  50  73  64  72  81  50
+## 4  98 37 29 19 79 98 37 29 19  79  98  37  29  19  79  98  37  29  19  79
+## 5  13 81 97 23 20 13 81 97 23  20  13  81  97  23  20  13  81  97  23  20
+## 6  61 65 94 57 88 61 65 94 57  88  61  65  94  57  88  61  65  94  57  88
+## 7  93 44 96 56 46 93 44 96 56  46  93  44  96  56  46  93  44  96  56  46
+## 8  18 68  9 97 57 18 68  9 97  57  18  68   9  97  57  18  68   9  97  57
+## 9  90 44 26 79 66 90 44 26 79  66  90  44  26  79  66  90  44  26  79  66
+## 10 16 89 30 97 26 16 89 30 97  26  16  89  30  97  26  16  89  30  97  26
+## 11 49 26 23 36 71 49 26 23 36  71  49  26  23  36  71  49  26  23  36  71
+## 12 99 68 54 29 76 99 68 54 29  76  99  68  54  29  76  99  68  54  29  76
+## 13 53 18 17 24 73 53 18 17 24  73  53  18  17  24  73  53  18  17  24  73
+## 14 85 93 30 29 42 85 93 30 29  42  85  93  30  29  42  85  93  30  29  42
+## 15 80 82 30 41 75 80 82 30 41  75  80  82  30  41  75  80  82  30  41  75
+## 16 79 27 72 14 48 79 27 72 14  48  79  27  72  14  48  79  27  72  14  48
+## 17 27  1 85 61 14 27  1 85 61  14  27   1  85  61  14  27   1  85  61  14
+## 18 42 26 49 56 36 42 26 49 56  36  42  26  49  56  36  42  26  49  56  36
+## 19 21 79 18 63 12 21 79 18 63  12  21  79  18  63  12  21  79  18  63  12
+## 20 65 83 61 37 26 65 83 61 37  26  65  83  61  37  26  65  83  61  37  26</code></pre>
 </div>
 </div>
 <div id="problem-20-table-it" class="section level2">
 <h2>Problem 20: Table it?</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-create-a-variable-that-stores-a-20x20-matrix-of-random-numbers" class="section level5">
 <h5>Prompt: Create a variable that stores a 20x20 matrix of random numbers</h5>
 </div>
-<div id="answer-5" class="section level5">
+<div id="answer-6" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>here&lt;-matrix(floor(runif(100, min = 1,max = 100)),nrow = 20,ncol = 20)
 print(here)</code></pre>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]   59   99   76   40   15   59   99   76   40    15    59    99    76
-##  [2,]   80   83   52    7   96   80   83   52    7    96    80    83    52
-##  [3,]   86    1   56    8   21   86    1   56    8    21    86     1    56
-##  [4,]   54   76   99   41   49   54   76   99   41    49    54    76    99
-##  [5,]   67   92   23   62   47   67   92   23   62    47    67    92    23
-##  [6,]   34   74   77   14   52   34   74   77   14    52    34    74    77
-##  [7,]   94   55   70   94   39   94   55   70   94    39    94    55    70
-##  [8,]   33   63   17    7    2   33   63   17    7     2    33    63    17
-##  [9,]   28   45   25   66    8   28   45   25   66     8    28    45    25
-## [10,]   82   26   23   41    3   82   26   23   41     3    82    26    23
-## [11,]   21   84   14   64    6   21   84   14   64     6    21    84    14
-## [12,]   68   58   11   77   77   68   58   11   77    77    68    58    11
-## [13,]   16   87   53   97   95   16   87   53   97    95    16    87    53
-## [14,]   68   29   19   39    7   68   29   19   39     7    68    29    19
-## [15,]   42   25   15   31    6   42   25   15   31     6    42    25    15
-## [16,]   57   50   37   41   45   57   50   37   41    45    57    50    37
-## [17,]   52   43   35   97   43   52   43   35   97    43    52    43    35
-## [18,]   96   74   60   18   22   96   74   60   18    22    96    74    60
-## [19,]   46   76   76   97   78   46   76   76   97    78    46    76    76
-## [20,]   55   80   32   84   50   55   80   32   84    50    55    80    32
+##  [1,]   63   37   11   38   15   63   37   11   38    15    63    37    11
+##  [2,]   88    5    6   15    3   88    5    6   15     3    88     5     6
+##  [3,]   93   96   52   78   73   93   96   52   78    73    93    96    52
+##  [4,]   22    2   68   31   99   22    2   68   31    99    22     2    68
+##  [5,]   98    3   90   59   61   98    3   90   59    61    98     3    90
+##  [6,]   66   28   69   26   55   66   28   69   26    55    66    28    69
+##  [7,]    3   38   56    4   66    3   38   56    4    66     3    38    56
+##  [8,]   41    7   30   56   55   41    7   30   56    55    41     7    30
+##  [9,]   78   10   51   32   62   78   10   51   32    62    78    10    51
+## [10,]   54   17   28   65    5   54   17   28   65     5    54    17    28
+## [11,]   22   69   99   95    3   22   69   99   95     3    22    69    99
+## [12,]   50   25   60   70   74   50   25   60   70    74    50    25    60
+## [13,]   82   72   70   57   45   82   72   70   57    45    82    72    70
+## [14,]   69   60   64   14   42   69   60   64   14    42    69    60    64
+## [15,]   98   59   50   13   20   98   59   50   13    20    98    59    50
+## [16,]   31   98   55   96   77   31   98   55   96    77    31    98    55
+## [17,]   48   78   19    3    8   48   78   19    3     8    48    78    19
+## [18,]   15   46   71   48   27   15   46   71   48    27    15    46    71
+## [19,]   84   83   35   42   62   84   83   35   42    62    84    83    35
+## [20,]   22   51   87   91   75   22   51   87   91    75    22    51    87
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]    40    15    59    99    76    40    15
-##  [2,]     7    96    80    83    52     7    96
-##  [3,]     8    21    86     1    56     8    21
-##  [4,]    41    49    54    76    99    41    49
-##  [5,]    62    47    67    92    23    62    47
-##  [6,]    14    52    34    74    77    14    52
-##  [7,]    94    39    94    55    70    94    39
-##  [8,]     7     2    33    63    17     7     2
-##  [9,]    66     8    28    45    25    66     8
-## [10,]    41     3    82    26    23    41     3
-## [11,]    64     6    21    84    14    64     6
-## [12,]    77    77    68    58    11    77    77
-## [13,]    97    95    16    87    53    97    95
-## [14,]    39     7    68    29    19    39     7
-## [15,]    31     6    42    25    15    31     6
-## [16,]    41    45    57    50    37    41    45
-## [17,]    97    43    52    43    35    97    43
-## [18,]    18    22    96    74    60    18    22
-## [19,]    97    78    46    76    76    97    78
-## [20,]    84    50    55    80    32    84    50</code></pre>
+##  [1,]    38    15    63    37    11    38    15
+##  [2,]    15     3    88     5     6    15     3
+##  [3,]    78    73    93    96    52    78    73
+##  [4,]    31    99    22     2    68    31    99
+##  [5,]    59    61    98     3    90    59    61
+##  [6,]    26    55    66    28    69    26    55
+##  [7,]     4    66     3    38    56     4    66
+##  [8,]    56    55    41     7    30    56    55
+##  [9,]    32    62    78    10    51    32    62
+## [10,]    65     5    54    17    28    65     5
+## [11,]    95     3    22    69    99    95     3
+## [12,]    70    74    50    25    60    70    74
+## [13,]    57    45    82    72    70    57    45
+## [14,]    14    42    69    60    64    14    42
+## [15,]    13    20    98    59    50    13    20
+## [16,]    96    77    31    98    55    96    77
+## [17,]     3     8    48    78    19     3     8
+## [18,]    48    27    15    46    71    48    27
+## [19,]    42    62    84    83    35    42    62
+## [20,]    91    75    22    51    87    91    75</code></pre>
 </div>
 </div>
 <div id="problem-19-write-it-out" class="section level2">
 <h2>Problem 19: Write it out</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-output-the-contents-of-a-variable-to-a-.txt-file" class="section level5">
 <h5>Prompt: Output the contents of a variable to a .txt file</h5>
 </div>
-<div id="answer-6" class="section level5">
+<div id="answer-7" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>x&lt;-matrix(1:10, ncol = 5)
 fil&lt;-tempfile(&quot;data&quot;)
@@ -867,11 +913,11 @@ read.csv(fil)</code></pre>
 </div>
 <div id="problem-18-read-me" class="section level2">
 <h2>Problem 18: Read Me!</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-read-a-.txt-file-or-.csv-file-into-a-variable" class="section level5">
 <h5>Prompt: Read a .txt file or .csv file into a variable</h5>
 </div>
-<div id="answer-7" class="section level5">
+<div id="answer-8" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>tfile&lt;-read.delim(&quot;http://www.sthda.com/upload/boxplot_format.txt&quot;)
 
@@ -897,11 +943,11 @@ head(tfile)</code></pre>
 </div>
 <div id="problem-17-time-it" class="section level2">
 <h2>Problem 17: Time it!</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-measure-how-long-a-piece-of-code-takes-to-run-by-measuring-the-time-before-the-code-is-run-and-after-the-code-is-run-and-taking-the-difference-to-find-the-total-time" class="section level5">
 <h5>Prompt: Measure how long a piece of code takes to run by measuring the time before the code is run, and after the code is run, and taking the difference to find the total time</h5>
 </div>
-<div id="answer-8" class="section level5">
+<div id="answer-9" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>t1&lt;-Sys.time()
 a&lt;-&quot;The sky is clear; the stars are twinkling.
@@ -915,29 +961,29 @@ length(b)-1</code></pre>
 <pre class="r"><code>t2&lt;-Sys.time()
 runtime&lt;-t2-t1
 print(runtime)</code></pre>
-<pre><code>## Time difference of 0.004233599 secs</code></pre>
+<pre><code>## Time difference of 0.003624201 secs</code></pre>
 </div>
 </div>
 <div id="problem-16-do-you-have-the-time" class="section level2">
 <h2>Problem 16: Do you have the time?</h2>
-<p>2019 | Feb | 23 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 23 Last compiled: 2019-02-24</p>
 <div id="prompt-put-the-current-computer-time-in-milliseconds-into-a-variable" class="section level5">
 <h5>Prompt: Put the current computer time in milliseconds into a variable</h5>
 </div>
-<div id="answer-9" class="section level5">
+<div id="answer-10" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>curr.time&lt;-(as.numeric(Sys.time()))*1000
 print(curr.time,digits=15)</code></pre>
-<pre><code>## [1] 1550949528086.06</code></pre>
+<pre><code>## [1] 1550970562640.95</code></pre>
 </div>
 </div>
 <div id="problem-15-are-you-here-here" class="section level2">
 <h2>Problem 15: Are you here, “here”?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-do-a-logical-test-to-see-if-one-word-is-found-within-the-text-of-another-string-variable." class="section level5">
 <h5>Prompt: Do a logical test to see if one word is found within the text of another string variable.</h5>
 </div>
-<div id="answer-10" class="section level5">
+<div id="answer-11" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was.&quot;
 c&lt;-unlist(strsplit(a,split = &quot; &quot;))
@@ -954,11 +1000,11 @@ test_word%in%test_sentence #Shouldershrugs</code></pre>
 </div>
 <div id="problem-14-why-so-many-es" class="section level2">
 <h2>Problem 14: Why so many e’s?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-count-the-number-of-times-a-specific-character-occurs-in-a-string-variable" class="section level5">
 <h5>Prompt: Count the number of times a specific character occurs in a string variable</h5>
 </div>
-<div id="answer-11" class="section level5">
+<div id="answer-12" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;The sky is clear; the stars are twinkling.
 She always speaks to him in a loud voice.
@@ -984,11 +1030,11 @@ print(b)</code></pre>
 </div>
 <div id="problem-13-enough-sentences" class="section level2">
 <h2>Problem 13: Enough Sentences?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-count-the-number-of-sentences-in-a-string-variable" class="section level5">
 <h5>Prompt: Count the number of sentences in a string variable</h5>
 </div>
-<div id="answer-12" class="section level5">
+<div id="answer-13" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;Christmas is coming.
 I want to buy a onesie… but know it won’t suit me.
@@ -1017,11 +1063,11 @@ print(b)</code></pre>
 </div>
 <div id="problem-12-word-count" class="section level2">
 <h2>Problem 12: WORD COUNT!</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-count-the-number-of-words-in-a-string-variable" class="section level5">
 <h5>Prompt: Count the number of words in a string variable</h5>
 </div>
-<div id="answer-13" class="section level5">
+<div id="answer-14" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;Writing a list of random sentences is harder than I initially thought it would be.&quot;
 b&lt;-unlist(strsplit(a,split = &quot; &quot;))
@@ -1031,11 +1077,11 @@ length(b)</code></pre>
 </div>
 <div id="problem-11-you-used-how-many-letters" class="section level2">
 <h2>Problem 11: You used how many letters?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-count-the-number-of-characters-in-a-string-variable" class="section level5">
 <h5>Prompt: Count the number of characters in a string variable</h5>
 </div>
-<div id="answer-14" class="section level5">
+<div id="answer-15" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>a&lt;-&quot;adskfjhkadsjfh&quot;
 b&lt;-unlist(strsplit(a,split = &quot;&quot;))
@@ -1047,7 +1093,7 @@ print(b)</code></pre>
 </div>
 <div id="problem-10-functionsmeanmedianmoderangest.dev" class="section level2">
 <h2>Problem 10: Functions:Mean,Median,Mode,Range,St.dev</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-write-your-own-functions-to-give-descriptive-statistics-for-a-vector-variable-storing-multiple-numbers.-write-functions-for-the-following-without-using-r-intrinsics-mean-mode-median-range-standard-deviation" class="section level5">
 <h5>Prompt: Write your own functions to give descriptive statistics for a vector variable storing multiple numbers. Write functions for the following without using R intrinsics: mean, mode, median, range, standard deviation</h5>
 </div>
@@ -1137,74 +1183,77 @@ my_sd(c(-5,1,8,7,2))</code></pre>
 </div>
 <div id="problem-9-1100-only-if" class="section level2">
 <h2>Problem 9: 1:100 only if…</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-generate-100-random-numbers-within-a-specific-range" class="section level5">
 <h5>Prompt: Generate 100 random numbers within a specific range</h5>
-</div>
-<div id="answer-15" class="section level5">
-<h5>Answer:</h5>
-<pre class="r"><code>#prints all numbers
-runif(100, min = 1,max = 100)</code></pre>
-<pre><code>##   [1] 19.590353 17.688980 50.496745  7.702377  3.228077 98.215923 33.210300
-##   [8] 29.665812 26.850125 20.329317 33.760421 70.495420 81.035204 91.558347
-##  [15] 84.885675 19.032708 78.325211 93.384814  3.854554 29.617940 87.630891
-##  [22] 54.498878 74.842487 77.676175 44.480923 44.799920 93.828423 43.336070
-##  [29]  2.628922 52.177327 11.497772 23.761939 66.068809 28.055516 46.180657
-##  [36] 54.999066 27.384423 59.991043 34.747018 96.864133  4.193543 30.002166
-##  [43] 84.730749 52.126124  4.718648 44.252789 17.733263 76.497811 91.195820
-##  [50] 50.351239 48.354527 28.836764 97.545621 86.588176 52.483969 80.128542
-##  [57] 26.893010 90.360061  8.100863 72.816107 77.337434 20.489456 88.417276
-##  [64] 53.832714 92.403517 83.860873  1.190221 29.026950 22.202634  1.727637
-##  [71] 79.774531 64.564601 17.616727 71.436458 25.616780 40.179847 90.897579
-##  [78] 10.404970 32.399615 61.712586 62.931395 27.351473 87.104127  9.007461
-##  [85] 22.854522 34.945188 76.601651 77.802911 58.080896 38.365553 36.060695
-##  [92] 90.380379 43.082172 10.629865 62.736059 62.646401 54.935300 35.741650
-##  [99] 58.984310 65.472649</code></pre>
-<pre class="r"><code>#prints integers
-floor(runif(100, min = 1,max = 100))</code></pre>
-<pre><code>##   [1] 22 92 24 78 50 51  7 68 40 76 20 92 19 96 85 80 41 54 75 87 58 80 71
-##  [24] 69 88 21 64 66 69 59 66 91 23 79  7 50 90 65 74 82 96 47 42 40 29 37
-##  [47] 56 80 47 33 43 19 88 74 98 19 78 98 29 15  2 91 14 16 23  4 51 38 28
-##  [70] 35 75 55 41 40 46 53 30 35 43 14 76 45 88 52 91 17 29 75 80 21 66 82
-##  [93] 24 31  6 77 67 51 89  9</code></pre>
-</div>
-</div>
-<div id="problem-8-random-one-hundred" class="section level2">
-<h2>Problem 8: Random One Hundred</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
-<div id="prompt-generate-100-random-numbers" class="section level5">
-<h5>Prompt: Generate 100 random numbers</h5>
 </div>
 <div id="answer-16" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>#prints all numbers
+runif(100, min = 1,max = 100)</code></pre>
+<pre><code>##   [1] 25.794075 73.044581 68.093744 54.040523 85.169816 77.403053 89.802136
+##   [8] 19.338854 94.642879 63.209897 28.971602 98.332284 59.277382 78.693678
+##  [15] 57.822821 36.843013 30.138560 44.437850 29.787509 32.490248 24.041178
+##  [22]  8.388132 56.756351 19.895762 93.961178 50.803607 84.620090 57.750465
+##  [29] 35.885328 30.180554 33.615635 38.080658 22.262035 68.850163 90.315072
+##  [36] 86.880035 81.360610 37.542549 35.171271 18.089196 40.961599 70.056164
+##  [43] 99.033287 43.861036 70.880780 63.378522 36.047851 13.991002 23.170773
+##  [50] 87.729498 42.595761 65.213491 66.677851 60.594350 64.692040 65.013025
+##  [57] 38.697094 34.030865 46.277389 67.552216 25.274170 79.751708 47.051232
+##  [64] 83.541892 18.327357 69.844275 83.957452 96.337464  8.527239 61.997553
+##  [71] 74.051906 71.651241 89.922687 66.091287 41.409629 52.811660 69.777980
+##  [78] 70.283929 88.252299 98.248833 50.613508 32.512643  8.067220 58.129289
+##  [85] 25.616280 48.451392 35.867110 68.854662 36.559209 59.344805 45.026395
+##  [92] 66.798190  4.400299 11.657045 53.814938 57.471869 41.629395 76.946724
+##  [99] 40.207906 72.587485</code></pre>
+<pre class="r"><code>#prints integers
+floor(runif(100, min = 1,max = 100))</code></pre>
+<pre><code>##   [1] 67 65  2 36 72 82 49 28  3 98 95 22 22  5 18 47 43 90 83 16 30 32 85
+##  [24] 26 66  6 49 73 70 12 41 54 71 44 52 88 57 40 95  2 68 55 77 44 83 71
+##  [47] 45  6 70 51 19 74 53  4 85 45 92 65 94 88 33 75 40 55 21  3 55 22 18
+##  [70] 45 62 40 82 29 60 35 16 51 73 32  2 38 63 23 20  9 98 73 86 25 13 51
+##  [93] 99 96 93 80 20 46 43 86</code></pre>
+</div>
+</div>
+<div id="problem-8-random-one-hundred" class="section level2">
+<h2>Problem 8: Random One Hundred</h2>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
+<div id="prompt-generate-100-random-numbers" class="section level5">
+<h5>Prompt: Generate 100 random numbers</h5>
+</div>
+<div id="answer-17" class="section level5">
+<h5>Answer:</h5>
+<pre class="r"><code>#prints all numbers
 runif(100)</code></pre>
-<pre><code>##   [1] 0.58419331 0.57726050 0.09658136 0.55248291 0.22076630 0.67358767
-##   [7] 0.33600018 0.99187590 0.78324554 0.77861362 0.03023051 0.65651267
-##  [13] 0.85746803 0.95326057 0.36000633 0.56760370 0.64736363 0.41846597
-##  [19] 0.72126208 0.24965563 0.93538504 0.11922069 0.63893093 0.27907978
-##  [25] 0.08399429 0.97325605 0.53894415 0.21072299 0.79465410 0.26269793
-##  [31] 0.33382534 0.62931946 0.71821019 0.84937821 0.36940253 0.52719007
-##  [37] 0.08213195 0.88938208 0.25867033 0.32102819 0.14498719 0.77307558
-##  [43] 0.26939932 0.38298370 0.06458399 0.38834829 0.29949558 0.47164234
-##  [49] 0.11383669 0.19835537 0.94860259 0.68469990 0.79734264 0.05530956
-##  [55] 0.98131943 0.41640889 0.19038916 0.04542130 0.84480529 0.99903890
-##  [61] 0.69892086 0.25914866 0.71660193 0.51217293 0.51875216 0.98383698
-##  [67] 0.89149075 0.84994764 0.25885830 0.26391444 0.28380895 0.63985963
-##  [73] 0.91365382 0.11413345 0.34016551 0.11594776 0.64781935 0.27206738
-##  [79] 0.80114229 0.89823406 0.73414078 0.38918325 0.85363389 0.73056689
-##  [85] 0.10786626 0.34221808 0.54934344 0.90671063 0.85851381 0.41604088
-##  [91] 0.40828108 0.24007434 0.10327147 0.38877782 0.63589463 0.45896713
-##  [97] 0.88277608 0.37337502 0.94568848 0.24914103</code></pre>
+<pre><code>##   [1] 0.355056162 0.469371591 0.159707066 0.070792955 0.929933683
+##   [6] 0.233291465 0.101648997 0.760779969 0.362655598 0.480286529
+##  [11] 0.212533941 0.159830995 0.951246700 0.746230528 0.551612420
+##  [16] 0.406377043 0.968203090 0.619277033 0.082762609 0.214188345
+##  [21] 0.668206167 0.140053491 0.936545991 0.278423852 0.591837298
+##  [26] 0.551517414 0.826356310 0.485028436 0.662994867 0.695490449
+##  [31] 0.114047478 0.279906592 0.992974050 0.974443235 0.181234135
+##  [36] 0.663160889 0.502854548 0.660439456 0.039878439 0.855743189
+##  [41] 0.513151501 0.242913359 0.918934174 0.497939876 0.711121358
+##  [46] 0.352876370 0.123740496 0.644902013 0.353414227 0.697379727
+##  [51] 0.442817489 0.237188983 0.192406176 0.343699425 0.679505093
+##  [56] 0.577752903 0.249849613 0.090623826 0.088239122 0.154402245
+##  [61] 0.869516168 0.203015730 0.904522625 0.004113964 0.233751238
+##  [66] 0.691062065 0.312941703 0.717572162 0.659202178 0.662259189
+##  [71] 0.259452926 0.141308065 0.319870458 0.405720590 0.203754733
+##  [76] 0.630253313 0.349412702 0.676644357 0.658068735 0.617543160
+##  [81] 0.540534863 0.105155632 0.506164191 0.074005997 0.056844018
+##  [86] 0.854918885 0.281048568 0.930022130 0.329591271 0.357539743
+##  [91] 0.238770307 0.711109122 0.492055288 0.684135419 0.410896763
+##  [96] 0.187797025 0.821853466 0.991541586 0.260880659 0.889184905</code></pre>
 </div>
 </div>
 <div id="problem-7-where-my-primes-at" class="section level2">
 <h2>Problem 7: Where my Primes At?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-list-all-of-the-prime-numbers-from-1-to-1000" class="section level5">
 <h5>Prompt: List all of the prime numbers from 1 to 1000</h5>
 </div>
-<div id="answer-17" class="section level5">
+<div id="answer-18" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>prime&lt;-function(x,y)
 {
@@ -1406,11 +1455,11 @@ prime(1,1000)</code></pre>
 </div>
 <div id="problem-6-odd-numbers-say-what" class="section level2">
 <h2>Problem 6: Odd Numbers Say What?</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-list-all-of-the-odd-numbers-from-1-to-100" class="section level5">
 <h5>Prompt: List all of the odd numbers from 1 to 100</h5>
 </div>
-<div id="answer-18" class="section level5">
+<div id="answer-19" class="section level5">
 <h5>Answer:</h5>
 <pre class="r"><code>seq(1,100,2)</code></pre>
 <pre><code>##  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45
@@ -1478,11 +1527,11 @@ for (i in a)
 </div>
 <div id="problem-5-sum-w.-functions" class="section level2">
 <h2>Problem 5: Sum w. Functions</h2>
-<p>2019 | Feb | 19 Last compiled: 2019-02-23</p>
+<p>2019 | Feb | 19 Last compiled: 2019-02-24</p>
 <div id="prompt-write-a-function-to-find-the-sum-of-all-integers-between-any-two-values" class="section level5">
 <h5>Prompt: Write a function to find the sum of all integers between any two values</h5>
 </div>
-<div id="answer-19" class="section level5">
+<div id="answer-20" class="section level5">
 <h5>Answer:</h5>
 <p>Sum of All Integers(Random) Sol:</p>
 <pre class="r"><code>rsum&lt;-function(x,y){return(sum(seq(x,y,1)))}
@@ -1495,11 +1544,11 @@ rsum(1,2)</code></pre>
 </div>
 <div id="problem-4-find-the-sum" class="section level2">
 <h2>Problem 4: Find the Sum!</h2>
-<p>2019 | Jan | 30 Last compiled: 2019-02-23</p>
+<p>2019 | Jan | 30 Last compiled: 2019-02-24</p>
 <div id="prompt-find-the-sum-of-all-integers-from-1-to-100" class="section level5">
 <h5>Prompt: Find the sum of all integers from 1 to 100</h5>
 </div>
-<div id="answer-20" class="section level5">
+<div id="answer-21" class="section level5">
 <h5>Answer:</h5>
 <p>sum function Sol:</p>
 <pre class="r"><code>a&lt;-c()
@@ -1527,7 +1576,7 @@ print(c)</code></pre>
 </div>
 <div id="problem-3-1100-loop-sequence" class="section level2">
 <h2>Problem 3: 1:100, Loop, Sequence</h2>
-<p>2019 | Jan | 29 Last compiled: 2019-02-23</p>
+<p>2019 | Jan | 29 Last compiled: 2019-02-24</p>
 <div id="prompt-write-code-that-will-place-the-numbers-1-to-100-separately-into-a-variable-using-for-loop.-then-again-using-the-seq-function." class="section level5">
 <h5>Prompt: Write code that will place the numbers 1 to 100 separately into a variable using for loop. Then, again using the seq function.</h5>
 </div>
@@ -1561,7 +1610,7 @@ print(Sol2)</code></pre>
 </div>
 <div id="problem-2-simple-math-w.-variables" class="section level2">
 <h2>Problem 2: Simple Math w. Variables</h2>
-<p>2019 | Jan | 29 Last compiled: 2019-02-23</p>
+<p>2019 | Jan | 29 Last compiled: 2019-02-24</p>
 <div id="prompt-put-numbers-into-variables-do-simple-math-on-the-variables" class="section level5">
 <h5>Prompt: Put numbers into variables, do simple math on the variables</h5>
 </div>
@@ -1588,7 +1637,7 @@ D&lt;-30</code></pre>
 </div>
 <div id="problem-1-simple-math" class="section level2">
 <h2>Problem 1: Simple Math</h2>
-<p>2019 | Jan | 29 Last compiled: 2019-02-23</p>
+<p>2019 | Jan | 29 Last compiled: 2019-02-24</p>
 <div id="prompt-do-simple-math-with-numbers-addition-subtraction-multiplication-division" class="section level5">
 <h5>Prompt: Do simple math with numbers, addition, subtraction, multiplication, division</h5>
 </div>

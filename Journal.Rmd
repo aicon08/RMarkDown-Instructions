@@ -15,6 +15,58 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ```
 # Harder Problems (1-11)
 
+## Problem 5: Encrypt and Decrypt the Alphabet
+
+2019 | Feb | 23 Last compiled: `r Sys.Date()`
+
+##### Prompt:Turn any normal english text into an encrypted version of the text, and be able to turn any decrypted text back into normal english text. A simple encryption would be to scramble the alphabet such that each letter corresponds to a new randomly chosen (but unique) letter.
+
+##### Answer:
+
+```{r}
+alp<-"abcdefghijklmnopqrstuvwxyz"
+alph<-strsplit(alp,"")[[1]]
+#print(alph)
+scralph<-sample(alph)
+#print(scralph)
+encrypkey<-data.frame(alph,scralph)
+#print(encrypkey[,3])
+
+encryption<-function(input,key)
+{
+  enc_alph<-c()
+for(i in 1:length(input))
+  {
+  o_alph<-input[i]
+  #print(o_alph)
+  n_alph <- as.character(key[key$alph==o_alph,]$scralph)
+  #print(c(o_alph, n_alph))
+  enc_alph[i]<-n_alph
+  #print(enc_alph)
+  }
+    return(enc_alph)
+}
+
+
+deencryption<-function(input,key)
+{
+  denc_alph<-c()
+  for(i in 1:length(input))
+  {
+    c_alph<-input[i]
+    d_alph<-as.character(key[key$scralph==c_alph,]$alph)
+    denc_alph[i]<-d_alph
+  }
+  return(denc_alph)
+}
+
+code<-encryption(alph,encrypkey)
+print(code)
+deencryption(code,encrypkey)
+
+```
+
+
 ## Problem 4: Multiplication Table
 
 2019 | Feb | 23 Last compiled: `r Sys.Date()`
