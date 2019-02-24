@@ -24,6 +24,8 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 ##### Answer:
 ```{r}
 
+SnakesLadders<-function()
+{
 die<-sample(c(1,2,3,4,5,6),1)
 #print(die)
 
@@ -32,30 +34,33 @@ ladders<-data.frame(start=c(1,4,9,21,28,36,51,71,80),end=c(37,14,31,42,84,44,67,
 
 slides<-data.frame(start=c(98,95,93,87,64,62,56,49,47,16), end=c(78,75,73,24,60,19,53,11,26,6))
 
-print(ladders)
-print(slides)
+#print(ladders)
+#print(slides)
 
 loc<-0
 nroll<-0
 slide<-0
 ladder<-0
 
-
   die
   loc<-loc+die
   nroll<-nroll+1
   
-  if(any(ladders$start %in% loc))
-  {
-    loc<-ladders$end[ladders$start %in% loc]
-    ladder<- ladder +1
-  }
+    if(any(ladders$start %in% loc))
+    {
+      loc<-ladders$end[ladders$start %in% loc]
+      ladder<- ladder +1
+    }
   
-  if(any(slides$start %in% loc))
-  {
-    loc<-slides$end[slides$start %in% loc]
-    slide<-slide+1
-  }
+    if(any(slides$start %in% loc))
+    {
+      loc<-slides$end[slides$start %in% loc]
+      slide<-slide+1
+    }
+  
+  return(nroll)
+}
+
 
 ```
 
