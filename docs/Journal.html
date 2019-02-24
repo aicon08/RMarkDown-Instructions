@@ -415,7 +415,9 @@ div.tocify {
 </div>
 <div id="answer" class="section level5">
 <h5>Answer:</h5>
-<pre class="r"><code>die&lt;-sample(c(1,2,3,4,5,6),1)
+<pre class="r"><code>SnakesLadders&lt;-function()
+{
+die&lt;-sample(c(1,2,3,4,5,6),1)
 #print(die)
 
 ladders&lt;-data.frame(start=c(1,4,9,21,28,36,51,71,80),end=c(37,14,31,42,84,44,67,91,100))
@@ -423,51 +425,38 @@ ladders&lt;-data.frame(start=c(1,4,9,21,28,36,51,71,80),end=c(37,14,31,42,84,44,
 
 slides&lt;-data.frame(start=c(98,95,93,87,64,62,56,49,47,16), end=c(78,75,73,24,60,19,53,11,26,6))
 
-print(ladders)</code></pre>
-<pre><code>##   start end
-## 1     1  37
-## 2     4  14
-## 3     9  31
-## 4    21  42
-## 5    28  84
-## 6    36  44
-## 7    51  67
-## 8    71  91
-## 9    80 100</code></pre>
-<pre class="r"><code>print(slides)</code></pre>
-<pre><code>##    start end
-## 1     98  78
-## 2     95  75
-## 3     93  73
-## 4     87  24
-## 5     64  60
-## 6     62  19
-## 7     56  53
-## 8     49  11
-## 9     47  26
-## 10    16   6</code></pre>
-<pre class="r"><code>loc&lt;-0
+#print(ladders)
+#print(slides)
+
+loc&lt;-0
 nroll&lt;-0
 slide&lt;-0
 ladder&lt;-0
 
 
-  die</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>  loc&lt;-loc+die
+  die
+  loc&lt;-loc+die
   nroll&lt;-nroll+1
   
-  if(any(ladders$start %in% loc))
-  {
-    loc&lt;-ladders$end[ladders$start %in% loc]
-    ladder&lt;- ladder +1
-  }
+    if(any(ladders$start %in% loc))
+    {
+      loc&lt;-ladders$end[ladders$start %in% loc]
+      ladder&lt;- ladder +1
+    }
   
-  if(any(slides$start %in% loc))
-  {
-    loc&lt;-slides$end[slides$start %in% loc]
-    slide&lt;-slide+1
-  }</code></pre>
+    if(any(slides$start %in% loc))
+    {
+      loc&lt;-slides$end[slides$start %in% loc]
+      slide&lt;-slide+1
+    }
+  
+
+  
+  return(loc)
+}
+
+SnakesLadders()</code></pre>
+<pre><code>## [1] 14</code></pre>
 </div>
 </div>
 <div id="problem-5-encrypt-and-decrypt-the-alphabet" class="section level2">

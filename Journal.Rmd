@@ -42,6 +42,7 @@ nroll<-0
 slide<-0
 ladder<-0
 
+
   die
   loc<-loc+die
   nroll<-nroll+1
@@ -58,9 +59,12 @@ ladder<-0
       slide<-slide+1
     }
   
-  return(nroll)
+
+  
+  return(loc)
 }
 
+SnakesLadders()
 
 ```
 
