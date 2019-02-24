@@ -431,10 +431,8 @@ for (i in 99:1)
 {
 old_x&lt;-i
 new_x&lt;-i-1
-  
 Sentence&lt;-c(old_x,&quot;bottles of beer on the wall&quot;,old_x,&quot;bottles of beer Take one down, pass it around&quot;,new_x,&quot;bottles of beer on the wall&quot;)
 print(Sentence)
-  
 }</code></pre>
 <pre><code>## [1] &quot;99&quot;                                           
 ## [2] &quot;bottles of beer on the wall&quot;                  
@@ -1050,6 +1048,25 @@ print(Sentence)
 </div>
 <div id="answer-3" class="section level5">
 <h5>Answer:</h5>
+<pre class="r"><code>#doesn&#39;tswitch
+
+chancewin&lt;-c()
+win&lt;-0
+tries&lt;-1:200
+for (i in tries)
+{
+  curtains&lt;-c(1,0,0)
+  choice&lt;-sample(curtains,1)
+  #print(choice)
+  chancewin&lt;-c(chancewin,choice)
+  #print(chancewin)
+  win&lt;-win+choice
+  #print(win)
+}
+sum(chancewin)/length(chancewin)</code></pre>
+<pre><code>## [1] 0.35</code></pre>
+<pre class="r"><code>win/length(tries)</code></pre>
+<pre><code>## [1] 0.35</code></pre>
 </div>
 </div>
 <div id="problem-7-dice-rolling-simulations" class="section level2">
@@ -1060,6 +1077,15 @@ print(Sentence)
 </div>
 <div id="answer-4" class="section level5">
 <h5>Answer:</h5>
+<pre class="r"><code>die1&lt;-sample(c(1,2,3,4,5,6),1)
+die2&lt;-sample(c(1,2,3,4,5,6),1)
+rolldice&lt;-function()
+{
+roll&lt;-die1+die2
+return(roll)
+}
+rolldice()</code></pre>
+<pre><code>## [1] 6</code></pre>
 </div>
 </div>
 <div id="problem-6-snakes-and-ladders" class="section level2">

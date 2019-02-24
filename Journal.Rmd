@@ -42,10 +42,8 @@ for (i in 99:1)
 {
 old_x<-i
 new_x<-i-1
-  
 Sentence<-c(old_x,"bottles of beer on the wall",old_x,"bottles of beer Take one down, pass it around",new_x,"bottles of beer on the wall")
 print(Sentence)
-  
 }
 
 ```
@@ -72,6 +70,23 @@ print(Sentence)
 
 ```{r}
 
+#doesn'tswitch
+
+chancewin<-c()
+win<-0
+tries<-1:200
+for (i in tries)
+{
+  curtains<-c(1,0,0)
+  choice<-sample(curtains,1)
+  #print(choice)
+  chancewin<-c(chancewin,choice)
+  #print(chancewin)
+  win<-win+choice
+  #print(win)
+}
+sum(chancewin)/length(chancewin)
+win/length(tries)
 ```
 ## Problem 7: Dice-rolling simulations
 
@@ -82,7 +97,14 @@ print(Sentence)
 ##### Answer:
 
 ```{r}
-
+die1<-sample(c(1,2,3,4,5,6),1)
+die2<-sample(c(1,2,3,4,5,6),1)
+rolldice<-function()
+{
+roll<-die1+die2
+return(roll)
+}
+rolldice()
 ```
 
 
