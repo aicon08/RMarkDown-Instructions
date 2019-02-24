@@ -64,14 +64,6 @@ ladder<-0
 return(nroll)
 }
 
-a<-0
-for (i in 1:1000)
-{
-  a<-a+SnakesLadders()
-  
-}
-
-print(a/1000)
 ```
 
 
