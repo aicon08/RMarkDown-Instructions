@@ -87,6 +87,27 @@ for (i in tries)
 }
 sum(chancewin)/length(chancewin)
 win/length(tries)
+
+#switches
+switchs<-0
+chances<-1:200
+
+for(i in chances)
+{
+  curtains<-c(1,0,0)
+  choice<-sample(curtains,3)
+  if(choice[2]==0)
+  {
+    finchoice<-choice[1]+choice[3]
+  }
+  else
+  {
+    finchoice<-choice[1]+choice[2]
+  }
+  switchs<-switchs+finchoice
+}
+print(switchs)
+switchs/length(chances)
 ```
 ## Problem 7: Dice-rolling simulations
 

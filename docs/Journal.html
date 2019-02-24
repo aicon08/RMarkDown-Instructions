@@ -1064,9 +1064,31 @@ for (i in tries)
   #print(win)
 }
 sum(chancewin)/length(chancewin)</code></pre>
-<pre><code>## [1] 0.35</code></pre>
+<pre><code>## [1] 0.315</code></pre>
 <pre class="r"><code>win/length(tries)</code></pre>
-<pre><code>## [1] 0.35</code></pre>
+<pre><code>## [1] 0.315</code></pre>
+<pre class="r"><code>#switches
+switchs&lt;-0
+chances&lt;-1:200
+
+for(i in chances)
+{
+  curtains&lt;-c(1,0,0)
+  choice&lt;-sample(curtains,3)
+  if(choice[2]==0)
+  {
+    finchoice&lt;-choice[1]+choice[3]
+  }
+  else
+  {
+    finchoice&lt;-choice[1]+choice[2]
+  }
+  switchs&lt;-switchs+finchoice
+}
+print(switchs)</code></pre>
+<pre><code>## [1] 200</code></pre>
+<pre class="r"><code>switchs/length(chances)</code></pre>
+<pre><code>## [1] 1</code></pre>
 </div>
 </div>
 <div id="problem-7-dice-rolling-simulations" class="section level2">
