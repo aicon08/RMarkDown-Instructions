@@ -57,7 +57,23 @@ print(Sentence)
 ##### Answer:
 
 ```{r}
+doors<-rep(0,100)
 
+for(i in 1:100)
+{
+  for(j in seq(i,100,by=i))
+  {
+    if(doors[j]==0)
+    {
+      doors[j]<-1
+    }
+    else
+    {
+      doors[j]<-0
+    }
+  }
+}
+print(doors)
 ```
 
 ## Problem 8: Monte Hall Problem
