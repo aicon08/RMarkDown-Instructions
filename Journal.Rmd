@@ -25,38 +25,46 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 
 ```{r}
 
+samecheck<-function(a,b,c)
+{
+if(a==b&b==c&a==c&a!=0)
+{
+  return(a)
+}
+return(0)
+}
+
 checkboard<-function(board)
 {
-  csum<-colSums(board)
-  rsum<-rowSums(board)
-  d1sum<-sum(diag(board))
-  d2sum<-board[3,1]+board[2,2]+board[1,3]
-  print(csum)
-  print(rsum)
-  print(d1sum)
-  print(d2sum)
-  for (i in csum)
+  for (i in 1:3)
   {
-    if (i==3|i==6)
+    res<-samecheck(board[i,1],board[i,2],board[i,3])
+    if (res!=0)
     {
-      return(i/3)
+      return(res)
     }
+    
   }
-  for (i in rsum)
+    for (i in 1:3)
   {
-    if (i==3|i==6)
+    res<-samecheck(board[1,i],board[2,i],board[3,i])
+    if (res!=0)
     {
-      return(i/3)
+      return(res)
     }
+    
   }
-  if (d1sum==3|d1sum==6)
-  {
-    return(d1sum/3)
-  }
-  if(d2sum==3|d2sum==6)
-  {
-    return(d2sum/3)
-  }
+    dch<-diag(board) 
+    res<-samecheck(dch[1],dch[2],dch[3])
+    if (res!=0)
+    {
+      return(res)
+    }
+    res<-samecheck(board[3,1],board[2,2],board[1,3])
+    if (res!=0)
+    {
+      return(res)
+    }
     return(0)
 }
 
@@ -74,10 +82,10 @@ player1_c<-unlist(possmoves[player1])
 #print(unlist(player1)[1])
 board[player1_c[1],player1_c[2]]=1
 possmoves=possmoves[-player1]
-#print(board)
+print(board)
 
-res<-checkboard(board)
-if (res!=0)
+resu<-checkboard(board)
+if (resu!=0)
 {
   break
 }
@@ -90,13 +98,13 @@ board[player2_c[1],player2_c[2]]=2
 possmoves=possmoves[-player2]
 print(board)
 
-res<-checkboard(board)
-if (res!=0)
+resu<-checkboard(board)
+if (resu!=0)
 {
   break
 }
 }
-print(res)
+print(resu)
 
 
 #print(board)

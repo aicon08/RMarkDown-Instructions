@@ -415,38 +415,46 @@ div.tocify {
 </div>
 <div id="answer" class="section level5">
 <h5>Answer:</h5>
-<pre class="r"><code>checkboard&lt;-function(board)
+<pre class="r"><code>samecheck&lt;-function(a,b,c)
 {
-  csum&lt;-colSums(board)
-  rsum&lt;-rowSums(board)
-  d1sum&lt;-sum(diag(board))
-  d2sum&lt;-board[3,1]+board[2,2]+board[1,3]
-  print(csum)
-  print(rsum)
-  print(d1sum)
-  print(d2sum)
-  for (i in csum)
+if(a==b&amp;b==c&amp;a==c&amp;a!=0)
+{
+  return(a)
+}
+return(0)
+}
+
+checkboard&lt;-function(board)
+{
+  for (i in 1:3)
   {
-    if (i==3|i==6)
+    res&lt;-samecheck(board[i,1],board[i,2],board[i,3])
+    if (res!=0)
     {
-      return(i/3)
+      return(res)
     }
+    
   }
-  for (i in rsum)
+    for (i in 1:3)
   {
-    if (i==3|i==6)
+    res&lt;-samecheck(board[1,i],board[2,i],board[3,i])
+    if (res!=0)
     {
-      return(i/3)
+      return(res)
     }
+    
   }
-  if (d1sum==3|d1sum==6)
-  {
-    return(d1sum/3)
-  }
-  if(d2sum==3|d2sum==6)
-  {
-    return(d2sum/3)
-  }
+    dch&lt;-diag(board) 
+    res&lt;-samecheck(dch[1],dch[2],dch[3])
+    if (res!=0)
+    {
+      return(res)
+    }
+    res&lt;-samecheck(board[3,1],board[2,2],board[1,3])
+    if (res!=0)
+    {
+      return(res)
+    }
     return(0)
 }
 
@@ -464,10 +472,10 @@ player1_c&lt;-unlist(possmoves[player1])
 #print(unlist(player1)[1])
 board[player1_c[1],player1_c[2]]=1
 possmoves=possmoves[-player1]
-#print(board)
+print(board)
 
-res&lt;-checkboard(board)
-if (res!=0)
+resu&lt;-checkboard(board)
+if (resu!=0)
 {
   break
 }
@@ -480,26 +488,46 @@ board[player2_c[1],player2_c[2]]=2
 possmoves=possmoves[-player2]
 print(board)
 
-res&lt;-checkboard(board)
-if (res!=0)
+resu&lt;-checkboard(board)
+if (resu!=0)
 {
   break
 }
 }</code></pre>
-<pre><code>## [1] 0 0 1
-## [1] 1 0 0
-## [1] 0
-## [1] 1
-##      [,1] [,2] [,3]
-## [1,]    2    0    1
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0    0    0
 ## [2,]    0    0    0
-## [3,]    0    0    0
-## [1] 2 0 1
-## [1] 3 0 0
-## [1] 2
-## [1] 1</code></pre>
-<pre class="r"><code>print(res)</code></pre>
-<pre><code>## [1] 1</code></pre>
+## [3,]    0    0    1
+##      [,1] [,2] [,3]
+## [1,]    0    0    2
+## [2,]    0    0    0
+## [3,]    0    0    1
+##      [,1] [,2] [,3]
+## [1,]    0    0    2
+## [2,]    0    0    0
+## [3,]    1    0    1
+##      [,1] [,2] [,3]
+## [1,]    2    0    2
+## [2,]    0    0    0
+## [3,]    1    0    1
+##      [,1] [,2] [,3]
+## [1,]    2    0    2
+## [2,]    0    1    0
+## [3,]    1    0    1
+##      [,1] [,2] [,3]
+## [1,]    2    0    2
+## [2,]    0    1    0
+## [3,]    1    2    1
+##      [,1] [,2] [,3]
+## [1,]    2    0    2
+## [2,]    0    1    1
+## [3,]    1    2    1
+##      [,1] [,2] [,3]
+## [1,]    2    0    2
+## [2,]    2    1    1
+## [3,]    1    2    1</code></pre>
+<pre class="r"><code>print(resu)</code></pre>
+<pre><code>## [1] 0</code></pre>
 <pre class="r"><code>#print(board)</code></pre>
 </div>
 </div>
