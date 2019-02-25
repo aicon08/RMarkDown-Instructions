@@ -129,14 +129,26 @@ switchs/200
 ##### Answer:
 
 ```{r}
-die1<-sample(c(1,2,3,4,5,6),1)
-die2<-sample(c(1,2,3,4,5,6),1)
+
 rolldice<-function()
 {
+die1<-sample(c(1,2,3,4,5,6),1)
+die2<-sample(c(1,2,3,4,5,6),1)
 roll<-die1+die2
 return(roll)
 }
-rolldice()
+
+result<-rep(0,12)
+for (i in 1:200)
+{
+  nroll<-rolldice()
+  result[nroll]=result[nroll]+1
+}
+for(i in 1:12)
+{
+  #print(c(i,(result[i]/200)))
+  cat(sprintf("Number %d with %f probability\n", i, result[i]/200))
+}
 ```
 
 

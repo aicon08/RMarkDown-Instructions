@@ -1112,15 +1112,37 @@ switchs/200</code></pre>
 </div>
 <div id="answer-4" class="section level5">
 <h5>Answer:</h5>
-<pre class="r"><code>die1&lt;-sample(c(1,2,3,4,5,6),1)
-die2&lt;-sample(c(1,2,3,4,5,6),1)
-rolldice&lt;-function()
+<pre class="r"><code>rolldice&lt;-function()
 {
+die1&lt;-sample(c(1,2,3,4,5,6),1)
+die2&lt;-sample(c(1,2,3,4,5,6),1)
 roll&lt;-die1+die2
 return(roll)
 }
-rolldice()</code></pre>
-<pre><code>## [1] 6</code></pre>
+
+result&lt;-rep(0,12)
+for (i in 1:200)
+{
+  nroll&lt;-rolldice()
+  result[nroll]=result[nroll]+1
+}
+for(i in 1:12)
+{
+  #print(c(i,(result[i]/200)))
+  cat(sprintf(&quot;Number %d with %f probability\n&quot;, i, result[i]/200))
+}</code></pre>
+<pre><code>## Number 1 with 0.000000 probability
+## Number 2 with 0.020000 probability
+## Number 3 with 0.070000 probability
+## Number 4 with 0.070000 probability
+## Number 5 with 0.095000 probability
+## Number 6 with 0.125000 probability
+## Number 7 with 0.130000 probability
+## Number 8 with 0.155000 probability
+## Number 9 with 0.135000 probability
+## Number 10 with 0.115000 probability
+## Number 11 with 0.060000 probability
+## Number 12 with 0.025000 probability</code></pre>
 </div>
 </div>
 <div id="problem-6-snakes-and-ladders" class="section level2">
