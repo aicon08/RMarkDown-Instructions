@@ -104,8 +104,16 @@ if (resu!=0)
   break
 }
 }
-print(resu)
-
+wins<-0
+draws<-0
+if (print(resu)==1|print(resu)==2)
+{
+  print("Player")
+}
+if (print(resu)==0)
+{
+  print("Draw")
+}
 
 #print(board)
 
