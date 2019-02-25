@@ -10,6 +10,6 @@ navbar:
       href: Dictionary.html
     - text: "Links"
       href: Links.html
-    - text: "Plots"
-      href: Plots.html
+    - text: "Plot"
+      href: Plot.html
 output_dir: "docs"
