@@ -388,6 +388,9 @@ div.tocify {
 <li>
   <a href="Links.html">Links</a>
 </li>
+<li>
+  <a href="Plots.html">Plots</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -482,15 +485,20 @@ l_run(list.files())</code></pre>
 </ol>
 <pre class="r"><code>#objects must be created or available within the global environment in order to be saved, otherwise an error of not found will appear.
 
-#Data input should be **save**(name of file, type of file you want, where it will be saved)
+#Data input should be save(name of file, type of file you want, where it will be saved)
 
 testob&lt;-c(1,2,3,4,5)
-save(testob, file= &quot;.RData&quot;, envir= .GlobalEnv)
+save(testob, file= &quot;t.RData&quot;, envir= .GlobalEnv)
 
 eg&lt;-list(&quot;all&quot;,&quot;none&quot;,&quot;why&quot;,&quot;why not&quot;)
 save(eg, file= &quot;.RData&quot;, envir= .GlobalEnv)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>load()</li>
+<li>load()– reloads datasets that were saved via the save() function</li>
+</ol>
+<pre class="r"><code>load(&quot;t.Rdata&quot;)
+
+load(&quot;.RData&quot;)</code></pre>
+<ol start="3" style="list-style-type: decimal">
 <li>data()</li>
 <li>library()</li>
 <li>read.table()</li>

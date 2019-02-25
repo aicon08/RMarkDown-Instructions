@@ -89,7 +89,7 @@ save(eg, file= ".RData", envir= .GlobalEnv)
 
 2. load()-- reloads datasets that were saved via the save() function
 
-```{r}
+```{r, eval= FALSE}
 load("t.Rdata")
 
 load(".RData")
