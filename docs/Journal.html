@@ -415,6 +415,92 @@ div.tocify {
 </div>
 <div id="answer" class="section level5">
 <h5>Answer:</h5>
+<pre class="r"><code>checkboard&lt;-function(board)
+{
+  csum&lt;-colSums(board)
+  rsum&lt;-rowSums(board)
+  d1sum&lt;-sum(diag(board))
+  d2sum&lt;-board[3,1]+board[2,2]+board[1,3]
+  print(csum)
+  print(rsum)
+  print(d1sum)
+  print(d2sum)
+  for (i in csum)
+  {
+    if (i==3|i==6)
+    {
+      return(i/3)
+    }
+  }
+  for (i in rsum)
+  {
+    if (i==3|i==6)
+    {
+      return(i/3)
+    }
+  }
+  if (d1sum==3|d1sum==6)
+  {
+    return(d1sum/3)
+  }
+  if(d2sum==3|d2sum==6)
+  {
+    return(d2sum/3)
+  }
+    return(0)
+}
+
+board&lt;-matrix(0,nrow=3,ncol=3)
+#print(board)
+possmoves&lt;-list(c(1,1), c(1,2), c(1,3), 
+              c(2,1), c(2,2), c(2,3),
+              c(3,1), c(3,2), c(3,3))
+#print(possmoves)
+for (i in 1:4)
+{
+player1&lt;-sample(1:length(possmoves),1)
+player1_c&lt;-unlist(possmoves[player1])
+#print(player1)
+#print(unlist(player1)[1])
+board[player1_c[1],player1_c[2]]=1
+possmoves=possmoves[-player1]
+#print(board)
+
+res&lt;-checkboard(board)
+if (res!=0)
+{
+  break
+}
+
+player2&lt;-sample(1:length(possmoves),1)
+player2_c&lt;-unlist(possmoves[player2])
+#print(player2)
+#print(unlist(player1)[1])
+board[player2_c[1],player2_c[2]]=2
+possmoves=possmoves[-player2]
+print(board)
+
+res&lt;-checkboard(board)
+if (res!=0)
+{
+  break
+}
+}</code></pre>
+<pre><code>## [1] 0 0 1
+## [1] 1 0 0
+## [1] 0
+## [1] 1
+##      [,1] [,2] [,3]
+## [1,]    2    0    1
+## [2,]    0    0    0
+## [3,]    0    0    0
+## [1] 2 0 1
+## [1] 3 0 0
+## [1] 2
+## [1] 1</code></pre>
+<pre class="r"><code>print(res)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>#print(board)</code></pre>
 </div>
 </div>
 <div id="problem-10-99-bottles-of-beer-problem" class="section level2">
