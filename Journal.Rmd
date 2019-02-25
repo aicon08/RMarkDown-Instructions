@@ -88,7 +88,6 @@ print(doors)
 
 #doesn'tswitch
 
-chancewin<-c()
 win<-0
 tries<-1:200
 for (i in tries)
@@ -96,34 +95,30 @@ for (i in tries)
   curtains<-c(1,0,0)
   choice<-sample(curtains,1)
   #print(choice)
-  chancewin<-c(chancewin,choice)
-  #print(chancewin)
   win<-win+choice
   #print(win)
 }
-sum(chancewin)/length(chancewin)
-win/length(tries)
+win/200
 
 #switches
 switchs<-0
 chances<-1:200
-
 for(i in chances)
 {
   curtains<-c(1,0,0)
-  choice<-sample(curtains,3)
-  if(choice[2]==0)
+  choice<-sample(curtains,1)
+  if(choice==0)
   {
-    finchoice<-choice[1]+choice[3]
+    choice<-1
   }
   else
   {
-    finchoice<-choice[1]+choice[2]
+    choice=0
   }
-  switchs<-switchs+finchoice
+  switchs<-switchs+choice
 }
-print(switchs)
-switchs/length(chances)
+#print(switchs)
+switchs/200
 ```
 ## Problem 7: Dice-rolling simulations
 

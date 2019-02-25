@@ -1070,7 +1070,6 @@ print(doors)</code></pre>
 <h5>Answer:</h5>
 <pre class="r"><code>#doesn&#39;tswitch
 
-chancewin&lt;-c()
 win&lt;-0
 tries&lt;-1:200
 for (i in tries)
@@ -1078,37 +1077,31 @@ for (i in tries)
   curtains&lt;-c(1,0,0)
   choice&lt;-sample(curtains,1)
   #print(choice)
-  chancewin&lt;-c(chancewin,choice)
-  #print(chancewin)
   win&lt;-win+choice
   #print(win)
 }
-sum(chancewin)/length(chancewin)</code></pre>
-<pre><code>## [1] 0.315</code></pre>
-<pre class="r"><code>win/length(tries)</code></pre>
-<pre><code>## [1] 0.315</code></pre>
+win/200</code></pre>
+<pre><code>## [1] 0.37</code></pre>
 <pre class="r"><code>#switches
 switchs&lt;-0
 chances&lt;-1:200
-
 for(i in chances)
 {
   curtains&lt;-c(1,0,0)
-  choice&lt;-sample(curtains,3)
-  if(choice[2]==0)
+  choice&lt;-sample(curtains,1)
+  if(choice==0)
   {
-    finchoice&lt;-choice[1]+choice[3]
+    choice&lt;-1
   }
   else
   {
-    finchoice&lt;-choice[1]+choice[2]
+    choice=0
   }
-  switchs&lt;-switchs+finchoice
+  switchs&lt;-switchs+choice
 }
-print(switchs)</code></pre>
-<pre><code>## [1] 200</code></pre>
-<pre class="r"><code>switchs/length(chances)</code></pre>
-<pre><code>## [1] 1</code></pre>
+#print(switchs)
+switchs/200</code></pre>
+<pre><code>## [1] 0.65</code></pre>
 </div>
 </div>
 <div id="problem-7-dice-rolling-simulations" class="section level2">
