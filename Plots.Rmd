@@ -15,3 +15,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Plots
+
+## List of Figures to Reproduce
+
+### Mean Frequency of Risky Choices
+```{r}
+
+names<-rep(c("Dara","Rita","Liza", "Azalea", "Barbi","Rowena","Katie","Fiona"), each=2)
+mean_frequency<-rnorm(16,45,25)
+condition<-rep(c("Social Condition","Nonsocial Condition"),8)
+adversity<-rep(c("Adverse","Not_Adverse"),times=c(4,4))
+
+plot_df<-data.frame(names,mean_frequency,condition)
+
+print(plot_df)
+```
