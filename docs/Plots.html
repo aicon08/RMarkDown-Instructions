@@ -447,12 +447,15 @@ ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+ge
 <h3>Average Frequency of Social Risks</h3>
 <pre class="r"><code>avg_nonsoc&lt;-c(0,60)
 avg_soc&lt;-c(25,65)
-ad_avg_nonsoc&lt;-c(0,2,5,9,30,52,57,67)
-ad_avg_soc&lt;-c(12,48,4,41,48,33,57,59)
+ad_avg_nonsoc&lt;-c(0,0,2,5,9,30,52,57,67)
+ad_avg_soc&lt;-c(0,12,48,4,41,48,33,57,59)
 plot_da&lt;-data.frame(avg_nonsoc,avg_soc)
 plot_db&lt;-data.frame(ad_avg_nonsoc,ad_avg_soc)
 
-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=.5)+theme_classic()</code></pre>
+c&lt;-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=1)+theme_classic()
+
+
+c+labs(x=&quot;Average Frequency of Nonsocial Risk&quot;,y=&quot;Average Frequency of Social Risk&quot;)+scale_y_continuous(limits = c(0,70))</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 </div>
