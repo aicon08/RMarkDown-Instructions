@@ -23,7 +23,25 @@ library(ggplot2)
 library(ggrepel)
 ```
 
-### Mean Frequency of Risky Choices
+### Mean Frequency of Risky Choices (Random MF)
+```{r}
+
+names<-rep(c("Dara","Rita","Liza", "Azalea", "Barbi","Rowena","Katie","Fiona"), each=2)
+lnames<-c("","Dara","","Rita","","Liza", "","Azalea", "","Barbi","","Rowena","","Katie","","Fiona")
+mean_frequency<-rnorm(16,45,25)
+condition<-rep(c("Social Condition","Nonsocial Condition"),8)
+adversity<-rep(c("Adverse","Not_Adverse"),times=c(4,4))
+
+plot_df<-data.frame(names,mean_frequency,adversity,condition)
+
+#print(plot_df)
+
+ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = "nudge")+theme_classic()
+
+
+```
+
+### Mean Frequency of Risky Choices (Data Duplicat of Assignment Attempt)
 ```{r}
 
 names<-rep(c("Dara","Rita","Liza", "Azalea", "Barbi","Rowena","Katie","Fiona"), each=2)

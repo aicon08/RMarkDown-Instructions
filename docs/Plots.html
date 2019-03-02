@@ -413,8 +413,8 @@ div.tocify {
 <pre class="r"><code>#loading library to enable visualization of ggplot function use
 library(ggplot2)
 library(ggrepel)</code></pre>
-<div id="mean-frequency-of-risky-choices" class="section level3">
-<h3>Mean Frequency of Risky Choices</h3>
+<div id="mean-frequency-of-risky-choices-random-mf" class="section level3">
+<h3>Mean Frequency of Risky Choices (Random MF)</h3>
 <pre class="r"><code>names&lt;-rep(c(&quot;Dara&quot;,&quot;Rita&quot;,&quot;Liza&quot;, &quot;Azalea&quot;, &quot;Barbi&quot;,&quot;Rowena&quot;,&quot;Katie&quot;,&quot;Fiona&quot;), each=2)
 lnames&lt;-c(&quot;&quot;,&quot;Dara&quot;,&quot;&quot;,&quot;Rita&quot;,&quot;&quot;,&quot;Liza&quot;, &quot;&quot;,&quot;Azalea&quot;, &quot;&quot;,&quot;Barbi&quot;,&quot;&quot;,&quot;Rowena&quot;,&quot;&quot;,&quot;Katie&quot;,&quot;&quot;,&quot;Fiona&quot;)
 mean_frequency&lt;-rnorm(16,45,25)
@@ -427,6 +427,21 @@ plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
 
 ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="mean-frequency-of-risky-choices-data-duplicat-of-assignment-attempt" class="section level3">
+<h3>Mean Frequency of Risky Choices (Data Duplicat of Assignment Attempt)</h3>
+<pre class="r"><code>names&lt;-rep(c(&quot;Dara&quot;,&quot;Rita&quot;,&quot;Liza&quot;, &quot;Azalea&quot;, &quot;Barbi&quot;,&quot;Rowena&quot;,&quot;Katie&quot;,&quot;Fiona&quot;), each=2)
+lnames&lt;-c(&quot;&quot;,&quot;Dara&quot;,&quot;&quot;,&quot;Rita&quot;,&quot;&quot;,&quot;Liza&quot;, &quot;&quot;,&quot;Azalea&quot;, &quot;&quot;,&quot;Barbi&quot;,&quot;&quot;,&quot;Rowena&quot;,&quot;&quot;,&quot;Katie&quot;,&quot;&quot;,&quot;Fiona&quot;)
+mean_frequency&lt;-rnorm(16,45,25)
+condition&lt;-rep(c(&quot;Social Condition&quot;,&quot;Nonsocial Condition&quot;),8)
+adversity&lt;-rep(c(&quot;Adverse&quot;,&quot;Not_Adverse&quot;),times=c(4,4))
+
+plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
+
+#print(plot_df)
+
+ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()</code></pre>
+<p><img src="Plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
 
