@@ -6,7 +6,7 @@ output:
     toc_float: true
     collapsed: false
     number_sections: false
-    toc_depth: 2
+    toc_depth: 3
     #code_folding: hide
 ---
 
@@ -14,9 +14,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Plots
-
 ## List of Figures to Reproduce
+
+
+```{r}
+#loading library to enable visualization of ggplot function use
+library(ggplot2)
+```
 
 ### Mean Frequency of Risky Choices
 ```{r}
@@ -28,5 +32,9 @@ adversity<-rep(c("Adverse","Not_Adverse"),times=c(4,4))
 
 plot_df<-data.frame(names,mean_frequency,condition)
 
-print(plot_df)
+#print(plot_df)
+
+ggplot(plot_df, aes(condition,mean_frequency,group=names))+geom_line()+geom_text(label=names)+theme_classic()
+
+
 ```
