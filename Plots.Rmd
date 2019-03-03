@@ -115,8 +115,8 @@ evaluesc<-c(evaluesM,evaluesF)
 sex<-as.factor(rep(c("Male","Female"),each=100))
 plot_de<-data.frame(pvaluesc,evaluesc,sex)
 
-f<-ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))+theme_classic()
+f<-ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))+theme_classic()+coord_cartesian(xlim = c(1,7),ylim = c(0,100))
 
-f+theme(legend.position = "bottom")+labs(ylab="P(Target=Pilot)",xlab="Evaluation of Person X")
+f+theme(legend.position = "bottom")+labs(x="Evaluation of Person X",y="P(Target=Pilot)")+scale_x_continuous(breaks = pretty(1:7,n=7))+scale_y_continuous(breaks = pretty(1:100,n=10),labels = scales::percent_format(accuracy = 1))
 ```
 
