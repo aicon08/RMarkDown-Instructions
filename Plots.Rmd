@@ -92,9 +92,11 @@ ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "i
 nums<-runif(10,17,20)
 cat<-as.factor(rep(c("Fill","Empty"),each=5,len=10))
 base<-as.factor(rep(c("Wide Base","Wide Top"),each=3,len=10))
-plot_dd<-data.frame(nums,cat,base)
-f_mean<-rep(c(19.5,19.8,19.4,19.9,19.1),len=10)
-f_se<-rep(c(.1,.1,.1,.1,.1),len=10)
+f_mean<-rep(mean(nums),len=10)
+f_se<-rep(c(.1),len=10)
+plot_dd<-data.frame(nums,cat,base,f_mean,f_se)
 
-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "identity",position = "dodge")+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color="black")
+e<-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "identity",position = "dodge")+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color="black")+theme_classic()
+
+e+theme(legend.position = "top")+scale_y_continuous(breaks = pretty(17:20,n=7))
 ```
