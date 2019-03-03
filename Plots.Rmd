@@ -78,8 +78,10 @@ c+labs(x="Average Frequency of Nonsocial Risk",y="Average Frequency of Social Ri
 ### Cup Bar Graph (Wide Base/Wide Top)
 ```{r}
 nums<-runif(100,17,20)
-cat<-rep(c("Fill","Empty"),each=2,times=25)
-base<-rep(c("Wide Base","Wide Top"),each=20,len=100)
+cat<-as.factor(rep(c("Fill","Empty"),each=2,times=25))
+base<-as.factor(rep(c("Wide Base","Wide Top"),each=20,len=100))
 plot_dd<-data.frame(nums,cat,base)
+
+ggplot(plot_dd,aes(cat,nums,group=base))+geom_bar(stat = "identity",position = "dodge")
 ```
 
