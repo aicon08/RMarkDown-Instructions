@@ -480,7 +480,7 @@ ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = &q
 cat&lt;-as.factor(rep(c(&quot;Fill&quot;,&quot;Empty&quot;),each=5,len=10))
 base&lt;-as.factor(rep(c(&quot;Wide Base&quot;,&quot;Wide Top&quot;),each=3,len=10))
 f_mean&lt;-rep(mean(nums),len=10)
-f_se&lt;-rep(sd(nums),len=10)
+f_se&lt;-rep((sd(nums)^2),len=10)
 plot_dd&lt;-data.frame(nums,cat,base,f_mean,f_se)
 
 e&lt;-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = &quot;identity&quot;,position = &quot;dodge&quot;)+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color=&quot;black&quot;)+theme_classic()
