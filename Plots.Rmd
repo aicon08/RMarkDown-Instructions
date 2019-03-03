@@ -106,10 +106,16 @@ e+theme(legend.position = "top")+scale_y_continuous(breaks = pretty(17:20,n=7))
 
 ```{r}
 
-pvalues<-c(91,81,88,47)
-evalues<-c(1.5,1.5,7.5,7.5)
-sex<-rep(c("Male","Female"),2)
-plot_de<-data.frame(pvalues,evalues,sex)
+pvaluesM<-floor(runif(100,80,95))
+pvaluesF<-floor(runif(100,45,90))                
+evaluesM<-rep(1:7,len=100)
+evaluesF<-rep(1:7,len=100)
+pvaluesc<-c(pvaluesM,pvaluesF)
+evaluesc<-c(evaluesM,evaluesF)
+sex<-as.factor(rep(c("Male","Female"),each=100))
+plot_de<-data.frame(pvaluesc,evaluesc,sex)
+
+ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))
 
 ```
 

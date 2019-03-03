@@ -491,10 +491,18 @@ e+theme(legend.position = &quot;top&quot;)+scale_y_continuous(breaks = pretty(17
 </div>
 <div id="evaluation-of-person-x" class="section level3">
 <h3>Evaluation of Person X</h3>
-<pre class="r"><code>pvalues&lt;-c(91,81,88,47)
-evalues&lt;-c(1.5,1.5,7.5,7.5)
-sex&lt;-rep(c(&quot;Male&quot;,&quot;Female&quot;),2)
-plot_de&lt;-data.frame(pvalues,evalues,sex)</code></pre>
+<pre class="r"><code>pvaluesM&lt;-floor(runif(100,80,95))
+pvaluesF&lt;-floor(runif(100,45,90))                
+evaluesM&lt;-rep(1:7,len=100)
+evaluesF&lt;-rep(1:7,len=100)
+pvaluesc&lt;-c(pvaluesM,pvaluesF)
+evaluesc&lt;-c(evaluesM,evaluesF)
+sex&lt;-as.factor(rep(c(&quot;Male&quot;,&quot;Female&quot;),each=100))
+plot_de&lt;-data.frame(pvaluesc,evaluesc,sex)
+
+ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
 
