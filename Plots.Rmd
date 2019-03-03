@@ -89,6 +89,7 @@ ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "i
 
 ### Cup Bar Graph (Wide Base/Wide Top)--Error Bars Test
 ```{r}
+#I understand that the issue here is that the means are not being separately calculated for each subset--will attempt to correct this, but will try another chart type first.
 nums<-runif(10,17,20)
 cat<-as.factor(rep(c("Fill","Empty"),each=5,len=10))
 base<-as.factor(rep(c("Wide Base","Wide Top"),each=3,len=10))
@@ -100,3 +101,15 @@ e<-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat =
 
 e+theme(legend.position = "top")+scale_y_continuous(breaks = pretty(17:20,n=7))
 ```
+
+### Evaluation of Person X
+
+```{r}
+
+pvalues<-c(91,81,88,47)
+evalues<-c(1.5,1.5,7.5,7.5)
+sex<-rep(c("Male","Female"),2)
+plot_de<-data.frame(pvalues,evalues,sex)
+
+```
+

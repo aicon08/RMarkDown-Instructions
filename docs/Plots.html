@@ -476,7 +476,8 @@ ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = &q
 </div>
 <div id="cup-bar-graph-wide-basewide-toperror-bars-test" class="section level3">
 <h3>Cup Bar Graph (Wide Base/Wide Top)–Error Bars Test</h3>
-<pre class="r"><code>nums&lt;-runif(10,17,20)
+<pre class="r"><code>#I understand that the issue here is that the means are not being separately calculated for each subset--will attempt to correct this, but will try another chart type first.
+nums&lt;-runif(10,17,20)
 cat&lt;-as.factor(rep(c(&quot;Fill&quot;,&quot;Empty&quot;),each=5,len=10))
 base&lt;-as.factor(rep(c(&quot;Wide Base&quot;,&quot;Wide Top&quot;),each=3,len=10))
 f_mean&lt;-rep(mean(nums),len=10)
@@ -487,6 +488,13 @@ e&lt;-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(sta
 
 e+theme(legend.position = &quot;top&quot;)+scale_y_continuous(breaks = pretty(17:20,n=7))</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="evaluation-of-person-x" class="section level3">
+<h3>Evaluation of Person X</h3>
+<pre class="r"><code>pvalues&lt;-c(91,81,88,47)
+evalues&lt;-c(1.5,1.5,7.5,7.5)
+sex&lt;-rep(c(&quot;Male&quot;,&quot;Female&quot;),2)
+plot_de&lt;-data.frame(pvalues,evalues,sex)</code></pre>
 </div>
 </div>
 
