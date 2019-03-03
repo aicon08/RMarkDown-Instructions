@@ -38,7 +38,7 @@ plot_df<-data.frame(names,mean_frequency,adversity,condition)
 
 b<-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = "nudge")+theme_classic()
 
-b+labs(x="",y="Mean Frequency of Risky Choice")+theme(legend.position = "none")
+b+labs(x="",y="Mean Frequency of Risky Choice")+theme(legend.position = "none")+scale_y_continuous(breaks = pretty(0:70,n=7))
 ```
 
 ### Mean Frequency of Risky Choices (Data Duplicat of Assignment Attempt)
@@ -46,7 +46,7 @@ b+labs(x="",y="Mean Frequency of Risky Choice")+theme(legend.position = "none")
 
 names<-rep(c("Dara","Rita","Liza", "Azalea", "Barbi","Rowena","Katie","Fiona"), each=2)
 lnames<-c("","Dara","","Rita","","Liza", "","Azalea", "","Barbi","","Rowena","","Katie","","Fiona")
-mean_frequency<-rnorm(16,45,25)
+mean_frequency<-floor(runif(16,0,70))
 condition<-rep(c("Social Condition","Nonsocial Condition"),8)
 adversity<-rep(c("Adverse","Not_Adverse"),times=c(4,4))
 
@@ -56,7 +56,7 @@ plot_df<-data.frame(names,mean_frequency,adversity,condition)
 
 a<-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = "nudge")+theme_classic()
 
-a+labs(x="",y="Mean Frequency of Risky Choice")+theme(legend.position = "none")
+a+theme(legend.position = "none")+labs(x="",y="Mean Frequency of Risky Choice")+theme(legend.position = "none")+scale_y_continuous(breaks = pretty(0:70,n=7))
 ```
 
 ### Average Frequency of Social Risks

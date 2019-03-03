@@ -427,14 +427,14 @@ plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
 
 b&lt;-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()
 
-b+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)</code></pre>
+b+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)+scale_y_continuous(breaks = pretty(0:70,n=7))</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="mean-frequency-of-risky-choices-data-duplicat-of-assignment-attempt" class="section level3">
 <h3>Mean Frequency of Risky Choices (Data Duplicat of Assignment Attempt)</h3>
 <pre class="r"><code>names&lt;-rep(c(&quot;Dara&quot;,&quot;Rita&quot;,&quot;Liza&quot;, &quot;Azalea&quot;, &quot;Barbi&quot;,&quot;Rowena&quot;,&quot;Katie&quot;,&quot;Fiona&quot;), each=2)
 lnames&lt;-c(&quot;&quot;,&quot;Dara&quot;,&quot;&quot;,&quot;Rita&quot;,&quot;&quot;,&quot;Liza&quot;, &quot;&quot;,&quot;Azalea&quot;, &quot;&quot;,&quot;Barbi&quot;,&quot;&quot;,&quot;Rowena&quot;,&quot;&quot;,&quot;Katie&quot;,&quot;&quot;,&quot;Fiona&quot;)
-mean_frequency&lt;-rnorm(16,45,25)
+mean_frequency&lt;-floor(runif(16,0,70))
 condition&lt;-rep(c(&quot;Social Condition&quot;,&quot;Nonsocial Condition&quot;),8)
 adversity&lt;-rep(c(&quot;Adverse&quot;,&quot;Not_Adverse&quot;),times=c(4,4))
 
@@ -444,7 +444,7 @@ plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
 
 a&lt;-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()
 
-a+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)</code></pre>
+a+theme(legend.position = &quot;none&quot;)+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)+scale_y_continuous(breaks = pretty(0:70,n=7))</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="average-frequency-of-social-risks" class="section level3">
