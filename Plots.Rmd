@@ -81,7 +81,9 @@ nums<-runif(100,17,20)
 cat<-as.factor(rep(c("Fill","Empty"),each=15,len=100))
 base<-as.factor(rep(c("Wide Base","Wide Top"),each=45,len=100))
 plot_dd<-data.frame(nums,cat,base)
+f_mean<-rep(c(19.5,19.8,19.4,19.9,19.1),len=100)
+f_se<-rep(c(.1,.1,.1,.1,.1),len=100)
 
-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "identity",position = "dodge")+coord_cartesian(ylim = c(17,20))
+ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "identity",position = "dodge")+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color="black")
 ```
 

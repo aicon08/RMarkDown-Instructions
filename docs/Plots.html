@@ -468,8 +468,10 @@ c+labs(x=&quot;Average Frequency of Nonsocial Risk&quot;,y=&quot;Average Frequen
 cat&lt;-as.factor(rep(c(&quot;Fill&quot;,&quot;Empty&quot;),each=15,len=100))
 base&lt;-as.factor(rep(c(&quot;Wide Base&quot;,&quot;Wide Top&quot;),each=45,len=100))
 plot_dd&lt;-data.frame(nums,cat,base)
+f_mean&lt;-rep(c(19.5,19.8,19.4,19.9,19.1),len=100)
+f_se&lt;-rep(c(.1,.1,.1,.1,.1),len=100)
 
-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = &quot;identity&quot;,position = &quot;dodge&quot;)+coord_cartesian(ylim = c(17,20))</code></pre>
+ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = &quot;identity&quot;,position = &quot;dodge&quot;)+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color=&quot;black&quot;)</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
