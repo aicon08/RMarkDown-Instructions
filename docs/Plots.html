@@ -462,6 +462,13 @@ c&lt;-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(da
 c+labs(x=&quot;Average Frequency of Nonsocial Risk&quot;,y=&quot;Average Frequency of Social Risk&quot;)+scale_x_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))+scale_y_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
+<div id="cup-bar-graph-wide-basewide-top" class="section level3">
+<h3>Cup Bar Graph (Wide Base/Wide Top)</h3>
+<pre class="r"><code>nums&lt;-runif(100,17,20)
+cat&lt;-rep(c(&quot;Fill&quot;,&quot;Empty&quot;),each=2,times=25)
+base&lt;-rep(c(&quot;Wide Base&quot;,&quot;Wide Top&quot;),each=20,len=100)
+plot_dd&lt;-data.frame(nums,cat,base)</code></pre>
+</div>
 </div>
 
 
