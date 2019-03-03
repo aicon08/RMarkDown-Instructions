@@ -500,7 +500,9 @@ evaluesc&lt;-c(evaluesM,evaluesF)
 sex&lt;-as.factor(rep(c(&quot;Male&quot;,&quot;Female&quot;),each=100))
 plot_de&lt;-data.frame(pvaluesc,evaluesc,sex)
 
-ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))</code></pre>
+f&lt;-ggplot(plot_de)+geom_smooth(mapping=aes(evaluesc,pvaluesc,linetype=sex))+theme_classic()
+
+f+theme(legend.position = &quot;bottom&quot;)+labs(ylab=&quot;P(Target=Pilot)&quot;,xlab=&quot;Evaluation of Person X&quot;)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
