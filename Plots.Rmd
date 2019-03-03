@@ -93,7 +93,7 @@ nums<-runif(10,17,20)
 cat<-as.factor(rep(c("Fill","Empty"),each=5,len=10))
 base<-as.factor(rep(c("Wide Base","Wide Top"),each=3,len=10))
 f_mean<-rep(mean(nums),len=10)
-f_se<-rep(c(.1),len=10)
+f_se<-rep(sd(nums),len=10)
 plot_dd<-data.frame(nums,cat,base,f_mean,f_se)
 
 e<-ggplot(plot_dd,aes(cat,nums,group=base,color=base,fill=base))+geom_bar(stat = "identity",position = "dodge")+coord_cartesian(ylim = c(17,20))+geom_errorbar(aes(ymin=f_mean-f_se,ymax=f_mean+f_se),width=.2,position = position_dodge(width = 0.9),color="black")+theme_classic()
