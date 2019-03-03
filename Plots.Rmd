@@ -69,9 +69,9 @@ ad_avg_soc<-c(0,12,48,4,41,48,33,57,59)
 plot_da<-data.frame(avg_nonsoc,avg_soc)
 plot_db<-data.frame(ad_avg_nonsoc,ad_avg_soc)
 
-c<-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=1)+theme_classic()
+c<-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=1)+theme_classic()+coord_cartesian(xlim = c(0,70),ylim = c(0,70))
 
 
-c+labs(x="Average Frequency of Nonsocial Risk",y="Average Frequency of Social Risk")+scale_y_continuous(limits = c(0,70))
+c+labs(x="Average Frequency of Nonsocial Risk",y="Average Frequency of Social Risk")+scale_x_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))+scale_y_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))
 ```
 
