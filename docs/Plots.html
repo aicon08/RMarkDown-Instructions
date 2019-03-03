@@ -425,7 +425,9 @@ plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
 
 #print(plot_df)
 
-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()</code></pre>
+b&lt;-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()
+
+b+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="mean-frequency-of-risky-choices-data-duplicat-of-assignment-attempt" class="section level3">
@@ -440,7 +442,9 @@ plot_df&lt;-data.frame(names,mean_frequency,adversity,condition)
 
 #print(plot_df)
 
-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()</code></pre>
+a&lt;-ggplot(plot_df, aes(condition,mean_frequency,group=names,linetype=adversity))+geom_line()+geom_text_repel(label=lnames, position = &quot;nudge&quot;)+theme_classic()
+
+a+labs(x=&quot;&quot;,y=&quot;Mean Frequency of Risky Choice&quot;)+theme(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="Plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="average-frequency-of-social-risks" class="section level3">
@@ -452,7 +456,7 @@ ad_avg_soc&lt;-c(0,12,48,4,41,48,33,57,59)
 plot_da&lt;-data.frame(avg_nonsoc,avg_soc)
 plot_db&lt;-data.frame(ad_avg_nonsoc,ad_avg_soc)
 
-c&lt;-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=1)+theme_classic()+coord_cartesian(xlim = c(0,70),ylim = c(0,70))
+c&lt;-ggplot(plot_da)+geom_line(mapping = aes(avg_nonsoc,avg_soc))+geom_point(data =plot_db ,x=ad_avg_nonsoc,y=ad_avg_soc, size=1)+theme_classic()+coord_cartesian(xlim = c(0,70),ylim = c(0,70),clip = &quot;off&quot;)
 
 
 c+labs(x=&quot;Average Frequency of Nonsocial Risk&quot;,y=&quot;Average Frequency of Social Risk&quot;)+scale_x_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))+scale_y_continuous(expand = c(0,0),breaks = pretty(0:70,n=7))</code></pre>
