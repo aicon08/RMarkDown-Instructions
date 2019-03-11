@@ -294,7 +294,7 @@ $(document).ready(function () {
   <a href="Plots.html">Plots</a>
 </li>
 <li>
-  <a href="DataWrangleFlanker_student.html">Data Wrangling</a>
+  <a href="DataWrangleFlanker_student.html">Flanker Trial Data Wrangling</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -342,9 +342,13 @@ all_data&lt;-data.frame()
 # loop to add each file to the dataframe
 for(i in file_names){
   one_subject &lt;- fread(paste(&quot;FlankerData/&quot;,i, sep=&quot;&quot;))
+  #print(one_subject)
   names(one_subject) &lt;- the_headers
+  #print(names(one_subject))
   one_subject$subject &lt;- rep(i,dim(one_subject)[1])
+  #print(one_subject$subject)
   one_subject &lt;- cbind(one_subject, trial= 1:dim(one_subject)[1])
+  #print(one_subject)
   all_data &lt;- rbind(all_data,one_subject)
 }</code></pre>
 </div>
