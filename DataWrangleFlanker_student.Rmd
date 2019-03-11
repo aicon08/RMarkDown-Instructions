@@ -38,9 +38,13 @@ all_data<-data.frame()
 # loop to add each file to the dataframe
 for(i in file_names){
   one_subject <- fread(paste("FlankerData/",i, sep=""))
+  #print(one_subject)
   names(one_subject) <- the_headers
+  #print(names(one_subject))
   one_subject$subject <- rep(i,dim(one_subject)[1])
+  #print(one_subject$subject)
   one_subject <- cbind(one_subject, trial= 1:dim(one_subject)[1])
+  #print(one_subject)
   all_data <- rbind(all_data,one_subject)
 }
 
