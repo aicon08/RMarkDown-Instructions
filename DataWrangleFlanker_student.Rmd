@@ -56,7 +56,7 @@ for(i in file_names){
 
 A correct response occurs when the letter in the response column is the same as the letter in the middle position of item in the stimulus column. Create an accuracy column that codes whether the response was correct or incorrect on each trial (coding can be TRUE/FALSE, 0/1, or some other coding scheme that identifies correct vs incorrect)
 
-```{r}
+```{r eval=FALSE}
 
 stimulus_list<-strsplit(all_data$stimulus,split = "")
 center_letter<-c()
@@ -73,12 +73,12 @@ center_letter<-as.data.frame(center_letter)
 colnames(center_letter)<-"Center Letter"
 proj_tab<-all_data
 proj_tab<-cbind(proj_tab,center_letter)
-#print(proj_tab)
+print(proj_tab)
 
 
 ```
 
-```{r}
+```{r eval=FALSE}
 accuracy<-c()
 for (i in 1:dim(proj_tab)[1])
 {
@@ -98,6 +98,17 @@ for (i in 1:dim(proj_tab)[1])
 accuracy<-as.data.frame(accuracy)
 colnames(accuracy)<-"Accuracy"
 proj_tab<-cbind(proj_tab,accuracy)
+print(proj_tab)
+```
+
+```{r eval=FALSE}
+#fal_col<-as.data.frame(rep("FALSE",times=dim(proj_tab)[1]))
+#colnames(fal_col)<-"Accuracy"
+#proj_tab<-cbind(proj_tab,fal_col)
+#print(proj_tab)
+
+proj_tab<-proj_tab %>%
+  mutate(Accuracy=proj_tab$response==proj_tab$`Center Letter`)
 print(proj_tab)
 ```
 
