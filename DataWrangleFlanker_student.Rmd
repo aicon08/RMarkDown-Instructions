@@ -58,6 +58,17 @@ A correct response occurs when the letter in the response column is the same as 
 
 ```{r}
 
+stimulus_list<-strsplit(all_data$stimulus,split = "")
+
+#print(stimulus_list)
+
+for(i in length(stimulus_list))
+{
+  center_letter<-c()
+  current_letter<-unlist(stimulus_list[i])[2]
+  center_letter<-cbind(center_letter,current_letter)
+  print(center_letter)
+}
 
 ```
 

@@ -357,6 +357,19 @@ for(i in file_names){
 <div id="get-accuracy-for-each-trial" class="section level3">
 <h3>get accuracy for each trial</h3>
 <p>A correct response occurs when the letter in the response column is the same as the letter in the middle position of item in the stimulus column. Create an accuracy column that codes whether the response was correct or incorrect on each trial (coding can be TRUE/FALSE, 0/1, or some other coding scheme that identifies correct vs incorrect)</p>
+<pre class="r"><code>stimulus_list&lt;-strsplit(all_data$stimulus,split = &quot;&quot;)
+
+#print(stimulus_list)
+
+for(i in length(stimulus_list))
+{
+  center_letter&lt;-c()
+  current_letter&lt;-unlist(stimulus_list[i])[2]
+  center_letter&lt;-cbind(center_letter,current_letter)
+  print(center_letter)
+}</code></pre>
+<pre><code>##      current_letter
+## [1,] &quot;J&quot;</code></pre>
 </div>
 <div id="get-reaction-time-on-each-trial" class="section level3">
 <h3>Get Reaction time on each trial</h3>
