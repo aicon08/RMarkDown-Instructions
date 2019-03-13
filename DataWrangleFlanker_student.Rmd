@@ -73,8 +73,28 @@ center_letter<-as.data.frame(center_letter)
 colnames(center_letter)<-"Center Letter"
 proj_tab<-all_data
 proj_tab<-cbind(proj_tab,center_letter)
-print(proj_tab)
+#print(proj_tab)
 
+
+```
+
+```{r}
+accuracy<-c()
+for (i in 1:length(proj_tab))
+{
+  if(proj_tab$response[i]==proj_tab$`Center Letter`[i])
+  {
+    accuracy<-rbind(accuracy,T)
+    
+  }
+  else
+  {
+    accuracy<-rbind(accuracy,F)
+  }
+  
+}
+print(accuracy)
+print(length(accuracy))
 ```
 
 ### Get Reaction time on each trial
