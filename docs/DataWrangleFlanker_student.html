@@ -374,7 +374,7 @@ proj_tab&lt;-all_data
 proj_tab&lt;-cbind(proj_tab,center_letter)
 #print(proj_tab)</code></pre>
 <pre class="r"><code>accuracy&lt;-c()
-for (i in 1:length(proj_tab))
+for (i in 1:dim(proj_tab)[1])
 {
   if(proj_tab$response[i]==proj_tab$`Center Letter`[i])
   {
@@ -387,23 +387,48 @@ for (i in 1:length(proj_tab))
   }
   
 }
-print(accuracy)</code></pre>
-<pre><code>##    [,1]
-## T  TRUE
-## T  TRUE
-## T  TRUE
-## T  TRUE
-## T  TRUE
-## F FALSE
-## T  TRUE
-## T  TRUE
-## T  TRUE
-## T  TRUE
-## F FALSE
-## F FALSE
-## T  TRUE</code></pre>
-<pre class="r"><code>print(length(accuracy))</code></pre>
-<pre><code>## [1] 13</code></pre>
+#print(accuracy)
+#print(length(accuracy))
+accuracy&lt;-as.data.frame(accuracy)
+colnames(accuracy)&lt;-&quot;Accuracy&quot;
+proj_tab&lt;-cbind(proj_tab,accuracy)
+print(proj_tab)</code></pre>
+<pre><code>##       stimulus congruency proportion block condition dualtask unknown
+##    1:      DDD          C        HPC    B1        C1       ND       2
+##    2:      HHH          C        LPC    B1        C1       ND       2
+##    3:      SSS          C        HPC    B1        C1       ND       1
+##    4:      SSS          C        HPC    B1        C1       ND       2
+##    5:      DDD          C        HPC    B1        C1       ND       2
+##   ---                                                                
+## 4220:      DSD          I        HPC    B2        C1       ND       1
+## 4221:      HJH          I        LPC    B2        C1       ND       2
+## 4222:      JJJ          C        LPC    B2        C1       ND       1
+## 4223:      SSS          C        HPC    B2        C1       ND       1
+## 4224:      HJH          I        LPC    B2        C1       ND       1
+##       stimulus_onset response_time response subject trial Center Letter
+##    1:  7.062891e-312 7.062891e-312        d   1.txt     1             d
+##    2:  7.062891e-312 7.062891e-312        h   1.txt     2             h
+##    3:  7.062891e-312 7.062891e-312        s   1.txt     3             s
+##    4:  7.062891e-312 7.062891e-312        s   1.txt     4             s
+##    5:  7.062891e-312 7.062891e-312        d   1.txt     5             d
+##   ---                                                                  
+## 4220:  7.063761e-312 7.063761e-312        d   9.txt   188             s
+## 4221:  7.063761e-312 7.063761e-312        j   9.txt   189             j
+## 4222:  7.063761e-312 7.063761e-312        j   9.txt   190             j
+## 4223:  7.063761e-312 7.063761e-312        s   9.txt   191             s
+## 4224:  7.063761e-312 7.063761e-312        j   9.txt   192             j
+##       Accuracy
+##    1:     TRUE
+##    2:     TRUE
+##    3:     TRUE
+##    4:     TRUE
+##    5:     TRUE
+##   ---         
+## 4220:    FALSE
+## 4221:     TRUE
+## 4222:     TRUE
+## 4223:     TRUE
+## 4224:     TRUE</code></pre>
 </div>
 <div id="get-reaction-time-on-each-trial" class="section level3">
 <h3>Get Reaction time on each trial</h3>

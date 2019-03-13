@@ -80,7 +80,7 @@ proj_tab<-cbind(proj_tab,center_letter)
 
 ```{r}
 accuracy<-c()
-for (i in 1:length(proj_tab))
+for (i in 1:dim(proj_tab)[1])
 {
   if(proj_tab$response[i]==proj_tab$`Center Letter`[i])
   {
@@ -93,8 +93,12 @@ for (i in 1:length(proj_tab))
   }
   
 }
-print(accuracy)
-print(length(accuracy))
+#print(accuracy)
+#print(length(accuracy))
+accuracy<-as.data.frame(accuracy)
+colnames(accuracy)<-"Accuracy"
+proj_tab<-cbind(proj_tab,accuracy)
+print(proj_tab)
 ```
 
 ### Get Reaction time on each trial
