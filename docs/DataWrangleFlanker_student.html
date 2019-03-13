@@ -358,18 +358,45 @@ for(i in file_names){
 <h3>get accuracy for each trial</h3>
 <p>A correct response occurs when the letter in the response column is the same as the letter in the middle position of item in the stimulus column. Create an accuracy column that codes whether the response was correct or incorrect on each trial (coding can be TRUE/FALSE, 0/1, or some other coding scheme that identifies correct vs incorrect)</p>
 <pre class="r"><code>stimulus_list&lt;-strsplit(all_data$stimulus,split = &quot;&quot;)
-
+center_letter&lt;-c()
 #print(stimulus_list)
 
-for(i in length(stimulus_list))
+for(i in 1:length(stimulus_list))
 {
-  center_letter&lt;-c()
-  current_letter&lt;-unlist(stimulus_list[i])[2]
-  center_letter&lt;-cbind(center_letter,current_letter)
-  print(center_letter)
-}</code></pre>
-<pre><code>##      current_letter
-## [1,] &quot;J&quot;</code></pre>
+  #center_letter.append(unlist(stimulus_list[i])[2])
+  current_letter&lt;-tolower(unlist(stimulus_list[i])[2])
+  center_letter&lt;-rbind(center_letter,current_letter)
+}  
+#print(center_letter)
+center_letter&lt;-as.data.frame(center_letter)
+colnames(center_letter)&lt;-&quot;Center Letter&quot;
+proj_tab&lt;-all_data
+proj_tab&lt;-cbind(proj_tab,center_letter)
+print(proj_tab)</code></pre>
+<pre><code>##       stimulus congruency proportion block condition dualtask unknown
+##    1:      DDD          C        HPC    B1        C1       ND       2
+##    2:      HHH          C        LPC    B1        C1       ND       2
+##    3:      SSS          C        HPC    B1        C1       ND       1
+##    4:      SSS          C        HPC    B1        C1       ND       2
+##    5:      DDD          C        HPC    B1        C1       ND       2
+##   ---                                                                
+## 4220:      DSD          I        HPC    B2        C1       ND       1
+## 4221:      HJH          I        LPC    B2        C1       ND       2
+## 4222:      JJJ          C        LPC    B2        C1       ND       1
+## 4223:      SSS          C        HPC    B2        C1       ND       1
+## 4224:      HJH          I        LPC    B2        C1       ND       1
+##       stimulus_onset response_time response subject trial Center Letter
+##    1:  7.062891e-312 7.062891e-312        d   1.txt     1             d
+##    2:  7.062891e-312 7.062891e-312        h   1.txt     2             h
+##    3:  7.062891e-312 7.062891e-312        s   1.txt     3             s
+##    4:  7.062891e-312 7.062891e-312        s   1.txt     4             s
+##    5:  7.062891e-312 7.062891e-312        d   1.txt     5             d
+##   ---                                                                  
+## 4220:  7.063761e-312 7.063761e-312        d   9.txt   188             s
+## 4221:  7.063761e-312 7.063761e-312        j   9.txt   189             j
+## 4222:  7.063761e-312 7.063761e-312        j   9.txt   190             j
+## 4223:  7.063761e-312 7.063761e-312        s   9.txt   191             s
+## 4224:  7.063761e-312 7.063761e-312        j   9.txt   192             j</code></pre>
 </div>
 <div id="get-reaction-time-on-each-trial" class="section level3">
 <h3>Get Reaction time on each trial</h3>
