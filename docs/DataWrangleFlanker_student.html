@@ -373,7 +373,8 @@ colnames(center_letter)&lt;-&quot;Center Letter&quot;
 proj_tab&lt;-all_data
 proj_tab&lt;-cbind(proj_tab,center_letter)
 print(proj_tab)</code></pre>
-<pre class="r"><code>accuracy&lt;-c()
+<pre class="r"><code>#creation of accuracy tab without dplyr
+accuracy&lt;-c()
 for (i in 1:dim(proj_tab)[1])
 {
   if(proj_tab$response[i]==proj_tab$`Center Letter`[i])
@@ -398,6 +399,8 @@ print(proj_tab)</code></pre>
 #proj_tab&lt;-cbind(proj_tab,fal_col)
 #print(proj_tab)
 
+#creation of accuracy tab with dplyr
+
 proj_tab&lt;-proj_tab %&gt;%
   mutate(Accuracy=proj_tab$response==proj_tab$`Center Letter`)
 print(proj_tab)</code></pre>
@@ -406,6 +409,8 @@ print(proj_tab)</code></pre>
 <h3>Get Reaction time on each trial</h3>
 <p>The stimulus_onset column gives a computer timestamp in milliseconds indicating when the stimulus was presented. The response_time column is a timestamp in milliseconds for the response. The difference between the two (response_time - stimulus_onset) is the reaction time in milliseconds. Add a column that calculates the reaction time on each trial.</p>
 <p><strong>tip:</strong> notice that the numbers in response_time and stimulus_onset have the class integer64. Unfortunately, ggplot does not play nice with integers in this format. you will need to make sure your RT column is in the class integer or numeric.</p>
+<pre class="r"><code>Reaction_T&lt;-proj_tab %&gt;%
+  mutate(RT=as.numeric(proj_tab$response_time-proj_tab$stimulus_onset))</code></pre>
 </div>
 </div>
 <div id="checks" class="section level2">
