@@ -134,7 +134,23 @@ head(Reaction_T)
 Check how many trials each subject completed in the congruent and incongruent conditions, the mean accuracy for each subject in each congruency condition, and the mean RT for each subject in each congruency condition.
 
 ```{r}
+cong_trial<-Reaction_T %>%
+  filter(congruency == "C")
+  
 
+incong_trial<-Reaction_T %>%
+  filter(congruency == "I")
+  
+
+#for (i in dim(cong_trial)[1] )
+{
+  
+}
+  
+
+#test<- starwars %>%
+  #filter(species=="Droid")
+  
 
 ```
 

@@ -473,6 +473,21 @@ head(Reaction_T)</code></pre>
 <div id="checks" class="section level2">
 <h2>Checks</h2>
 <p>Check how many trials each subject completed in the congruent and incongruent conditions, the mean accuracy for each subject in each congruency condition, and the mean RT for each subject in each congruency condition.</p>
+<pre class="r"><code>cong_trial&lt;-Reaction_T %&gt;%
+  filter(congruency == &quot;C&quot;)
+  
+
+incong_trial&lt;-Reaction_T %&gt;%
+  filter(congruency == &quot;I&quot;)
+  
+
+#for (i in dim(cong_trial)[1] )
+{
+  
+}</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>#test&lt;- starwars %&gt;%
+  #filter(species==&quot;Droid&quot;)</code></pre>
 <div id="exclusion" class="section level3">
 <h3>Exclusion</h3>
 <p>It is common to exclude Reaction times that are very slow. There are many methods and procedures for excluding outlying reaction times. To keep it simple, exclude all RTs that are longer than 2000 ms</p>
