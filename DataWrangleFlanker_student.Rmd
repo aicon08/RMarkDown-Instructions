@@ -56,7 +56,7 @@ for(i in file_names){
 
 A correct response occurs when the letter in the response column is the same as the letter in the middle position of item in the stimulus column. Create an accuracy column that codes whether the response was correct or incorrect on each trial (coding can be TRUE/FALSE, 0/1, or some other coding scheme that identifies correct vs incorrect)
 
-```{r eval=FALSE}
+```{r }
 
 stimulus_list<-strsplit(all_data$stimulus,split = "")
 center_letter<-c()
@@ -73,7 +73,7 @@ center_letter<-as.data.frame(center_letter)
 colnames(center_letter)<-"Center Letter"
 proj_tab<-all_data
 proj_tab<-cbind(proj_tab,center_letter)
-print(proj_tab)
+head(proj_tab)
 
 
 ```
@@ -99,10 +99,10 @@ for (i in 1:dim(proj_tab)[1])
 accuracy<-as.data.frame(accuracy)
 colnames(accuracy)<-"Accuracy"
 proj_tab<-cbind(proj_tab,accuracy)
-print(proj_tab)
+head(proj_tab)
 ```
 
-```{r eval=FALSE}
+```{r }
 #fal_col<-as.data.frame(rep("FALSE",times=dim(proj_tab)[1]))
 #colnames(fal_col)<-"Accuracy"
 #proj_tab<-cbind(proj_tab,fal_col)
@@ -112,7 +112,7 @@ print(proj_tab)
 
 proj_tab<-proj_tab %>%
   mutate(Accuracy=proj_tab$response==proj_tab$`Center Letter`)
-print(proj_tab)
+head(proj_tab)
 ```
 
 ### Get Reaction time on each trial
@@ -121,11 +121,11 @@ The stimulus_onset column gives a computer timestamp in milliseconds indicating 
 
 **tip:** notice that the numbers in response_time and stimulus_onset have the class integer64. Unfortunately, ggplot does not play nice with integers in this format. you will need to make sure your RT column is in the class integer or numeric.
 
-```{r eval=FALSE}
+```{r }
 
 Reaction_T<-proj_tab %>%
   mutate(RT=as.numeric(proj_tab$response_time-proj_tab$stimulus_onset))
-
+head(Reaction_T)
 ```
 
 

@@ -372,7 +372,21 @@ center_letter&lt;-as.data.frame(center_letter)
 colnames(center_letter)&lt;-&quot;Center Letter&quot;
 proj_tab&lt;-all_data
 proj_tab&lt;-cbind(proj_tab,center_letter)
-print(proj_tab)</code></pre>
+head(proj_tab)</code></pre>
+<pre><code>##    stimulus congruency proportion block condition dualtask unknown
+## 1:      DDD          C        HPC    B1        C1       ND       2
+## 2:      HHH          C        LPC    B1        C1       ND       2
+## 3:      SSS          C        HPC    B1        C1       ND       1
+## 4:      SSS          C        HPC    B1        C1       ND       2
+## 5:      DDD          C        HPC    B1        C1       ND       2
+## 6:      HJH          I        LPC    B1        C1       ND       1
+##    stimulus_onset response_time response subject trial Center Letter
+## 1:  7.062891e-312 7.062891e-312        d   1.txt     1             d
+## 2:  7.062891e-312 7.062891e-312        h   1.txt     2             h
+## 3:  7.062891e-312 7.062891e-312        s   1.txt     3             s
+## 4:  7.062891e-312 7.062891e-312        s   1.txt     4             s
+## 5:  7.062891e-312 7.062891e-312        d   1.txt     5             d
+## 6:  7.062891e-312 7.062891e-312        h   1.txt     6             j</code></pre>
 <pre class="r"><code>#creation of accuracy tab without dplyr
 accuracy&lt;-c()
 for (i in 1:dim(proj_tab)[1])
@@ -393,7 +407,7 @@ for (i in 1:dim(proj_tab)[1])
 accuracy&lt;-as.data.frame(accuracy)
 colnames(accuracy)&lt;-&quot;Accuracy&quot;
 proj_tab&lt;-cbind(proj_tab,accuracy)
-print(proj_tab)</code></pre>
+head(proj_tab)</code></pre>
 <pre class="r"><code>#fal_col&lt;-as.data.frame(rep(&quot;FALSE&quot;,times=dim(proj_tab)[1]))
 #colnames(fal_col)&lt;-&quot;Accuracy&quot;
 #proj_tab&lt;-cbind(proj_tab,fal_col)
@@ -403,14 +417,57 @@ print(proj_tab)</code></pre>
 
 proj_tab&lt;-proj_tab %&gt;%
   mutate(Accuracy=proj_tab$response==proj_tab$`Center Letter`)
-print(proj_tab)</code></pre>
+head(proj_tab)</code></pre>
+<pre><code>##   stimulus congruency proportion block condition dualtask unknown
+## 1      DDD          C        HPC    B1        C1       ND       2
+## 2      HHH          C        LPC    B1        C1       ND       2
+## 3      SSS          C        HPC    B1        C1       ND       1
+## 4      SSS          C        HPC    B1        C1       ND       2
+## 5      DDD          C        HPC    B1        C1       ND       2
+## 6      HJH          I        LPC    B1        C1       ND       1
+##   stimulus_onset response_time response subject trial Center Letter
+## 1  7.062891e-312 7.062891e-312        d   1.txt     1             d
+## 2  7.062891e-312 7.062891e-312        h   1.txt     2             h
+## 3  7.062891e-312 7.062891e-312        s   1.txt     3             s
+## 4  7.062891e-312 7.062891e-312        s   1.txt     4             s
+## 5  7.062891e-312 7.062891e-312        d   1.txt     5             d
+## 6  7.062891e-312 7.062891e-312        h   1.txt     6             j
+##   Accuracy
+## 1     TRUE
+## 2     TRUE
+## 3     TRUE
+## 4     TRUE
+## 5     TRUE
+## 6    FALSE</code></pre>
 </div>
 <div id="get-reaction-time-on-each-trial" class="section level3">
 <h3>Get Reaction time on each trial</h3>
 <p>The stimulus_onset column gives a computer timestamp in milliseconds indicating when the stimulus was presented. The response_time column is a timestamp in milliseconds for the response. The difference between the two (response_time - stimulus_onset) is the reaction time in milliseconds. Add a column that calculates the reaction time on each trial.</p>
 <p><strong>tip:</strong> notice that the numbers in response_time and stimulus_onset have the class integer64. Unfortunately, ggplot does not play nice with integers in this format. you will need to make sure your RT column is in the class integer or numeric.</p>
 <pre class="r"><code>Reaction_T&lt;-proj_tab %&gt;%
-  mutate(RT=as.numeric(proj_tab$response_time-proj_tab$stimulus_onset))</code></pre>
+  mutate(RT=as.numeric(proj_tab$response_time-proj_tab$stimulus_onset))
+head(Reaction_T)</code></pre>
+<pre><code>##   stimulus congruency proportion block condition dualtask unknown
+## 1      DDD          C        HPC    B1        C1       ND       2
+## 2      HHH          C        LPC    B1        C1       ND       2
+## 3      SSS          C        HPC    B1        C1       ND       1
+## 4      SSS          C        HPC    B1        C1       ND       2
+## 5      DDD          C        HPC    B1        C1       ND       2
+## 6      HJH          I        LPC    B1        C1       ND       1
+##   stimulus_onset response_time response subject trial Center Letter
+## 1  7.062891e-312 7.062891e-312        d   1.txt     1             d
+## 2  7.062891e-312 7.062891e-312        h   1.txt     2             h
+## 3  7.062891e-312 7.062891e-312        s   1.txt     3             s
+## 4  7.062891e-312 7.062891e-312        s   1.txt     4             s
+## 5  7.062891e-312 7.062891e-312        d   1.txt     5             d
+## 6  7.062891e-312 7.062891e-312        h   1.txt     6             j
+##   Accuracy            RT
+## 1     TRUE 4.120507e-321
+## 2     TRUE 2.371515e-321
+## 3     TRUE 2.613607e-321
+## 4     TRUE 3.013800e-321
+## 5     TRUE 2.381396e-321
+## 6    FALSE 2.331990e-321</code></pre>
 </div>
 </div>
 <div id="checks" class="section level2">
