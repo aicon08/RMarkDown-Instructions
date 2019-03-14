@@ -137,17 +137,15 @@ Check how many trials each subject completed in the congruent and incongruent co
 cong_trial<-Reaction_T %>%
   filter(congruency == "C")
   
-
 incong_trial<-Reaction_T %>%
   filter(congruency == "I")
-  
 
-#for (i in dim(cong_trial)[1] )
-{
-  
-}
-  
+test<- cong_trial %>%
+    group_by(subject)
+    #mutate()
 
+
+#for (i in dim(cong_trial)[1]){}
 #test<- starwars %>%
   #filter(species=="Droid")
   
@@ -161,6 +159,9 @@ incong_trial<-Reaction_T %>%
 It is common to exclude Reaction times that are very slow. There are many methods and procedures for excluding outlying reaction times. To keep it simple, exclude all RTs that are longer than 2000 ms
 
 ```{r}
+
+limited_dataset<-Reaction_T %>%
+  filter(RT<9.0e-321)
 
 ```
 

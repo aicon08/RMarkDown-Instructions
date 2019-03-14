@@ -476,21 +476,22 @@ head(Reaction_T)</code></pre>
 <pre class="r"><code>cong_trial&lt;-Reaction_T %&gt;%
   filter(congruency == &quot;C&quot;)
   
-
 incong_trial&lt;-Reaction_T %&gt;%
   filter(congruency == &quot;I&quot;)
-  
 
-#for (i in dim(cong_trial)[1] )
-{
-  
-}</code></pre>
-<pre><code>## NULL</code></pre>
-<pre class="r"><code>#test&lt;- starwars %&gt;%
+test&lt;- cong_trial %&gt;%
+    group_by(subject)
+    #mutate()
+
+
+#for (i in dim(cong_trial)[1]){}
+#test&lt;- starwars %&gt;%
   #filter(species==&quot;Droid&quot;)</code></pre>
 <div id="exclusion" class="section level3">
 <h3>Exclusion</h3>
 <p>It is common to exclude Reaction times that are very slow. There are many methods and procedures for excluding outlying reaction times. To keep it simple, exclude all RTs that are longer than 2000 ms</p>
+<pre class="r"><code>limited_dataset&lt;-Reaction_T %&gt;%
+  filter(RT&lt;9.0e-321)</code></pre>
 </div>
 </div>
 <div id="analysis" class="section level2">
