@@ -393,12 +393,12 @@ for (i in 1:dim(proj_tab)[1])
 {
   if(proj_tab$response[i]==proj_tab$`Center Letter`[i])
   {
-    accuracy&lt;-rbind(accuracy,T)
+    accuracy&lt;-rbind(accuracy,1)
     
   }
   else
   {
-    accuracy&lt;-rbind(accuracy,F)
+    accuracy&lt;-rbind(accuracy,0)
   }
   
 }
@@ -408,6 +408,27 @@ accuracy&lt;-as.data.frame(accuracy)
 colnames(accuracy)&lt;-&quot;Accuracy&quot;
 proj_tab&lt;-cbind(proj_tab,accuracy)
 head(proj_tab)</code></pre>
+<pre><code>##    stimulus congruency proportion block condition dualtask unknown
+## 1:      DDD          C        HPC    B1        C1       ND       2
+## 2:      HHH          C        LPC    B1        C1       ND       2
+## 3:      SSS          C        HPC    B1        C1       ND       1
+## 4:      SSS          C        HPC    B1        C1       ND       2
+## 5:      DDD          C        HPC    B1        C1       ND       2
+## 6:      HJH          I        LPC    B1        C1       ND       1
+##    stimulus_onset response_time response subject trial Center Letter
+## 1:  7.062891e-312 7.062891e-312        d   1.txt     1             d
+## 2:  7.062891e-312 7.062891e-312        h   1.txt     2             h
+## 3:  7.062891e-312 7.062891e-312        s   1.txt     3             s
+## 4:  7.062891e-312 7.062891e-312        s   1.txt     4             s
+## 5:  7.062891e-312 7.062891e-312        d   1.txt     5             d
+## 6:  7.062891e-312 7.062891e-312        h   1.txt     6             j
+##    Accuracy
+## 1:        1
+## 2:        1
+## 3:        1
+## 4:        1
+## 5:        1
+## 6:        0</code></pre>
 <pre class="r"><code>#fal_col&lt;-as.data.frame(rep(&quot;FALSE&quot;,times=dim(proj_tab)[1]))
 #colnames(fal_col)&lt;-&quot;Accuracy&quot;
 #proj_tab&lt;-cbind(proj_tab,fal_col)
@@ -418,27 +439,6 @@ head(proj_tab)</code></pre>
 proj_tab&lt;-proj_tab %&gt;%
   mutate(Accuracy=proj_tab$response==proj_tab$`Center Letter`)
 head(proj_tab)</code></pre>
-<pre><code>##   stimulus congruency proportion block condition dualtask unknown
-## 1      DDD          C        HPC    B1        C1       ND       2
-## 2      HHH          C        LPC    B1        C1       ND       2
-## 3      SSS          C        HPC    B1        C1       ND       1
-## 4      SSS          C        HPC    B1        C1       ND       2
-## 5      DDD          C        HPC    B1        C1       ND       2
-## 6      HJH          I        LPC    B1        C1       ND       1
-##   stimulus_onset response_time response subject trial Center Letter
-## 1  7.062891e-312 7.062891e-312        d   1.txt     1             d
-## 2  7.062891e-312 7.062891e-312        h   1.txt     2             h
-## 3  7.062891e-312 7.062891e-312        s   1.txt     3             s
-## 4  7.062891e-312 7.062891e-312        s   1.txt     4             s
-## 5  7.062891e-312 7.062891e-312        d   1.txt     5             d
-## 6  7.062891e-312 7.062891e-312        h   1.txt     6             j
-##   Accuracy
-## 1     TRUE
-## 2     TRUE
-## 3     TRUE
-## 4     TRUE
-## 5     TRUE
-## 6    FALSE</code></pre>
 </div>
 <div id="get-reaction-time-on-each-trial" class="section level3">
 <h3>Get Reaction time on each trial</h3>
@@ -462,29 +462,50 @@ head(Reaction_T)</code></pre>
 ## 5  7.062891e-312 7.062891e-312        d   1.txt     5             d
 ## 6  7.062891e-312 7.062891e-312        h   1.txt     6             j
 ##   Accuracy            RT
-## 1     TRUE 4.120507e-321
-## 2     TRUE 2.371515e-321
-## 3     TRUE 2.613607e-321
-## 4     TRUE 3.013800e-321
-## 5     TRUE 2.381396e-321
-## 6    FALSE 2.331990e-321</code></pre>
+## 1        1 4.120507e-321
+## 2        1 2.371515e-321
+## 3        1 2.613607e-321
+## 4        1 3.013800e-321
+## 5        1 2.381396e-321
+## 6        0 2.331990e-321</code></pre>
 </div>
 </div>
 <div id="checks" class="section level2">
 <h2>Checks</h2>
 <p>Check how many trials each subject completed in the congruent and incongruent conditions, the mean accuracy for each subject in each congruency condition, and the mean RT for each subject in each congruency condition.</p>
-<pre class="r"><code>cong_trial&lt;-Reaction_T %&gt;%
-  filter(congruency == &quot;C&quot;)
+<pre class="r"><code>#cong_trial&lt;-Reaction_T %&gt;%
+  #filter(congruency == &quot;C&quot;)
   
-incong_trial&lt;-Reaction_T %&gt;%
-  filter(congruency == &quot;I&quot;)
+#incong_trial&lt;-Reaction_T %&gt;%
+  #filter(congruency == &quot;I&quot;)
 
-test&lt;- cong_trial %&gt;%
-    group_by(subject)
+#test&lt;- cong_trial %&gt;%
+    #group_by(subject)
     #mutate()
 
+check_cong&lt;- Reaction_T %&gt;%
+  group_by(congruency,subject) %&gt;%
+  summarise(trial_count=length(block),
+            mean_acc=mean(Accuracy),
+            mean_RT=mean(RT))
 
-#for (i in dim(cong_trial)[1]){}
+print(check_cong)</code></pre>
+<pre><code>## # A tibble: 44 x 5
+## # Groups:   congruency [2]
+##    congruency subject trial_count mean_acc   mean_RT
+##    &lt;chr&gt;      &lt;chr&gt;         &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1 C          1.txt            96    0.917 2.73e-321
+##  2 C          10.txt           96    0.948 5.32e-321
+##  3 C          11.txt           96    0.938 3.50e-321
+##  4 C          12.txt           96    0.927 3.08e-321
+##  5 C          13.txt           96    0.896 2.70e-321
+##  6 C          14.txt           96    0.969 3.56e-321
+##  7 C          15.txt           96    0.990 3.13e-321
+##  8 C          16.txt           96    0.958 2.84e-321
+##  9 C          17.txt           96    0.969 3.13e-321
+## 10 C          18.txt           96    1     3.97e-321
+## # … with 34 more rows</code></pre>
+<pre class="r"><code>#for (i in dim(cong_trial)[1]){}
 #test&lt;- starwars %&gt;%
   #filter(species==&quot;Droid&quot;)</code></pre>
 <div id="exclusion" class="section level3">
