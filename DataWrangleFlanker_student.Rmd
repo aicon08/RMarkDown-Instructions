@@ -159,11 +159,6 @@ print(check_cong)
   
 
 ```
-```{r}
-
-
-```
-
 
 
 ### Exclusion
@@ -185,14 +180,26 @@ limited_dataset<-Reaction_T %>%
 
 ```{r}
 
+RT_anal<- limited_dataset %>%
+  filter(Accuracy==1) %>%
+  group_by(congruency,subject) %>%
+  summarise(mean_RT=mean(RT))
+
+print(RT_anal)
+
 ```
 
 2. Get the overall mean RTs and SEMs (standard errors of the mean) for the congruent and incongruent condition. Make a table and graph.
 
 ```{r}
 
+Overall_RT_SEM<- limited_dataset %>%
+  group_by(congruency) %>%
+  summarise(trial_count=length(block),
+            mean_RT=mean(RT),
+            se_RT=sd(RT)/sqrt(length(block)-1))
   
-  
+print(Overall_RT_SEM)
 ```
 
 3. Compute the flanker effect for each subject, taking the difference between their mean incongruent and congruent RT. Then plot the mean flanker effect, along with the SEM of the mean flanker effect
@@ -201,9 +208,20 @@ limited_dataset<-Reaction_T %>%
 
 ```{r}
 
+flank_sub<- Reaction_T %>%
+  group_by(subject,congruency) %>%
+  summarise(mean_RT=mean(RT))
+
+#print(flank_sub)
+
+cong_flanksub<-flank_sub %>%
+  filter(congruency=="C")
+incong_flanksub<-flank_sub %>%
+  filter(congruency=="I")
+
+new_flanksub<-merge(cong_flanksub,incong_flanksub,by="subject")
   
 ```
-
 
 ### Exploratory analysis
 

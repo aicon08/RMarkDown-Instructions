@@ -520,11 +520,60 @@ print(check_cong)</code></pre>
 <div id="reaction-time-analysis" class="section level3">
 <h3>Reaction Time analysis</h3>
 <ol style="list-style-type: decimal">
-<li><p>Get the individual subject mean reaction times for <strong>correct</strong> congruent and incongruent trials.</p></li>
-<li><p>Get the overall mean RTs and SEMs (standard errors of the mean) for the congruent and incongruent condition. Make a table and graph.</p></li>
-<li><p>Compute the flanker effect for each subject, taking the difference between their mean incongruent and congruent RT. Then plot the mean flanker effect, along with the SEM of the mean flanker effect</p></li>
+<li>Get the individual subject mean reaction times for <strong>correct</strong> congruent and incongruent trials.</li>
+</ol>
+<pre class="r"><code>RT_anal&lt;- limited_dataset %&gt;%
+  filter(Accuracy==1) %&gt;%
+  group_by(congruency,subject) %&gt;%
+  summarise(mean_RT=mean(RT))
+
+print(RT_anal)</code></pre>
+<pre><code>## # A tibble: 44 x 3
+## # Groups:   congruency [2]
+##    congruency subject   mean_RT
+##    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;
+##  1 C          1.txt   2.76e-321
+##  2 C          10.txt  4.25e-321
+##  3 C          11.txt  3.53e-321
+##  4 C          12.txt  3.03e-321
+##  5 C          13.txt  2.63e-321
+##  6 C          14.txt  3.27e-321
+##  7 C          15.txt  3.13e-321
+##  8 C          16.txt  2.83e-321
+##  9 C          17.txt  3.07e-321
+## 10 C          18.txt  3.97e-321
+## # … with 34 more rows</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Get the overall mean RTs and SEMs (standard errors of the mean) for the congruent and incongruent condition. Make a table and graph.</li>
+</ol>
+<pre class="r"><code>Overall_RT_SEM&lt;- limited_dataset %&gt;%
+  group_by(congruency) %&gt;%
+  summarise(trial_count=length(block),
+            mean_RT=mean(RT),
+            se_RT=sd(RT)/sqrt(length(block)-1))
+  
+print(Overall_RT_SEM)</code></pre>
+<pre><code>## # A tibble: 2 x 4
+##   congruency trial_count   mean_RT se_RT
+##   &lt;chr&gt;            &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 C                 2083 3.61e-321     0
+## 2 I                 2066 3.78e-321     0</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Compute the flanker effect for each subject, taking the difference between their mean incongruent and congruent RT. Then plot the mean flanker effect, along with the SEM of the mean flanker effect</li>
 </ol>
 <p><strong>tip:</strong> Not all problems have an easy solution in dplyr, this is one them. You may have an easier time using logical indexing of the dataframe to solve this part.</p>
+<pre class="r"><code>flank_sub&lt;- Reaction_T %&gt;%
+  group_by(subject,congruency) %&gt;%
+  summarise(mean_RT=mean(RT))
+
+#print(flank_sub)
+
+cong_flanksub&lt;-flank_sub %&gt;%
+  filter(congruency==&quot;C&quot;)
+incong_flanksub&lt;-flank_sub %&gt;%
+  filter(congruency==&quot;I&quot;)
+
+new_flanksub&lt;-merge(cong_flanksub,incong_flanksub,by=&quot;subject&quot;)</code></pre>
 </div>
 <div id="exploratory-analysis" class="section level3">
 <h3>Exploratory analysis</h3>
