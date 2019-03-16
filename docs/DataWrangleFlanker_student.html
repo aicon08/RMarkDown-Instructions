@@ -593,8 +593,11 @@ head(new_flanksub)</code></pre>
 ## 4 -2.223295e-322
 ## 5 -3.409053e-322
 ## 6 -2.914987e-322</code></pre>
-<pre class="r"><code>ggplot(new_flanksub,aes(congruency.x,mean_RT.x),aes(congruency.y,mean_RT.y))+geom_bar(stat = &quot;identity&quot;,position = &quot;dodge&quot;)</code></pre>
-<p><img src="DataWrangleFlanker_student_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>y&lt;-c(min(new_flanksub$diff),max(new_flanksub$diff))
+
+a&lt;-ggplot(new_flanksub,aes(diff,y))+geom_bar(stat=&quot;identity&quot;, position = &quot;dodge&quot;)
+
+#print(a)</code></pre>
 </div>
 <div id="exploratory-analysis" class="section level3">
 <h3>Exploratory analysis</h3>
