@@ -208,7 +208,7 @@ print(Overall_RT_SEM)
 
 ```{r}
 
-flank_sub<- Reaction_T %>%
+flank_sub<- limited_dataset %>%
   group_by(subject,congruency) %>%
   summarise(mean_RT=mean(RT))
 
@@ -220,6 +220,14 @@ incong_flanksub<-flank_sub %>%
   filter(congruency=="I")
 
 new_flanksub<-merge(cong_flanksub,incong_flanksub,by="subject")
+
+new_flanksub<-new_flanksub %>%
+  mutate(diff=mean_RT.x-mean_RT.y)
+
+head(new_flanksub)
+
+ggplot(new_flanksub,aes(congruency.x,mean_RT.x),aes(congruency.y,mean_RT.y))+geom_bar(stat = "identity",position = "dodge")
+
   
 ```
 

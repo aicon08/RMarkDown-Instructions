@@ -562,7 +562,7 @@ print(Overall_RT_SEM)</code></pre>
 <li>Compute the flanker effect for each subject, taking the difference between their mean incongruent and congruent RT. Then plot the mean flanker effect, along with the SEM of the mean flanker effect</li>
 </ol>
 <p><strong>tip:</strong> Not all problems have an easy solution in dplyr, this is one them. You may have an easier time using logical indexing of the dataframe to solve this part.</p>
-<pre class="r"><code>flank_sub&lt;- Reaction_T %&gt;%
+<pre class="r"><code>flank_sub&lt;- limited_dataset %&gt;%
   group_by(subject,congruency) %&gt;%
   summarise(mean_RT=mean(RT))
 
@@ -573,7 +573,28 @@ cong_flanksub&lt;-flank_sub %&gt;%
 incong_flanksub&lt;-flank_sub %&gt;%
   filter(congruency==&quot;I&quot;)
 
-new_flanksub&lt;-merge(cong_flanksub,incong_flanksub,by=&quot;subject&quot;)</code></pre>
+new_flanksub&lt;-merge(cong_flanksub,incong_flanksub,by=&quot;subject&quot;)
+
+new_flanksub&lt;-new_flanksub %&gt;%
+  mutate(diff=mean_RT.x-mean_RT.y)
+
+head(new_flanksub)</code></pre>
+<pre><code>##   subject congruency.x     mean_RT.x congruency.y     mean_RT.y
+## 1   1.txt            C 2.722302e-321            I 2.712420e-321
+## 2  10.txt            C 4.258846e-321            I 4.703505e-321
+## 3  11.txt            C 3.497985e-321            I 4.036516e-321
+## 4  12.txt            C 3.078029e-321            I 3.300359e-321
+## 5  13.txt            C 2.618548e-321            I 2.959453e-321
+## 6  14.txt            C 3.270715e-321            I 3.562213e-321
+##             diff
+## 1  9.881313e-324
+## 2 -4.446591e-322
+## 3 -5.385316e-322
+## 4 -2.223295e-322
+## 5 -3.409053e-322
+## 6 -2.914987e-322</code></pre>
+<pre class="r"><code>ggplot(new_flanksub,aes(congruency.x,mean_RT.x),aes(congruency.y,mean_RT.y))+geom_bar(stat = &quot;identity&quot;,position = &quot;dodge&quot;)</code></pre>
+<p><img src="DataWrangleFlanker_student_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="exploratory-analysis" class="section level3">
 <h3>Exploratory analysis</h3>
