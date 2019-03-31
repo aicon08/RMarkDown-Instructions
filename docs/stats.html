@@ -416,7 +416,7 @@ div.tocify {
 
 <div id="null-distribution-of-mean-differences" class="section level1">
 <h1>Null Distribution of Mean Differences</h1>
-<p>Assume your samples come from a normal distribution with mean =0, sd =1. (use rnorm) Assume sample size for each sample is n =10 (e.g., rnorm(10,0,1)) Create the null-distribution: Run a simulation 10,000 times that finds the difference between means of sample A and B. You should have a vector of 10,000 difference scores Assume an alpha criteria of p&lt;.05 for a directional test. What is the critical value for a positive mean difference? In other words, how large must a positive mean difference be in order to occur less than 5% of the time under the null? Assume an alpha criteria of p&lt;.05 for a non-directional test. What is the critical value for the absolute value of the mean difference. In other words, how large must the absolute value of the mean difference be in order to occur less than 5% of the time under the null?</p>
+<p>Assume an alpha criteria of p&lt;.05 for a directional test. What is the critical value for a positive mean difference? In other words, how large must a positive mean difference be in order to occur less than 5% of the time under the null? Assume an alpha criteria of p&lt;.05 for a non-directional test. What is the critical value for the absolute value of the mean difference. In other words, how large must the absolute value of the mean difference be in order to occur less than 5% of the time under the null?</p>
 <pre class="r"><code>#Normal Distribution M=0, SD=1
 
 #rnorm(10,0,1)
@@ -445,19 +445,33 @@ hist(testb)</code></pre>
 <p>Create a simulated t-distribution for the null hypothesis with df=9. Here, the model situation involves taking samples of size n=10 from a normal distribution. The t-value is computed for each sample (sample mean - 0)/SEM. The process is repeated 10,000 times, and each t-value is saved. The resulting 10,000 t-values are the simulated t-distribution.</p>
 <p>Using the simulated t-distribution, find the probability of t(9) &gt;= .5, 1, 1.5, 2, and 2.5</p>
 <p>Compare the two sets of probabilities to show that the difference is small. What happens to the difference if the simulation is repeated fewer times (e.g., 100) vs. more times (e.g., 100,000)</p>
+<pre class="r"><code>ttest&lt;-function(t,df)
+{
+  return((1-pt(q=abs(t),df=df))*2)
+}
+ttest(.5,9)</code></pre>
+<pre><code>## [1] 0.6290713</code></pre>
+<pre class="r"><code>ttest(1,9)</code></pre>
+<pre><code>## [1] 0.3434364</code></pre>
+<pre class="r"><code>ttest(1.5,9)</code></pre>
+<pre><code>## [1] 0.1678507</code></pre>
+<pre class="r"><code>ttest(2,9)</code></pre>
+<pre><code>## [1] 0.07655282</code></pre>
+<pre class="r"><code>ttest(2.5,9)</code></pre>
+<pre><code>## [1] 0.03386183</code></pre>
 <pre class="r"><code>Scores &lt;- rnorm(10, mean = 0, sd = 1)
 t.test(Scores,mu=0)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  Scores
-## t = -0.94412, df = 9, p-value = 0.3698
+## t = 1.1167, df = 9, p-value = 0.293
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -1.1221516  0.4612962
+##  -0.2674168  0.7888633
 ## sample estimates:
-##  mean of x 
-## -0.3304277</code></pre>
+## mean of x 
+## 0.2607233</code></pre>
 </div>
 <div id="correlation" class="section level1">
 <h1>Correlation</h1>

@@ -12,9 +12,6 @@ output:
 
 # Null Distribution of Mean Differences
 
-Assume your samples come from a normal distribution with mean =0, sd =1. (use rnorm)
-Assume sample size for each sample is n =10 (e.g., rnorm(10,0,1))
-Create the null-distribution: Run a simulation 10,000 times that finds the difference between means of sample A and B. You should have a vector of 10,000 difference scores
 Assume an alpha criteria of p<.05 for a directional test. What is the critical value for a positive mean difference? In other words, how large must a positive mean difference be in order to occur less than 5% of the time under the null?
 Assume an alpha criteria of p<.05 for a non-directional test. What is the critical value for the absolute value of the mean difference. In other words, how large must the absolute value of the mean difference be in order to occur less than 5% of the time under the null?
 
@@ -54,6 +51,20 @@ Create a simulated t-distribution for the null hypothesis with df=9. Here, the m
 Using the simulated t-distribution, find the probability of t(9) >= .5, 1, 1.5, 2, and 2.5
 
 Compare the two sets of probabilities to show that the difference is small. What happens to the difference if the simulation is repeated fewer times (e.g., 100) vs. more times (e.g., 100,000)
+
+```{r}
+ttest<-function(t,df)
+{
+  return((1-pt(q=abs(t),df=df))*2)
+}
+ttest(.5,9)
+ttest(1,9)
+ttest(1.5,9)
+ttest(2,9)
+ttest(2.5,9)
+
+```
+
 ```{r}
 Scores <- rnorm(10, mean = 0, sd = 1)
 t.test(Scores,mu=0)
