@@ -11,7 +11,7 @@
 
 
 
-<title>stats</title>
+<title>Common Inferential Tests</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -264,6 +267,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -311,15 +409,62 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">stats</h1>
+<h1 class="title toc-ignore">Common Inferential Tests</h1>
 
 </div>
 
 
+<div id="null-distribution-of-mean-differences" class="section level1">
+<h1>Null Distribution of Mean Differences</h1>
+<p>Assume your samples come from a normal distribution with mean =0, sd =1. (use rnorm) Assume sample size for each sample is n =10 (e.g., rnorm(10,0,1)) Create the null-distribution: Run a simulation 10,000 times that finds the difference between means of sample A and B. You should have a vector of 10,000 difference scores Assume an alpha criteria of p&lt;.05 for a directional test. What is the critical value for a positive mean difference? In other words, how large must a positive mean difference be in order to occur less than 5% of the time under the null? Assume an alpha criteria of p&lt;.05 for a non-directional test. What is the critical value for the absolute value of the mean difference. In other words, how large must the absolute value of the mean difference be in order to occur less than 5% of the time under the null?</p>
+<pre class="r"><code>#Normal Distribution M=0, SD=1
+
+#rnorm(10,0,1)
+
+dist&lt;- c()
+
+for (i in 1:10000)
+{
+  a&lt;-rnorm(10,0,1)
+  b&lt;-rnorm(10,0,1)
+  
+  dist&lt;-c(dist,mean(b)-mean(a))
+}
+
+hist(dist)</code></pre>
+<p><img src="stats_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>plot(density(dist))</code></pre>
+<p><img src="stats_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code>testb &lt;- replicate(10000,t.test(rnorm(10,0,1),rnorm(10,0,1))$statistic)
+hist(testb)</code></pre>
+<p><img src="stats_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="t-distribution" class="section level1">
+<h1>T-Distribution</h1>
+<p>For example, what are the probabilities of t(9) &gt;= .5, 1, 1.5, 2, and 2.5? These p-values can be obtained using the qt() function.</p>
+<p>Create a simulated t-distribution for the null hypothesis with df=9. Here, the model situation involves taking samples of size n=10 from a normal distribution. The t-value is computed for each sample (sample mean - 0)/SEM. The process is repeated 10,000 times, and each t-value is saved. The resulting 10,000 t-values are the simulated t-distribution.</p>
+<p>Using the simulated t-distribution, find the probability of t(9) &gt;= .5, 1, 1.5, 2, and 2.5</p>
+<p>Compare the two sets of probabilities to show that the difference is small. What happens to the difference if the simulation is repeated fewer times (e.g., 100) vs. more times (e.g., 100,000)</p>
+</div>
+<div id="correlation" class="section level1">
+<h1>Correlation</h1>
+<p>Generate the distribution of correlations (Pearson r values) that could be obtained by chance (simulate 10,000 times)</p>
+<p>Find the critical value such that the absolute value of the correlation occurs less than 5% of the time by chance.</p>
+<p>Find the critical value when the sample-size is increased to 100</p>
+</div>
+<div id="f-values" class="section level1">
+<h1>F-Values</h1>
+<p>There are three groups of different subjects. The means for each subject in each group are below. Calculate the F-value for the main effect of group.</p>
+</div>
+<div id="f-simulation" class="section level1">
+<h1>F Simulation</h1>
+<p>There are three groups of different subjects. The means for each subject in each group are below. Calculate the F-value for the main effect of group.</p>
+</div>
 
 
 
-
+</div>
+</div>
 
 </div>
 
