@@ -14,4 +14,6 @@ navbar:
       href: Plots.html
     - text: "Flanker Trial Data Wrangling"
       href: DataWrangleFlanker_student.html
+    - text: "Statistics Tests"
+      href: stats.html
 output_dir: "docs"
