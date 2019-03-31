@@ -55,7 +55,8 @@ Using the simulated t-distribution, find the probability of t(9) >= .5, 1, 1.5, 
 
 Compare the two sets of probabilities to show that the difference is small. What happens to the difference if the simulation is repeated fewer times (e.g., 100) vs. more times (e.g., 100,000)
 ```{r}
-
+Scores <- rnorm(10, mean = 0, sd = 1)
+t.test(Scores,mu=0)
 ```
 
 # Correlation
