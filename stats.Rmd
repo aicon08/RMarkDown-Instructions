@@ -44,8 +44,6 @@ hist(testb)
 
 # T-Distribution
 
-For example, what are the probabilities of t(9) >= .5, 1, 1.5, 2, and 2.5? These p-values can be obtained using the qt() function.
-
 Create a simulated t-distribution for the null hypothesis with df=9. Here, the model situation involves taking samples of size n=10 from a normal distribution. The t-value is computed for each sample (sample mean - 0)/SEM. The process is repeated 10,000 times, and each t-value is saved. The resulting 10,000 t-values are the simulated t-distribution.
 
 Using the simulated t-distribution, find the probability of t(9) >= .5, 1, 1.5, 2, and 2.5
@@ -70,6 +68,11 @@ Scores <- rnorm(10, mean = 0, sd = 1)
 t.test(Scores,mu=0)
 ```
 
+```{r}
+testc<-replicate(10000,t.test(rnorm(10,0,1),rnorm(10,0,1))$statistic)
+hist(testc)
+```
+
 # Correlation
 
 Generate the distribution of correlations (Pearson r values) that could be obtained by chance (simulate 10,000 times)
@@ -78,7 +81,21 @@ Find the critical value such that the absolute value of the correlation occurs l
 
 Find the critical value when the sample-size is increased to 100
 ```{r}
+x<-rnorm(10,0,1)
+y<-rnorm(10,0,1)
 
+cor(x,y)
+```
+```{r}
+cordis<- c()
+for(i in 1:10000)
+{
+    e<- rnorm(10,0,1)
+    f<- rnorm(10,0,1)
+    cordis<- c(cordis, cor(e,f))
+}
+
+    hist(cordis)
 ```
 
 # F-Values

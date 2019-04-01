@@ -441,7 +441,6 @@ hist(testb)</code></pre>
 </div>
 <div id="t-distribution" class="section level1">
 <h1>T-Distribution</h1>
-<p>For example, what are the probabilities of t(9) &gt;= .5, 1, 1.5, 2, and 2.5? These p-values can be obtained using the qt() function.</p>
 <p>Create a simulated t-distribution for the null hypothesis with df=9. Here, the model situation involves taking samples of size n=10 from a normal distribution. The t-value is computed for each sample (sample mean - 0)/SEM. The process is repeated 10,000 times, and each t-value is saved. The resulting 10,000 t-values are the simulated t-distribution.</p>
 <p>Using the simulated t-distribution, find the probability of t(9) &gt;= .5, 1, 1.5, 2, and 2.5</p>
 <p>Compare the two sets of probabilities to show that the difference is small. What happens to the difference if the simulation is repeated fewer times (e.g., 100) vs. more times (e.g., 100,000)</p>
@@ -465,19 +464,37 @@ t.test(Scores,mu=0)</code></pre>
 ##  One Sample t-test
 ## 
 ## data:  Scores
-## t = 1.1167, df = 9, p-value = 0.293
+## t = -1.6923, df = 9, p-value = 0.1248
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2674168  0.7888633
+##  -1.344586  0.193779
 ## sample estimates:
-## mean of x 
-## 0.2607233</code></pre>
+##  mean of x 
+## -0.5754034</code></pre>
+<pre class="r"><code>testc&lt;-replicate(10000,t.test(rnorm(10,0,1),rnorm(10,0,1))$statistic)
+hist(testc)</code></pre>
+<p><img src="stats_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="correlation" class="section level1">
 <h1>Correlation</h1>
 <p>Generate the distribution of correlations (Pearson r values) that could be obtained by chance (simulate 10,000 times)</p>
 <p>Find the critical value such that the absolute value of the correlation occurs less than 5% of the time by chance.</p>
 <p>Find the critical value when the sample-size is increased to 100</p>
+<pre class="r"><code>x&lt;-rnorm(10,0,1)
+y&lt;-rnorm(10,0,1)
+
+cor(x,y)</code></pre>
+<pre><code>## [1] 0.267427</code></pre>
+<pre class="r"><code>cordis&lt;- c()
+for(i in 1:10000)
+{
+    e&lt;- rnorm(10,0,1)
+    f&lt;- rnorm(10,0,1)
+    cordis&lt;- c(cordis, cor(e,f))
+}
+
+    hist(cordis)</code></pre>
+<p><img src="stats_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="f-values" class="section level1">
 <h1>F-Values</h1>
