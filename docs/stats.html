@@ -464,13 +464,13 @@ t.test(Scores,mu=0)</code></pre>
 ##  One Sample t-test
 ## 
 ## data:  Scores
-## t = -1.6923, df = 9, p-value = 0.1248
+## t = -0.58895, df = 9, p-value = 0.5704
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -1.344586  0.193779
+##  -1.0902528  0.6398289
 ## sample estimates:
 ##  mean of x 
-## -0.5754034</code></pre>
+## -0.2252119</code></pre>
 <pre class="r"><code>testc&lt;-replicate(10000,t.test(rnorm(10,0,1),rnorm(10,0,1))$statistic)
 hist(testc)</code></pre>
 <p><img src="stats_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
@@ -484,7 +484,7 @@ hist(testc)</code></pre>
 y&lt;-rnorm(10,0,1)
 
 cor(x,y)</code></pre>
-<pre><code>## [1] 0.267427</code></pre>
+<pre><code>## [1] -0.2059626</code></pre>
 <pre class="r"><code>cordis&lt;- c()
 for(i in 1:10000)
 {
@@ -499,6 +499,66 @@ for(i in 1:10000)
 <div id="f-values" class="section level1">
 <h1>F-Values</h1>
 <p>There are three groups of different subjects. The means for each subject in each group are below. Calculate the F-value for the main effect of group.</p>
+<pre class="r"><code>E &lt;- c(1,2,3,4)
+Y &lt;- c(3,4,5,6)
+G &lt;- c(5,6,7,8)
+Subjects &lt;- 1:4
+Factor1 &lt;- rep(rep(c(&quot;E&quot;,&quot;Y&quot;,&quot;G&quot;), each = 4), 10)
+Factor2 &lt;- rep(rep(c(&quot;1&quot;,&quot;2&quot;), 2), 10)
+meanvalue_subject &lt;- c(E,Y,G)
+
+all_data &lt;- data.frame(Subjects = as.factor(Subjects),
+                       meanvalue_subject, E,Y,G)
+    aov_output &lt;- aov(meanvalue_subject~E*Y*G, all_data)
+
+library(xtable)
+knitr::kable(xtable(summary(aov_output)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E</td>
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">3.75</td>
+<td align="right">0.0888262</td>
+</tr>
+<tr class="even">
+<td>E:Y</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>E:Y:G</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">8</td>
+<td align="right">32</td>
+<td align="right">4</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="f-simulation" class="section level1">
 <h1>F Simulation</h1>
