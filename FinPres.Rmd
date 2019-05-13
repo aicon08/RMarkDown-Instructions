@@ -1,0 +1,234 @@
+---
+title: "Converting Data into Long Form for Repeated Measures ANOVA"
+subtitle: "using Reshape2 and Melt"
+author: "Aira Contreras"
+date: "MAY-06-2019"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      theme: blood
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Introduction
+--
+
+### Repeated Measures ANOVA
+
+--
+
+- Analysis of Variance for related groups
+
+--
+
+- Data will often have multiple measures for 1 participant across different timepoints
+
+--
+
+### Data Formats Possible
+
+--
+
+- Wide Format --> Each indiviudal subject is contained per row, with the variable measures displayed in individual columns
+
+--
+
+- Long Format --> Each individual measure is contained per column, with the same subject appearing in multiple rows
+
+---
+
+# Data Preparation is Key
+
+### Most classes teach data prep as part of a statisitcs course
+
+--
+
+Important Factors we are taught to review:
+
+--
+
+1. Kurtosis (Is it flat?!)
+
+--
+
+1. Skew (To the left now y'all!)
+
+--
+
+1. Missingness (where'd it go?)
+
+--
+
+1. Outliers (That number reads as what?!)
+
+--
+
+### We should add another: DATA FORMAT!
+---
+
+background-image: url(https://i.stack.imgur.com/WmasX.png)
+
+class: center, bottom
+
+# Wide Data Format into Long Data Format
+---
+
+# Packages Available to Reshape Data
+
+
+
+.pull-left[
+
+Reshape2
+
+1. reshape()
+
+1. melt()
+
+1. reshapelong()
+
+1. reshapewide()
+
+]
+
+
+
+.pull-right[
+
+Reshape
+
+1. cast()
+
+1. reshape1()
+
+]
+
+
+Tools exists to ensure that we have the most flexibility to arrange and re-arrange our data seamlessly*
+
+
+
+.footnote[[*]- seamlessly is probably a BIT of a hyperbole. It takes some work.]
+---
+
+# "Shaping" Data - 1
+
+--
+
+### Resphape 2--Data into Wide Format 
+
+--
+
+Reshape2 package helps users with the transformation of data from either the long format to the wide format or the wide format to the long format.
+
+1. reshape(dataframe, dependent variable names, independent variable name, variable in long format differentiates multiple records from the same group, wide format or long format)
+
+
+```{r}
+
+wide <- reshape(Indometh, v.names = "conc", idvar = "Subject",
+                timevar = "time", direction = "wide")
+
+wide
+
+```
+
+---
+
+# "Shaping" Data - 2
+
+--
+
+### Reshape2-- Data into Long Format 
+
+--
+2. reshape(dataframe, dependent variable names, independent variable name, variable in long format differentiates multiple records from the same group, wide format or long format)
+
+```{r}
+state.x77 <- as.data.frame(state.x77)
+long <- reshape(state.x77, idvar = "state", ids = row.names(state.x77),
+                times = names(state.x77), timevar = "Characteristic",
+                varying = list(names(state.x77)), direction = "long")
+
+long[,-1]
+```
+---
+background-size: contain 
+
+# "Shaping" Data - 3 pt 1
+
+--
+
+### Melt-- data into long format 
+
+--
+
+3. melt(dataframe, Subject Name Code Column, Variable Column Names in list form)
+
+```{r} 
+library(reshape2)
+library(dplyr)
+```
+---
+# "Shaping" Data - 3 pt 2
+
+```{r}
+SubjectID<-1:50
+df<-data.frame(SubjectID,state.x77)
+example<-melt(df,id="SubjectID")
+ex<-example%>%filter(SubjectID==1)
+ex
+```
+---
+class: inverse, middle, center
+
+# Why Change Formats?
+
+---
+
+# Software Analysis
+
+Packages like EZANOVA or even the summary_aov function in R require that the data be set up in certain ways prior to analyzing
+
+
+.pull-left[
+EZANOVA
+1. Requires Data to be in "Long" Format
+
+1. Will still run on Wide Format but gives incorrect Results
+
+1. Does not give an input data error
+
+]
+
+.pull-right[
+Summary_AOV
+1. Requires Data to be in "Long" Format
+
+1. Will still run on Wide Format but gives incorrect Results
+
+1. Does not give an input data error
+]
+
+.footnote[ It really is important to understand what data input is needed prior to pushing data through the programs.]
+
+---
+class: center,top
+# References 
+
+Martin, K. G. (n.d.). The Wide and Long Data Format for Repeated Measures Data. Retrieved May 03, 2019, from https://www.theanalysisfactor.com/wide-and-long-data/
+
+Kabacoff, R. I. (n.d.). Qhick-R: Reshape. Retrieved May 03, 2019, from https://www.statmethods.net/management/reshape.html
+
+Wickham, H. (2012). reshape2: Flexibly reshape data: a reboot of the reshape package. R package version, 1(2).
+
+---
+
+class: center, top
+
+background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0BswSVTJNlUv4Wugt-nw1-YF8zDThdDYRqWyphBAaiIRRijM3bZT4DFw)
+
+# Questions?
