@@ -397,6 +397,9 @@ div.tocify {
 <li>
   <a href="stats.html">Statistics Tests</a>
 </li>
+<li>
+  <a href="FinPres.html">Final Presentation</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -464,13 +467,13 @@ t.test(Scores,mu=0)</code></pre>
 ##  One Sample t-test
 ## 
 ## data:  Scores
-## t = -0.58895, df = 9, p-value = 0.5704
+## t = -0.7435, df = 9, p-value = 0.4761
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0902528  0.6398289
+##  -0.7836370  0.3959455
 ## sample estimates:
 ##  mean of x 
-## -0.2252119</code></pre>
+## -0.1938458</code></pre>
 <pre class="r"><code>testc&lt;-replicate(10000,t.test(rnorm(10,0,1),rnorm(10,0,1))$statistic)
 hist(testc)</code></pre>
 <p><img src="stats_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
@@ -484,7 +487,7 @@ hist(testc)</code></pre>
 y&lt;-rnorm(10,0,1)
 
 cor(x,y)</code></pre>
-<pre><code>## [1] -0.2059626</code></pre>
+<pre><code>## [1] 0.734032</code></pre>
 <pre class="r"><code>cordis&lt;- c()
 for(i in 1:10000)
 {

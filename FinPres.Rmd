@@ -158,7 +158,7 @@ long[,-1]
 ---
 background-size: contain 
 
-# "Shaping" Data - 3 pt 1
+# "Shaping" Data - 3 
 
 --
 
@@ -168,13 +168,10 @@ background-size: contain
 
 3. melt(dataframe, Subject Name Code Column, Variable Column Names in list form)
 
-```{r} 
+```{r, message=FALSE} 
 library(reshape2)
 library(dplyr)
 ```
----
-# "Shaping" Data - 3 pt 2
-
 ```{r}
 SubjectID<-1:50
 df<-data.frame(SubjectID,state.x77)
