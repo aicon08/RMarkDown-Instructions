@@ -18,4 +18,6 @@ navbar:
       href: stats.html
     - text: "Final Presentation"
       href: FinPres.html
+    - text: "Final Paper--Guide"
+      href: FinPap.html
 output_dir: "docs"

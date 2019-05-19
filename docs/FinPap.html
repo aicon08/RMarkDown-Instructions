@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>FinPap.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">MyLabJournal</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Journal.html">Journal</a>
+</li>
+<li>
+  <a href="Dictionary.html">Dictionary</a>
+</li>
+<li>
+  <a href="Links.html">Links</a>
+</li>
+<li>
+  <a href="Plots.html">Plots</a>
+</li>
+<li>
+  <a href="DataWrangleFlanker_student.html">Flanker Trial Data Wrangling</a>
+</li>
+<li>
+  <a href="stats.html">Statistics Tests</a>
+</li>
+<li>
+  <a href="FinPres.html">Final Presentation</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="data-shaping-using-reshape2-and-stats-packages" class="section level1">
+<h1>Data Shaping using Reshape(2) and Stats Packages</h1>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Research data sets can be overwrought with information that may not be of interest to the researcher; on one hand it could be that the researcher is using data sets from experiments or studies that were not conducted directly by them and therefore needs to carefully choose variables, or perhaps there were too many variables collected during the study and a particular analysis only requires a select few. It is also possible that the analysis software is only able to process the data if it is fed into the input in a certain manner. Whatever the limitations are, data shaping is a key step in data analysis and there are many tools available to assist with this task. R programmers have acknowledged the need for CRAN approved packages that aid with this endeavor and since 2003 have created packages such as Reshape to help others. This section will focus on the functionalities of the Reshape2 package distributed in 2017 by Hadley Wickham and the Stats 2001 by the R Core Team.</p>
+</div>
+<div id="different-data-inputs" class="section level2">
+<h2>Different Data Inputs</h2>
+<p>Data input formats, for the purposes of this exercise, exist mainly in 2 forms: <em>wide format</em> or <em>long format</em>. It is important to understand what format the data is in prior to re-shaping or performing an analysis. This will allow you to correctly reshape the data prior to analysis or input into the software correctly. The next subsections describe the differences between the 2 formats and provide a visual example of the formats.</p>
+<div id="long-format" class="section level3">
+<h3>Long Format</h3>
+<p>Data is described to be in <strong>long format</strong> when each row represents 1 time point or variable. For example, if an experiment collected information on state population, state mortality, and state income then the output would be the state (e.g. California) and the variable (e.g. Income) in the first row, the state (e.g. California) and and the variable (e.g. Mortality) in the next row, and so forth until a full data output is created.</p>
+<pre class="r"><code>#install.packages(&quot;reshape2&quot;)
+#install.packages(&quot;dplyr&quot;)
+library(reshape2)
+library(dplyr)
+
+SubjectID&lt;-1:50
+df&lt;- data.frame(SubjectID,state.x77)
+example&lt;-melt(df,id=&quot;SubjectID&quot;)
+ex&lt;-example%&gt;%filter(SubjectID==1)
+ex</code></pre>
+<pre><code>##   SubjectID   variable    value
+## 1         1 Population  3615.00
+## 2         1     Income  3624.00
+## 3         1 Illiteracy     2.10
+## 4         1   Life.Exp    69.05
+## 5         1     Murder    15.10
+## 6         1    HS.Grad    41.30
+## 7         1      Frost    20.00
+## 8         1       Area 50708.00</code></pre>
+<p>This example demonstrates that all of the rows, which measure a distinct variable with its corresponding value, belong to 1 subject (i.e. 1). This format is useful for analysis of repeated measures experiments in which the same subject may be asked about different benchmarks during the course of the experiment.</p>
+</div>
+<div id="wide-format" class="section level3">
+<h3>Wide Format</h3>
+<p>Data is described to be in <strong>wide format</strong> when each row represents all of the individual variable responses for 1 subjected, separated by column. For example, if an experiment collected information on subjected responses at different intervals then the output would be the subject (e.g. 1) and the responses at each interval in separate columns (e.g. inter1, inter2, inter3, etc.) in the first row, the next subject (e.g. 2) and the responses at each interval in separate columns (e.g. inter1, inter2, etc.) in the next row and so fhorth until a full data output is created.</p>
+<pre class="r"><code>wide &lt;- reshape(Indometh, v.names = &quot;conc&quot;, idvar = &quot;Subject&quot;,
+                timevar = &quot;time&quot;, direction = &quot;wide&quot;)
+wide[,1:8]</code></pre>
+<pre><code>##    Subject conc.0.25 conc.0.5 conc.0.75 conc.1 conc.1.25 conc.2 conc.3
+## 1        1      1.50     0.94      0.78   0.48      0.37   0.19   0.12
+## 12       2      2.03     1.63      0.71   0.70      0.64   0.36   0.32
+## 23       3      2.72     1.49      1.16   0.80      0.80   0.39   0.22
+## 34       4      1.85     1.39      1.02   0.89      0.59   0.40   0.16
+## 45       5      2.05     1.04      0.81   0.39      0.30   0.23   0.13
+## 56       6      2.31     1.44      1.03   0.84      0.64   0.42   0.24</code></pre>
+<p>This example demonstrates that all of the rows show a distinct subject with the distinct variable measures in each individual column.</p>
+</div>
+</div>
+<div id="reshape2-package-functions" class="section level2">
+<h2>Reshape2 Package Functions</h2>
+<p>The Reshape2 package contains various functions that helps users place their data into either the <em>long format</em> or the <em>wide format</em> depending on what is needed by the software being used for analysis. Though there are many functions availalble and it is encouraged that all functions are reviewed (you can do so here: <a href="https://cran.r-project.org/web/packages/reshape2/reshape2.pdf" class="uri">https://cran.r-project.org/web/packages/reshape2/reshape2.pdf</a>), the primary focus of this section will be on the use of the <strong>melt()</strong> and <strong>cast()</strong> functions.</p>
+<div id="melt" class="section level3">
+<h3>melt()</h3>
+</div>
+<div id="cast" class="section level3">
+<h3>cast()</h3>
+</div>
+</div>
+<div id="stats-package-functions" class="section level2">
+<h2>Stats Package Functions</h2>
+<p>The Stats package contains various functions that helps users place their data into either the <em>long format</em> or the <em>wide format</em> depending on what is needed by the software being used for analysis. Though there are many functions availalble and it is encouraged that all functions are reviewed (you can do so here: <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.0" class="uri">https://www.rdocumentation.org/packages/stats/versions/3.6.0</a>), the primary focus of this section will be on the use of the <strong>reshape()</strong> function.</p>
+<div id="reshape" class="section level3">
+<h3>Reshape()</h3>
+</div>
+</div>
+<div id="examples-of-data-shaping" class="section level2">
+<h2>Examples of Data Shaping</h2>
+<div id="reshape2" class="section level3">
+<h3>Reshape2</h3>
+<div id="data-into-wide-format" class="section level4">
+<h4>Data into Wide Format</h4>
+</div>
+<div id="data-into-long-format" class="section level4">
+<h4>Data into Long Format</h4>
+</div>
+</div>
+<div id="stats" class="section level3">
+<h3>Stats</h3>
+<div id="data-into-wide-format-1" class="section level4">
+<h4>Data into Wide Format</h4>
+</div>
+<div id="data-into-long-format-1" class="section level4">
+<h4>Data into Long Format</h4>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
