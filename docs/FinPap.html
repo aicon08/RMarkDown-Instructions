@@ -302,6 +302,9 @@ $(document).ready(function () {
 <li>
   <a href="FinPres.html">Final Presentation</a>
 </li>
+<li>
+  <a href="FinPap.html">Final Paper--Guide</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -322,7 +325,7 @@ $(document).ready(function () {
 <h1>Data Shaping using Reshape(2) and Stats Packages</h1>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Research data sets can be overwrought with information that may not be of interest to the researcher; on one hand it could be that the researcher is using data sets from experiments or studies that were not conducted directly by them and therefore needs to carefully choose variables, or perhaps there were too many variables collected during the study and a particular analysis only requires a select few. It is also possible that the analysis software is only able to process the data if it is fed into the input in a certain manner. Whatever the limitations are, data shaping is a key step in data analysis and there are many tools available to assist with this task. R programmers have acknowledged the need for CRAN approved packages that aid with this endeavor and since 2003 have created packages such as Reshape to help others. This section will focus on the functionalities of the Reshape2 package distributed in 2017 by Hadley Wickham and the Stats 2001 by the R Core Team.</p>
+<p>Research data sets can be overwrought with information that may not be of interest to the researcher; on one hand it could be that the researcher is using data sets from experiments or studies that were not conducted directly by them and therefore needs to carefully choose variables, or perhaps there were too many variables collected during the study and a particular analysis only requires a select few. It is also possible that the analysis software is only able to process the data if it is fed into the input in a certain manner. Whatever the limitations are, data shaping is a key step in data analysis and there are many tools available to assist with this task. R programmers have acknowledged the need for CRAN approved packages that aid with this endeavor and since 2003 have created packages such as Reshape to help others. This section will focus on the functionalities of the Reshape2 package distributed in 2012 by Hadley Wickham and the Stats 2001 by the R Core Team.</p>
 </div>
 <div id="different-data-inputs" class="section level2">
 <h2>Different Data Inputs</h2>
@@ -369,12 +372,174 @@ wide[,1:8]</code></pre>
 </div>
 <div id="reshape2-package-functions" class="section level2">
 <h2>Reshape2 Package Functions</h2>
-<p>The Reshape2 package contains various functions that helps users place their data into either the <em>long format</em> or the <em>wide format</em> depending on what is needed by the software being used for analysis. Though there are many functions availalble and it is encouraged that all functions are reviewed (you can do so here: <a href="https://cran.r-project.org/web/packages/reshape2/reshape2.pdf" class="uri">https://cran.r-project.org/web/packages/reshape2/reshape2.pdf</a>), the primary focus of this section will be on the use of the <strong>melt()</strong> and <strong>cast()</strong> functions.</p>
+<p>The Reshape2 package contains various functions that helps users place their data into either the <em>long format</em> or the <em>wide format</em> depending on what is needed by the software being used for analysis. Though there are many functions availalble and it is encouraged that all functions are reviewed (you can do so here: <a href="https://cran.r-project.org/web/packages/reshape2/reshape2.pdf" class="uri">https://cran.r-project.org/web/packages/reshape2/reshape2.pdf</a>), the primary focus of this section will be on the use of the <strong>melt()</strong> and <strong>cast()</strong> functions. For proper use and data reshaping, the functions are ideally used in tandem, though as shown above, they can be used separately (i.e. only the melt function used for the separation of some data from others).</p>
 <div id="melt" class="section level3">
 <h3>melt()</h3>
+<p>As it implies, the melt function strips away variables and/or structures from existing data sets and prepares the data for the cast function (or for analysis). Depending on the type of data that you may have (array, data frame, matrix), <strong>melt()</strong> should be able to accommodate the breakdown or reshaping of the data. A check for the use of the function called <em>melt_check()</em> is purported to exist, but the documentation on how to use this function is bare and I currently cannot make it run.</p>
+<div id="meltmelt.defaultmelt.data.frame" class="section level4">
+<h4>melt()/melt.default()/melt.data.frame()</h4>
+<p>The melt function requires the following inputs at minimum to work <em>melt(data,Subject Name Code Column, Variable Column Names in List Form)</em>. As is, the function does not remove any missing values (na.rm = FALSE), so if it is necessary to remove missing values from the data set, this should be done prior to the use of melt() or na.rm should be set as equal to <strong>TRUE</strong>.</p>
+<pre class="r"><code>head(airquality)</code></pre>
+<pre><code>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6</code></pre>
+<pre class="r"><code>names(airquality) &lt;- tolower(names(airquality))
+aqm &lt;- melt(airquality, id=c(&quot;month&quot;, &quot;day&quot;), na.rm=TRUE)
+
+head(aqm)</code></pre>
+<pre><code>##   month day variable value
+## 1     5   1    ozone    41
+## 2     5   2    ozone    36
+## 3     5   3    ozone    12
+## 4     5   4    ozone    18
+## 6     5   6    ozone    28
+## 7     5   7    ozone    23</code></pre>
+<p>The air quality data set contained 4 measured variables (Ozone, Solar.R, Wind, and Temp) over 2 time metrics (Month, Day). Using melt(), the data set was reshaped in aqm to show Month and Day as the independent variables, with the dependent variables Ozone, Solar R., Wind, and Temp shown as the dependent variables with their corresponding measurments. Note that because we did not specify the measured variable, all of the variables not designated as independent variables were designated as measured variables. In order to select specific measured/dependent variables, it is necessary to specify them as shown in the example below.</p>
+<pre class="r"><code>aqm2 &lt;- melt(airquality, id=c(&quot;month&quot;, &quot;day&quot;),measure.vars = &quot;ozone&quot;, na.rm=TRUE)
+
+head(aqm2)</code></pre>
+<pre><code>##   month day variable value
+## 1     5   1    ozone    41
+## 2     5   2    ozone    36
+## 3     5   3    ozone    12
+## 4     5   4    ozone    18
+## 6     5   6    ozone    28
+## 7     5   7    ozone    23</code></pre>
+<p>Here, again, the columns are the same as the aqm data set, however, because we specify <em>ozone</em> as the measured variable, only ozone will appear in the data set aqm2.</p>
+</div>
+<div id="melt.array" class="section level4">
+<h4>melt.array()</h4>
+<p>If the data you are working with is presented in an <em>array</em> as opposed to a data frame or matrix (meaning that there are a fixed number of values of a sinlge type) then you can use the melt.array() feature.</p>
+<pre class="r"><code>a &lt;- array(c(1:23, NA), c(2,3,4))
+
+a[,,1:2]</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    7    9   11
+## [2,]    8   10   12</code></pre>
+<p>The above is an example of a random array that was created with 3 dimensions (row, column, depth).</p>
+<pre class="r"><code>melt(a)[1:10,]</code></pre>
+<pre><code>##    Var1 Var2 Var3 value
+## 1     1    1    1     1
+## 2     2    1    1     2
+## 3     1    2    1     3
+## 4     2    2    1     4
+## 5     1    3    1     5
+## 6     2    3    1     6
+## 7     1    1    2     7
+## 8     2    1    2     8
+## 9     1    2    2     9
+## 10    2    2    2    10</code></pre>
+<p>Using the function melt, without any additional indicators will break the data down and out of the current structures that hold them. The first 3 columns represent the location of the data and the fourth column indicates the value in that given location. Based on the data output provided, it can be very easy to get lost or make mistakes. Additional data commands that name the columns may be helpful to keep track of the data as shown below.</p>
+<pre class="r"><code>melt(a, varnames = c(&quot;X&quot;,&quot;Y&quot;,&quot;Z&quot;))[1:10,]</code></pre>
+<pre><code>##    X Y Z value
+## 1  1 1 1     1
+## 2  2 1 1     2
+## 3  1 2 1     3
+## 4  2 2 1     4
+## 5  1 3 1     5
+## 6  2 3 1     6
+## 7  1 1 2     7
+## 8  2 1 2     8
+## 9  1 2 2     9
+## 10 2 2 2    10</code></pre>
+</div>
 </div>
 <div id="cast" class="section level3">
 <h3>cast()</h3>
+<p>The <strong>cast()</strong> function is what allows us to shape the data after we have melted it down into the ideal formats that are needed. The options exist to run <em>dcast()</em> or <em>acast()</em>. As you can imagine, the <strong>dcast()</strong> function best serves those that are intending to have a data frame or matrix output.</p>
+<div id="acast" class="section level4">
+<h4>acast()</h4>
+<p>According to the README, the cast function provides outputs in the following format: x_var+x_2<sub>y_var+y_2</sub>z_var. Though it may be an easy format to understand, it was not sufficient of an explanation for some. As such, please refer to the example below.</p>
+<pre class="r"><code>acast(aqm, day ~ month ~ variable)[1:10,,1:2]</code></pre>
+<pre><code>## , , ozone
+## 
+##     5  6   7   8  9
+## 1  41 NA 135  39 96
+## 2  36 NA  49   9 78
+## 3  12 NA  32  16 73
+## 4  18 NA  NA  78 91
+## 5  NA NA  64  35 47
+## 6  28 NA  40  66 32
+## 7  23 29  77 122 20
+## 8  19 NA  97  89 23
+## 9   8 71  97 110 21
+## 10 NA 39  85  NA 24
+## 
+## , , solar.r
+## 
+##      5   6   7   8   9
+## 1  190 286 269  83 167
+## 2  118 287 248  24 197
+## 3  149 242 236  77 183
+## 4  313 186 101  NA 189
+## 5   NA 220 175  NA  95
+## 6   NA 264 314  NA  92
+## 7  299 127 276 255 252
+## 8   99 273 267 229 220
+## 9   19 291 272 207 230
+## 10 194 323 175 222 259</code></pre>
+<p>As demonstrated from the data output above, the cast() function shaped the data such that the months are the column headers, divided across days in the rows, and then by variable as the overall “topic”.</p>
+<p>It is also possible to cast the data in such a way that the averages are obtained.</p>
+<pre class="r"><code>acast(aqm, month ~ variable, mean, margins = TRUE)</code></pre>
+<pre><code>##          ozone  solar.r      wind     temp    (all)
+## 5     23.61538 181.2963 11.622581 65.54839 68.70696
+## 6     29.44444 190.1667 10.266667 79.10000 87.38384
+## 7     59.11538 216.4839  8.941935 83.90323 93.49748
+## 8     59.96154 171.8571  8.793548 83.96774 79.71207
+## 9     31.44828 167.4333 10.180000 76.90000 71.82689
+## (all) 42.12931 185.9315  9.957516 77.88235 80.05722</code></pre>
+<p>In the above example, the data once again separated by what was indicated (e.g. month and variable). We have added however, that the mean of these variables for each month be calculated and additionally, by adding the <em>margins = TRUE</em> command, we have asked for the means of each row to be included.</p>
+<p>Overall, the takeaway for how to use cast should be as follows: acast(melted data set, rowvariablename<sub>columnvariablename</sub>OPTIONALvariableinformationisseparatedby,…ANYOTHERCOMMANDS,MARGINS).</p>
+</div>
+<div id="dcast" class="section level4">
+<h4>dcast()</h4>
+<p>Similar to <em>acast()</em>, <strong>dcast()</strong> reforms the data, however, it places it into a data fram or matrix format.</p>
+<pre class="r"><code>dcast(aqm, month ~ variable, mean, margins = c(&quot;month&quot;, &quot;variable&quot;))</code></pre>
+<pre><code>##   month    ozone  solar.r      wind     temp    (all)
+## 1     5 23.61538 181.2963 11.622581 65.54839 68.70696
+## 2     6 29.44444 190.1667 10.266667 79.10000 87.38384
+## 3     7 59.11538 216.4839  8.941935 83.90323 93.49748
+## 4     8 59.96154 171.8571  8.793548 83.96774 79.71207
+## 5     9 31.44828 167.4333 10.180000 76.90000 71.82689
+## 6 (all) 42.12931 185.9315  9.957516 77.88235 80.05722</code></pre>
+<p>To use a different data set, the example below takes data from the ChickWeight set and melts it down and casts it as a data frame that displays only the time (row) and variable (column) and the corresponding means.</p>
+<pre class="r"><code>head(ChickWeight)</code></pre>
+<pre><code>##   weight Time Chick Diet
+## 1     42    0     1    1
+## 2     51    2     1    1
+## 3     59    4     1    1
+## 4     64    6     1    1
+## 5     76    8     1    1
+## 6     93   10     1    1</code></pre>
+<pre class="r"><code>names(ChickWeight) &lt;- tolower(names(ChickWeight))
+chick_m &lt;- melt(ChickWeight, id=2:4, na.rm=TRUE)
+dcast(chick_m, time ~ variable, mean)</code></pre>
+<pre><code>##    time    weight
+## 1     0  41.06000
+## 2     2  49.22000
+## 3     4  59.95918
+## 4     6  74.30612
+## 5     8  91.24490
+## 6    10 107.83673
+## 7    12 129.24490
+## 8    14 143.81250
+## 9    16 168.08511
+## 10   18 190.19149
+## 11   20 209.71739
+## 12   21 218.68889</code></pre>
+</div>
 </div>
 </div>
 <div id="stats-package-functions" class="section level2">
@@ -382,28 +547,46 @@ wide[,1:8]</code></pre>
 <p>The Stats package contains various functions that helps users place their data into either the <em>long format</em> or the <em>wide format</em> depending on what is needed by the software being used for analysis. Though there are many functions availalble and it is encouraged that all functions are reviewed (you can do so here: <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.0" class="uri">https://www.rdocumentation.org/packages/stats/versions/3.6.0</a>), the primary focus of this section will be on the use of the <strong>reshape()</strong> function.</p>
 <div id="reshape" class="section level3">
 <h3>Reshape()</h3>
+<p>More readily than the melt() and cast() functions, reshape is able to guid the direction of the data as it reshapes and rebuilds the data set as indicated.</p>
+<p>The reshape() functions require the basic inputs the melt() function did, with the added input of direction, which indicates whether the dataset should be a long format data set or a wide format dataset.</p>
+<pre class="r"><code>wide &lt;- reshape(Indometh, v.names = &quot;conc&quot;, idvar = &quot;Subject&quot;,
+                timevar = &quot;time&quot;, direction = &quot;wide&quot;)
+wide[,1:5]</code></pre>
+<pre><code>##    Subject conc.0.25 conc.0.5 conc.0.75 conc.1
+## 1        1      1.50     0.94      0.78   0.48
+## 12       2      2.03     1.63      0.71   0.70
+## 23       3      2.72     1.49      1.16   0.80
+## 34       4      1.85     1.39      1.02   0.89
+## 45       5      2.05     1.04      0.81   0.39
+## 56       6      2.31     1.44      1.03   0.84</code></pre>
+<pre class="r"><code>state.x77 &lt;- as.data.frame(state.x77)
+long &lt;- reshape(state.x77, idvar = &quot;state&quot;, ids = row.names(state.x77),
+                times = names(state.x77), timevar = &quot;Characteristic&quot;,
+                varying = list(names(state.x77)), direction = &quot;long&quot;)
+longa&lt;-long%&gt;%filter(state==&quot;Alabama&quot;)
+
+longa</code></pre>
+<pre><code>##   Characteristic Population   state
+## 1     Population    3615.00 Alabama
+## 2         Income    3624.00 Alabama
+## 3     Illiteracy       2.10 Alabama
+## 4       Life Exp      69.05 Alabama
+## 5         Murder      15.10 Alabama
+## 6        HS Grad      41.30 Alabama
+## 7          Frost      20.00 Alabama
+## 8           Area   50708.00 Alabama</code></pre>
 </div>
 </div>
-<div id="examples-of-data-shaping" class="section level2">
-<h2>Examples of Data Shaping</h2>
-<div id="reshape2" class="section level3">
-<h3>Reshape2</h3>
-<div id="data-into-wide-format" class="section level4">
-<h4>Data into Wide Format</h4>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>Data reshaping is important and there are many tools availalbe to assist users in re-formatting the data sets they have available. In addition to the packages discussed above, other packages have been developed by other R users to facilitate this process; the next generation of ReShape can be found in the tidyr package, and other packages like psych, include tools that help reformat data. Additionally with the use of additional packages like dplyr and forcats, additional power is added to the ability of the user to format and reformat as needed.</p>
 </div>
-<div id="data-into-long-format" class="section level4">
-<h4>Data into Long Format</h4>
-</div>
-</div>
-<div id="stats" class="section level3">
-<h3>Stats</h3>
-<div id="data-into-wide-format-1" class="section level4">
-<h4>Data into Wide Format</h4>
-</div>
-<div id="data-into-long-format-1" class="section level4">
-<h4>Data into Long Format</h4>
-</div>
-</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Kabacoff, R. I. (n.d.). Qhick-R: Reshape. Retrieved May 03, 2019, from <a href="https://www.statmethods.net/management/reshape.html" class="uri">https://www.statmethods.net/management/reshape.html</a></p>
+<p>Wickham, H. (2012). reshape2: Flexibly reshape data: a reboot of the reshape package. R package version, 1(2).</p>
+<p>Martin, K. G. (n.d.). The Wide and Long Data Format for Repeated Measures Data. Retrieved May 03, 2019, from <a href="https://www.theanalysisfactor.com/wide-and-long-data/" class="uri">https://www.theanalysisfactor.com/wide-and-long-data/</a></p>
+<p>R Core Team (2012). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. ISBN 3-900051-07-0, URL <a href="http://www.R-project.org/" class="uri">http://www.R-project.org/</a></p>
 </div>
 </div>
 
